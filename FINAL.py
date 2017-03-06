@@ -16,9 +16,13 @@ class MC(Sprite):
 
     def __init__(self, position):
         super().__init__(cf, position)
-        SpaceGame.listenKeyEvent("keydown", "space", self.spaceKey)
-    def spaceKey(self, event):
+        SpaceGame.listenKeyEvent("keypress", "d", self.dKey)
+        SpaceGame.listenKeyEvent("keypress", "a", self.aKey)
+    def dKey(self, event):
         self.x += 10
+        print(self.x)
+    def aKey(self, event):
+        self.x -= 10
 
 
 
@@ -32,14 +36,10 @@ class SpaceGame(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(width, height, noline, black)
         bg = Sprite(bg_asset, (0,0))
-        MC((100,100))
-        MC((150,150))
-        MC((200,50))
-
-    def step(self):
-        for ship in self.getSpritesbyClass(MC):
-            ship.step()
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+MC((100,100))
+MC((150,150))
+MC((200,50))
 myapp.run()
