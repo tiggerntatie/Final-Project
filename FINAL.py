@@ -35,9 +35,9 @@ class MC(Sprite):
     def sKey(self, event):
         self.y += 1
     def eKey(self, event):
-        self.rotation += .001
+        self.rotation += .09
     def qKey(self, event):
-        self.rotation -= .001
+        self.rotation -= .09
 
 
 
