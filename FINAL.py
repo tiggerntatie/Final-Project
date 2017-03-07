@@ -7,8 +7,9 @@ black = Color(0, 1)
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
+noline = LineStyle(0, black)
 cf = RectangleAsset(20, 30, thinline, gray)
-laser = RectangleAsset(5, 
+laser = RectangleAsset(5, 10, noline, white)
 class MC(Sprite):
     """
     Animated space ship
