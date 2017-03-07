@@ -18,11 +18,17 @@ class MC(Sprite):
         super().__init__(cf, position)
         SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
         SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
+        SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
+        SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
     def dKey(self, event):
-        self.x += 10
+        self.x += 1
         print(self.x)
     def aKey(self, event):
-        self.x -= 10
+        self.x -= 1
+    def sKey(self, event):
+        self.y -= 1
+    def wKey(self, event):
+        self.y += 1
 
 
 
