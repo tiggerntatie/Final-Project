@@ -25,6 +25,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         self.fxcenter = self.fycenter = 0.5
+        print(self.fxcenter)
     def dKey(self, event):
         self.x += 1
     def aKey(self, event):
