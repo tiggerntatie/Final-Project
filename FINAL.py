@@ -8,6 +8,7 @@ thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 cf = RectangleAsset(20, 30, thinline, gray)
+laser = RectangleAsset(5, 
 class MC(Sprite):
     """
     Animated space ship
@@ -20,15 +21,20 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
         SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
+        SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
+        SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
     def dKey(self, event):
         self.x += 1
-        print(self.x)
     def aKey(self, event):
         self.x -= 1
-    def sKey(self, event):
-        self.y -= 1
     def wKey(self, event):
+        self.y -= 1
+    def sKey(self, event):
         self.y += 1
+    def eKey(self, event):
+        self.rotate += 1
+    def qKey(self, event):
+        self.rotate -= 1
 
 
 
@@ -45,7 +51,5 @@ class SpaceGame(App):
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
-MC((100,100))
-MC((150,150))
-MC((200,50))
+MC((320,240))
 myapp.run()
