@@ -1,4 +1,6 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
+from math import sin, cos, radians
+
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -25,9 +27,11 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         self.fxcenter = self.fycenter = 0.5
-        print(self.fxcenter)
+        self.xvector = cos(self.rotation)
+        self.yvector = sin(self.rotation)
     def dKey(self, event):
-        self.x += 1
+        self.x += self.xvector
+        self.y += self.yvector
     def aKey(self, event):
         self.x -= 1
     def wKey(self, event):
