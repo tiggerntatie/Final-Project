@@ -1,5 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
-from math import sin, cos, radians
+from math import sin, cos, radians, pi
 
 
 SCREEN_WIDTH = 640
@@ -31,15 +31,18 @@ class MC(Sprite):
         self.yvector = sin(self.rotation)
     def dKey(self, event):
         self.x += cos(self.rotation)
-        self.y += sin(self.rotation)
+        self.y -= sin(self.rotation)
         print(cos(self.rotation))
         print(self.yvector)
     def aKey(self, event):
-        self.x -= 1
+        self.x -= cos(self.rotation)
+        self.y += sin(self.rotation)
     def wKey(self, event):
-        self.y -= 1
+        self.x -= cos((pi/2)radians-self.rotation)
+        self.y -= sin((pi/2)radiansself.rotation)
     def sKey(self, event):
-        self.y += 1
+        self.x += cos((pi/2)radiansself.rotation-)
+        self.y += sin((pi/2)radiansself.rotation)
     def eKey(self, event):
         self.rotation += .09
     def qKey(self, event):
