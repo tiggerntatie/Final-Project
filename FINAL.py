@@ -38,11 +38,11 @@ class MC(Sprite):
         self.x -= cos(self.rotation)
         self.y += sin(self.rotation)
     def wKey(self, event):
-        self.x -= cos((pi/2)radians-self.rotation)
-        self.y -= sin((pi/2)radiansself.rotation)
+        self.x -= cos((pi/2)*radians-self.rotation)
+        self.y -= sin((pi/2)*radians-self.rotation)
     def sKey(self, event):
-        self.x += cos((pi/2)radiansself.rotation-)
-        self.y += sin((pi/2)radiansself.rotation)
+        self.x += cos((pi/2)*radians-self.rotation)
+        self.y += sin((pi/2)*radians-self.rotation)
     def eKey(self, event):
         self.rotation += .09
     def qKey(self, event):
