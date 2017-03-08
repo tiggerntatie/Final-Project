@@ -30,8 +30,10 @@ class MC(Sprite):
         self.xvector = cos(self.rotation)
         self.yvector = sin(self.rotation)
     def dKey(self, event):
-        self.x += self.xvector
-        self.y += self.yvector
+        self.x += cos(self.rotation)
+        self.y += sin(self.rotation)
+        print(cos(self.rotation))
+        print(self.yvector)
     def aKey(self, event):
         self.x -= 1
     def wKey(self, event):
