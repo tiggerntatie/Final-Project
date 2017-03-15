@@ -19,11 +19,11 @@ def gen():
             primelist.append(a)
             a += 1
             print("Success")
-            print("Not a prime")
+            
             i=1
         else:              
             a+=1
-            
+            print("Not a prime")
 def spaceKey(event):
     gen()
     print(primelist)
