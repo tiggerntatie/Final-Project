@@ -6,8 +6,8 @@ generation = False
 
 primelist=[1]
 def gen():
-    a = 2
-    b = 0
+    a = len(primelist)+1
+    b= 0
     print("Yay")
     for x in primelist:
         print(x, "1st step")
