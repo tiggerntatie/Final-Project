@@ -15,15 +15,15 @@ def gen():
             print("1st step")
             if int(a)%int(x) == 0:
                 b += 1
-                
         if b == 1:
             primelist.append(a)
             a += 1
             print("Success")
-            i = 1
+            print("Not a prime")
+            i=1
         else:              
             a+=1
-            print("Not a prime")
+            
 def spaceKey(event):
     gen()
     print(primelist)
