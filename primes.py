@@ -5,10 +5,15 @@ myapp=App()
 generation = False
 
 primelist=[1]
-def gen():
-    a = len(primelist)+1
-    b= 0
+
+a = 2
+b= 0
+
+   
+def spaceKey(event):
     i = 0
+    global a
+    global b
     while i !=1:
         print("Yay", a)
         for x in primelist:
@@ -19,13 +24,10 @@ def gen():
             primelist.append(a)
             a += 1
             print("Success")
-            
             i=1
         else:              
             a+=1
             print("Not a prime")
-def spaceKey(event):
-    gen()
     print(primelist)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 
