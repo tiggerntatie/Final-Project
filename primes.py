@@ -7,27 +7,28 @@ generation = False
 primelist=[1]
 
 a = 2
-b= 0
+
 
    
 def spaceKey(event):
     i = 0
     global a
-    global b
+    
     while i !=10:
-        print("Yay", a)
+        b = 0
+        print("Start", a)
         for x in primelist:
-            print("1st step")
             if int(a)%int(x) == 0:
                 b += 1
+                print (x, b)
         if b == 1:
             primelist.append(a)
             a += 1
-            print("Success")
+            print("Success", primelist)
             i+=1
         else:              
             a+=1
-            print("Not a prime")
+            print("Not a prime", b)
             i+=1
     print(primelist)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
