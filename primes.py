@@ -14,4 +14,4 @@ while i !=MAX:
         i+=1
     else:              
         a+=1
-print(primelist)
+print(primelist[len(primelist])
