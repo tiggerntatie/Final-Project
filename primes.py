@@ -15,7 +15,7 @@ class Conway(App):
         
 #Step Function
     def step(self):
-        if generation == True:
+        while generation == True:
             print("Yay")
             b = 0
             for x in primelist:
