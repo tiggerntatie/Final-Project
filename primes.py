@@ -6,15 +6,16 @@ def gen():
     generation = not generation
 def spaceKey(event):
     gen()
+    print(primelist)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-a = 1
+a = 2
 primelist=[1]
 while generation == True:
     b = 0
     for x in primelist:
-        if a//x == 0:
+        if a%x == 0:
             b += 1
-    if b == 0:
+    if b == 1:
         primelist.append(a)
         a += 1
     else:
