@@ -11,10 +11,11 @@ a = 2
 
    
 def spaceKey(event):
+    MAX = int(input("How many primes should I count? "))
     i = 0
     global a
     
-    while i !=10:
+    while i !=MAX:
         b = 0
         print("Start", a)
         for x in primelist:
@@ -29,7 +30,6 @@ def spaceKey(event):
         else:              
             a+=1
             print("Not a prime", b)
-            i+=1
     print(primelist)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 
