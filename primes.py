@@ -13,7 +13,7 @@ primelist=[1]
 while generation == True:
     b = 0
     for x in primelist:
-        if a%x == 0:
+        if int(a)%int(x) != 0:
             b += 1
     if b == 1:
         primelist.append(a)
