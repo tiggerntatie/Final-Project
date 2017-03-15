@@ -8,22 +8,24 @@ primelist=[1]
 def gen():
     a = len(primelist)+1
     b= 0
-    print("Yay")
-    for x in primelist:
-        print(x, "1st step")
-        if int(a)%int(x) != 0:
-            b += 1
-            print(b)
-    if b == 0:
-        primelist.append(a)
-        a += 1
-        print("Success")
-    else:              
-        a+=1
+    i = 0
+    while i !=1:
+        print("Yay", a)
+        for x in primelist:
+            print("1st step")
+            if int(a)%int(x) == 0:
+                b += 1
+                print("Not a prime")
+        if b == 1:
+            primelist.append(a)
+            a += 1
+            print("Success")
+            i = 1
+        else:              
+            a+=1
 def spaceKey(event):
     gen()
     print(primelist)
-    print(generation)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 
 
