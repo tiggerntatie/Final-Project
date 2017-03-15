@@ -17,7 +17,6 @@ def spaceKey(event):
     
     while i !=MAX:
         b = 0
-        print("Start", a)
         for x in primelist:
             if int(a)%int(x) == 0:
                 b += 1
