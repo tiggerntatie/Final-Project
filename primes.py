@@ -15,17 +15,17 @@ a = 2
 b = 0
 primelist=[1]
 while generation == True:
-        print("Yay")
-        for x in primelist:
-            print(x)
-            if int(a)%int(x) != 0:
-                b += 1
-                print(b)
-        if b == 0:
-            primelist.append(a)
-            a += 1
-        else:              
-                a+=1
+    print("Yay")
+    for x in primelist:
+        print(x)
+        if int(a)%int(x) != 0:
+            b += 1
+            print(b)
+    if b == 0:
+        primelist.append(a)
+        a += 1
+    else:              
+        a+=1
     
     
 
