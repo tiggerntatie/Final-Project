@@ -14,7 +14,7 @@ def spaceKey(event):
     i = 0
     global a
     global b
-    while i !=1:
+    while i !=10:
         print("Yay", a)
         for x in primelist:
             print("1st step")
@@ -24,10 +24,11 @@ def spaceKey(event):
             primelist.append(a)
             a += 1
             print("Success")
-            i=1
+            i+=1
         else:              
             a+=1
             print("Not a prime")
+            i+=1
     print(primelist)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 
