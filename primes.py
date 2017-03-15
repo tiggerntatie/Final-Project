@@ -3,29 +3,29 @@ SCREEN_WIDTH = 740
 SCREEN_HEIGHT = 570
 myapp=App()
 generation = False
-def gen():
-    global generation
-    generation = not generation
-def spaceKey(event):
-    gen()
-    print(primelist)
-    print(generation)
-myapp.listenKeyEvent('keydown', 'space', spaceKey)
 a = 2
 b = 0
 primelist=[1]
-if generation == True:
+def gen():
     print("Yay")
     for x in primelist:
-        print(x)
+        print(x, "1st step")
         if int(a)%int(x) != 0:
             b += 1
             print(b)
     if b == 0:
         primelist.append(a)
         a += 1
+        print("Success")
     else:              
         a+=1
+def spaceKey(event):
+    gen()
+    print(primelist)
+    print(generation)
+myapp.listenKeyEvent('keydown', 'space', spaceKey)
+
+
     
     
 
