@@ -15,7 +15,7 @@ def gen():
             print("1st step")
             if int(a)%int(x) == 0:
                 b += 1
-                print("Not a prime")
+                
         if b == 1:
             primelist.append(a)
             a += 1
@@ -23,6 +23,7 @@ def gen():
             i = 1
         else:              
             a+=1
+            print("Not a prime")
 def spaceKey(event):
     gen()
     print(primelist)
