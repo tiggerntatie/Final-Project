@@ -1,4 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
+myapp=App()
 generation = False
 def gen():
     global generation
@@ -11,7 +12,7 @@ primelist=[1]
 while generation == True:
     b = 0
     for x in primelist:
-        if a//x = 0:
+        if a//x == 0:
             b += 1
     if b == 0:
         primelist.append(a)
