@@ -14,7 +14,7 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 a = 2
 b = 0
 primelist=[1]
-while generation == True:
+if generation == True:
     print("Yay")
     for x in primelist:
         print(x)
