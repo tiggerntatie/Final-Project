@@ -3,10 +3,11 @@ SCREEN_WIDTH = 740
 SCREEN_HEIGHT = 570
 myapp=App()
 generation = False
-a = 2
-b = 0
+
 primelist=[1]
 def gen():
+    a = 2
+    b = 0
     print("Yay")
     for x in primelist:
         print(x, "1st step")
