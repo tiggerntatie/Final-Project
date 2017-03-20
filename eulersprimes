@@ -3,11 +3,18 @@ intlist = list(range(2, MAX+1))
 i = 0
 p = 2
 if p != MAX:
+    print(intlist)
     for x in intlist:
         n = MAX//p
-        nlist = list(range(2*p,n*p+1))
-        for i in nlist:
-            intlist.remove(i)
+        a=2
+        n1 = a*p
+        nlist = []
+        while a != n:
+            n1 = a*p
+            nlist.append(n1)
+            a += 1
+        print(nlist)
+        
 print(intlist)
             
         
