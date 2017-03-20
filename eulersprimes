@@ -1,1 +1,13 @@
-
+MAX= int(input("To what number should I count primes? "))
+intlist = list(range(2, MAX+1))
+i = 0
+p = 2
+while i != 1:
+    if p != MAX:
+        for x in intlist:
+            n = MAX//p
+            nlist = list(range(2*p,n*p+1))
+            for i in nlist:
+                intlist.remove(i)
+            
+        
