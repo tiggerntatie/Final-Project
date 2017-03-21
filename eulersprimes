@@ -7,9 +7,9 @@ listindex=0
 while i != 1:
     if listindex >= len(intlist):
         i = 1
-    p = intlist[listindex]
     
     else:
+        p = intlist[listindex]
         print(intlist)
         for x in intlist:
             n = MAX//p
