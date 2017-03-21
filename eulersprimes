@@ -15,7 +15,7 @@ while i != 1:
             a=2
             n1 = a*p
             nlist = []
-            while a != n:
+            while a != n+1:
                 n1 = a*p
                 nlist.append(n1)
                 a += 1
