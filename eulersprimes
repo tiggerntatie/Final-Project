@@ -10,7 +10,6 @@ while i != 1:
     
     else:
         p = intlist[listindex]
-        print(intlist)
         for x in intlist:
             n = MAX//p
             a=2
@@ -20,13 +19,9 @@ while i != 1:
                 n1 = a*p
                 nlist.append(n1)
                 a += 1
-            print(nlist)
             for i in nlist:
                 if i in intlist:
                     intlist.remove(i)
-        print(intlist)
-        print(intlist[listindex])
-        print(listindex)
         listindex+=1
     
         
