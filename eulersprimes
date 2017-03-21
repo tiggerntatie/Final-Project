@@ -26,8 +26,10 @@ print(intlist)
 
 
 base = list(range(0, len(intlist)))
-for a in intlist:
-    for i in base:
-        base1 = a*1
-print(base1)
+base1 = []
+for i in base:
+    for a in intlist:
+        base1.append(a*intlist[a])
+        
+
         
