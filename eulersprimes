@@ -32,21 +32,16 @@ r1 = 0
 r2 = 0
 while rounds != 10:
     base = list(range(0, len(intlist)-1))
-    print("Yay", base)
     r1 += 1
-    print(r1)
     r2 += r1
-    print(r2)
     if r1 in base:
         intlist.append(intlist[r1])
-        print(intlist[r1], intlist)
     else:
         r1 = 0
     if r2 in intlist:
         intlist.remove(r2)
-        print(r2, intlist)
     else:
-        r2 = r1
+        r2 = r1 
     rounds += 1
 print(base)
 print(intlist)
