@@ -1,3 +1,11 @@
+import random
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
+black = Color(0, 1)
+white = Color(0xffffff, 1)
+noline = LineStyle(0, black)
+thinline = LineStyle(1, black)
+NA = Sprite(RectangleAsset(30, 30, noline, white), (360, 480))
+A = Sprite(RectangleAsset(30, 30, noline, white), (360, 480))
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
@@ -24,6 +32,9 @@ while i != 1:
         listindex+=1
 print(intlist)
 
+number = 1
+x = 360
+y=480
         
 
         
