@@ -6,7 +6,7 @@ a=0
 
 while i != 1:
     P = intlist[a]
-    if intlist[a] == MAx:
+    if intlist[a] == MAX:
         i = 1
     else:
         print(intlist)
