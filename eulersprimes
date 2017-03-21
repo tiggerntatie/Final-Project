@@ -19,7 +19,7 @@ while i != 1:
             print(nlist)
             for i in nlist:
                 if i in intlist:
-                i   ntlist.remove(i)
+                    intlist.remove(i)
         print(intlist[1])
         p=intlist[1]
     
