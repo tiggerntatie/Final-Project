@@ -2,11 +2,11 @@ MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
 i = 0
-a=0
+listindex=0
 
 while i != 1:
-    P = intlist[a]
-    if intlist[a] == MAX:
+    p = intlist[listindex]
+    if intlist[listindex] == MAX:
         i = 1
     else:
         print(intlist)
@@ -23,8 +23,10 @@ while i != 1:
             for i in nlist:
                 if i in intlist:
                     intlist.remove(i)
-        print(intlist[a])
-        a+=1
+        print(intlist)
+        print(intlist[listindex])
+        print(listindex)
+        listindex+=1
     
         
 print(intlist)
