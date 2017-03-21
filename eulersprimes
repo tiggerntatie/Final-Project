@@ -5,9 +5,10 @@ i = 0
 listindex=0
 
 while i != 1:
-    p = intlist[listindex]
     if listindex >= len(intlist):
         i = 1
+    p = intlist[listindex]
+    
     else:
         print(intlist)
         for x in intlist:
