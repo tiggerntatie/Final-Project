@@ -4,8 +4,9 @@ black = Color(0, 1)
 white = Color(0xffffff, 1)
 noline = LineStyle(0, black)
 thinline = LineStyle(1, black)
-NA = Sprite(RectangleAsset(30, 30, noline, white), (360, 480))
-A = Sprite(RectangleAsset(30, 30, noline, white), (360, 480))
+NA = RectangleAsset(1, 1, noline, white)
+A = RectangleAsset(1, 1, thinline, black)
+
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
@@ -33,8 +34,35 @@ while i != 1:
 print(intlist)
 
 number = 1
+width = 1
+height = 1
+posw = 0
+posh = 0
 x = 360
 y=480
+a = -2
+cx = 0
+xapp = 1
+while number != MAX:
+    if number in intlist:
+        Sprite(A, (x, y))
+    else:
+        Sprite(NA, (x,y))
+    if x == 360 and y < 480:
+        a = a+4
+        cx = 1
+        x = x-1
+    if cx > 0 and <= a:
+        if abs(x) < xapp:
+            x -= 1
+        
+        
+        
+    
+    
+        
+    
+    
         
 
         
