@@ -25,11 +25,27 @@ while i != 1:
 print(intlist)
 
 
-base = list(range(0, len(intlist)))
+
 base1 = []
-for i in base:
-    for a in intlist:
-        base1.append(a*intlist[a])
+rounds = 0
+r1 = 0
+r2 = 0
+while rounds != 10:
+    base = list(range(0, len(intlist)))
+    r1 += 1
+    r2 += r1
+    if r1 in base:
+        intlist.append(intlist[r1])
+    else:
+        r1 = 0
+    if r2 in base:
+        intlist.remove(intlist[r2])
+    else:
+        r2 = r1
+    rounds += 1
+print(base)
+print(intlist)
+print(base1)
         
 
         
