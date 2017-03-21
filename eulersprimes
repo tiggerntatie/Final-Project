@@ -24,28 +24,6 @@ while i != 1:
         listindex+=1
 print(intlist)
 
-
-
-
-rounds = 0
-r1 = 0
-r2 = 0
-while rounds != 10:
-    base = list(range(0, len(intlist)-1))
-    r1 += 1
-    r2 += r1
-    if r1 in base:
-        intlist.append(intlist[r1])
-    else:
-        r1 = 0
-    if r2 in intlist:
-        intlist.remove(r2)
-    else:
-        r2 = r1 
-    rounds += 1
-print(base)
-print(intlist)
-
         
 
         
