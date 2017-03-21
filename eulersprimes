@@ -39,12 +39,12 @@ while rounds != 10:
     print(r2)
     if r1 in base:
         intlist.append(intlist[r1])
-        print(r1, intlist)
+        print(intlist[r1], intlist)
     else:
         r1 = 0
     if r2 in base:
         intlist.remove(intlist[r2])
-        print(r2, intlist)
+        print(intlist[r2], intlist)
     else:
         r2 = r1
     rounds += 1
