@@ -6,7 +6,7 @@ listindex=0
 
 while i != 1:
     p = intlist[listindex]
-    if intlist[listindex] == MAX:
+    if listindex == 2:
         i = 1
     else:
         print(intlist)
