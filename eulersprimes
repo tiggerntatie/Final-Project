@@ -55,6 +55,8 @@ while number != MAX:
     if cx > 0 and <= a:
         if abs(x) < xapp:
             x -= 1
+        else:
+            
         
         
         
