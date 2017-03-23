@@ -74,7 +74,6 @@ while number < MAX:
             somelist[number] = Sprite(A, (x,y))
         
         
-    x -= 30
     while posw != (-1):
         number += 1
         posw -= 1
@@ -84,7 +83,6 @@ while number < MAX:
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(A, (x,y))
-    y-=30
     while posh != (-1):
         
         number += 1
