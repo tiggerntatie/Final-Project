@@ -1,5 +1,6 @@
 import random
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
+myapp=App()
 black = Color(0, 1)
 white = Color(0xffffff, 1)
 noline = LineStyle(0, black)
@@ -80,7 +81,7 @@ if number != MAX:
         number += 1
     
     
-myapp=App()
+
 mpapp.run()
     
         
