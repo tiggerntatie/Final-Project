@@ -98,7 +98,7 @@ while number < MAX:
         print(number)
     
     
-bg = Sprite(one, (630, 200))
+bg = Sprite(one, (630, 170))
 myapp.run()
     
         
