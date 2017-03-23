@@ -12,7 +12,7 @@ NA = RectangleAsset(30, 30, noline, gray)
 A = RectangleAsset(30, 30, thinline, black)
 
 one = RectangleAsset(30, 30, thinline, red)
-one1 = Sprite(one, (600, 400))
+one1 = Sprite(one, (600, 300))
 
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
@@ -46,7 +46,7 @@ height = -1
 posw = 0
 posh = 0
 x = 600
-y=400
+y=300
 
 while number < MAX:
     width +=2
@@ -59,7 +59,6 @@ while number < MAX:
         x -= 30
         
         if number in intlist:
-            print("Prime", number, width, posw)
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(NA, (x,y))
@@ -67,11 +66,11 @@ while number < MAX:
         
     while posh != height and number < MAX:
         number += 1
-        print(number, height)
+        
         posh += 1
         y -= 30
         if number in intlist:
-            print("Prime1", number, height, posh)
+            
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(NA, (x,y))
@@ -82,7 +81,7 @@ while number < MAX:
         posw -= 1
         x += 30
         if number in intlist:
-            print("Prime2", number, width, posw)
+            
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(NA, (x,y))
@@ -92,7 +91,7 @@ while number < MAX:
         posh -= 1
         y += 30
         if number in intlist:
-            print("Prime3", number, height, posh)
+            
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(NA, (x,y))
