@@ -42,7 +42,7 @@ posh = 0
 x = 600
 y=200
 
-while number != MAX:
+while number < MAX:
     width +=1
     height +=1
     posw = 0
