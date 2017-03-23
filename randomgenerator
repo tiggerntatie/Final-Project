@@ -1,1 +1,19 @@
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
 
+SCREEN_WIDTH = 740
+SCREEN_HEIGHT = 570
+celllist =list(range(1, 705))
+i = 0
+x = 0
+y = 0
+c = 0
+while i != 1:
+    celllist[c] = Cell((x, y), c, 0, 0)
+    if y > (SCREEN_HEIGHT - 30):
+        i=1
+    elif x > (SCREEN_WIDTH - 20):
+        x=0
+        y=y+30
+    else:
+        x=x+20
+        c= c+1
