@@ -59,7 +59,7 @@ while number < MAX:
             print("Prime", number, x, y)
             somelist[number] = Sprite(A, (x, y))
         else:
-            somelist[number] = Sprite(NA, (x,y))
+            somelist[number] = Sprite(A, (x,y))
         
         print(number)
     while posh != height:
@@ -70,7 +70,7 @@ while number < MAX:
             print("Prime1", number, x, y)
             somelist[number] = Sprite(A, (x, y))
         else:
-            somelist[number] = Sprite(NA, (x,y))
+            somelist[number] = Sprite(A, (x,y))
         
         print(number)
     
@@ -82,7 +82,7 @@ while number < MAX:
             print("Prime2", number, posw)
             somelist[number] = Sprite(A, (x, y))
         else:
-            somelist[number] = Sprite(NA, (x,y))
+            somelist[number] = Sprite(A, (x,y))
         
         print(number)
     while posh != (-1):
@@ -94,7 +94,7 @@ while number < MAX:
             print("Prime3", number, posh)
             somelist[number] = Sprite(A, (x, y))
         else:
-            somelist[number] = Sprite(NA, (x,y))
+            somelist[number] = Sprite(A, (x,y))
         
         print(number)
     
