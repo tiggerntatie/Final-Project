@@ -80,7 +80,8 @@ if number != MAX:
         number += 1
     
     
-    
+myapp=App()
+mpapp.run
     
         
     
