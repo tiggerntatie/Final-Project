@@ -85,7 +85,14 @@ while number != MAX:
         else:
             Sprite(NA, (x,y))
         number += 1
-        
+    while posh != (-height-1):
+        posh -= 1
+        y += 30
+        if number in intlist:
+            Sprite(A, (x, y))
+        else:
+            Sprite(NA, (x,y))
+        number += 1
     
     
     
