@@ -40,21 +40,6 @@ posw = 0
 posh = 0
 x = 360
 y=480
-a = -2
-cx = 0
-xapp = 1
-if number != MAX:
-    if number in intlist:
-        Sprite(A, (x, y))
-    else:
-        Sprite(NA, (x,y))
-    if x == 360 and y < 480:
-        a = a+4
-        cx = 1
-        x = x-1
-    if cx > 0 and <= a:
-        if abs(x) < xapp:
-            x -= 1
 
 while number != MAX:
     width +=1
