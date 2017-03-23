@@ -4,7 +4,7 @@ myapp=App()
 black = Color(0, 1)
 white = Color(0xffffff, 1)
 noline = LineStyle(0, black)
-thinline = LineStyle(1, black)
+thinline = LineStyle(1, white)
 NA = RectangleAsset(30, 30, noline, white)
 A = RectangleAsset(30, 30, thinline, black)
 
