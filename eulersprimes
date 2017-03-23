@@ -33,7 +33,7 @@ while i != 1:
                 intlist.remove(i)
         listindex+=1
 print(intlist)
-somelist = list(range(0,MAX))
+somelist = list(range(0,MAX+40))
 number = 1
 width = 0
 height = 0
