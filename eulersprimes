@@ -7,7 +7,9 @@ noline = LineStyle(0, black)
 thinline = LineStyle(1, white)
 NA = RectangleAsset(30, 30, noline, white)
 A = RectangleAsset(30, 30, thinline, black)
-
+gray = Color(0x8c8c8c, 1)
+one = RectangleAsset(30, 30, thinline, grey)
+one1 = Sprite(one, (600, 200))
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
