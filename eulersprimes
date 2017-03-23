@@ -50,7 +50,9 @@ if number != MAX:
     while posw != width:
         posw += 1
         x -= 30
+        print(number)
         if number in intlist:
+            print("Prime", number)
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(NA, (x,y))
