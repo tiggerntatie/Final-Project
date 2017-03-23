@@ -12,7 +12,7 @@ NA = RectangleAsset(30, 30, noline, gray)
 A = RectangleAsset(30, 30, thinline, black)
 
 one = RectangleAsset(30, 30, thinline, red)
-one1 = Sprite(one, (600, 200))
+one1 = Sprite(one, (600, 400))
 
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
