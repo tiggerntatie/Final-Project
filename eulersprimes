@@ -10,6 +10,7 @@ A = RectangleAsset(30, 30, thinline, black)
 gray = Color(0x8c8c8c, 1)
 one = RectangleAsset(30, 30, thinline, gray)
 one1 = Sprite(one, (600, 200))
+bg = Sprite(A, (630, 200))
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
