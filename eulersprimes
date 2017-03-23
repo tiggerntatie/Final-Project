@@ -32,7 +32,7 @@ while i != 1:
                 intlist.remove(i)
         listindex+=1
 print(intlist)
-
+somelist = list(range(0,MAX))
 number = 1
 width = 0
 height = 0
@@ -50,33 +50,33 @@ if number != MAX:
         posw += 1
         x -= 30
         if number in intlist:
-            Sprite(A, (x, y))
+            somelist[number] = Sprite(A, (x, y))
         else:
-            Sprite(NA, (x,y))
+            somelist[number] = Sprite(NA, (x,y))
         number += 1
     while posh != height:
         posh += 1
         y -= 30
         if number in intlist:
-            Sprite(A, (x, y))
+            somelist[number] = Sprite(A, (x, y))
         else:
-            Sprite(NA, (x,y))
+            somelist[number] = Sprite(NA, (x,y))
         number += 1
     while posw != (-width-1):
         posw -= 1
         x += 30
         if number in intlist:
-            Sprite(A, (x, y))
+            somelist[number] = Sprite(A, (x, y))
         else:
-            Sprite(NA, (x,y))
+            somelist[number] = Sprite(NA, (x,y))
         number += 1
     while posh != (-height-1):
         posh -= 1
         y += 30
         if number in intlist:
-            Sprite(A, (x, y))
+            somelist[number] = Sprite(A, (x, y))
         else:
-            Sprite(NA, (x,y))
+            somelist[number] = Sprite(NA, (x,y))
         number += 1
     
     
