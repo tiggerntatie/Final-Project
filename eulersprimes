@@ -34,8 +34,8 @@ while i != 1:
 print(intlist)
 
 number = 1
-width = 1
-height = 1
+width = 0
+height = 0
 posw = 0
 posh = 0
 x = 360
@@ -43,7 +43,7 @@ y=480
 a = -2
 cx = 0
 xapp = 1
-while number != MAX:
+if number != MAX:
     if number in intlist:
         Sprite(A, (x, y))
     else:
@@ -55,11 +55,39 @@ while number != MAX:
     if cx > 0 and <= a:
         if abs(x) < xapp:
             x -= 1
+
+while number != MAX:
+    width +=1
+    height +=1
+    posw = 0
+    posh = 0
+    while posw != width:
+        posw += 1
+        x -= 30
+        if number in intlist:
+            Sprite(A, (x, y))
         else:
-            
+            Sprite(NA, (x,y))
+        number += 1
+    while posh != height:
+        posh += 1
+        y -= 30
+        if number in intlist:
+            Sprite(A, (x, y))
+        else:
+            Sprite(NA, (x,y))
+        number += 1
+    while posw != (-width-1):
+        posw -= 1
+        x += 30
+        if number in intlist:
+            Sprite(A, (x, y))
+        else:
+            Sprite(NA, (x,y))
+        number += 1
         
-        
-        
+    
+    
     
     
         
