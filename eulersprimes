@@ -79,7 +79,7 @@ while number < MAX:
         posw -= 1
         x -= 30
         if number in intlist:
-            print("Prime2", number, posw)
+            print("Prime2", number, x, y)
             somelist[number] = Sprite(A, (x, y))
         else:
             somelist[number] = Sprite(A, (x,y))
