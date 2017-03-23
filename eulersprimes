@@ -81,7 +81,7 @@ if number != MAX:
     
     
 myapp=App()
-mpapp.run
+mpapp.run()
     
         
     
