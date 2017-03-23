@@ -5,7 +5,7 @@ red = Color(0xff0000, 1)
 black = Color(0, 1)
 gray = Color(0x8c8c8c, 1)
 white = Color(0xffffff, 1)
-noline = LineStyle(1, red)
+noline = LineStyle(0, red)
 thinline = LineStyle(1, white)
 
 NA = RectangleAsset(30, 30, noline, gray)
