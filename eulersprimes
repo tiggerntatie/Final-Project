@@ -10,7 +10,7 @@ A = RectangleAsset(30, 30, thinline, black)
 gray = Color(0x8c8c8c, 1)
 one = RectangleAsset(30, 30, thinline, gray)
 one1 = Sprite(one, (600, 200))
-bg = Sprite(one, (630, 200))
+
 MAX= int(input("To what number should I count primes? "))
 intlist = list(range(2, MAX+1))
 
@@ -53,7 +53,7 @@ while number < MAX:
     while posw != width:
         number += 1
         posw += 1
-        x -= 30
+        x += 30
         
         if number in intlist:
             print("Prime", number, x, y)
@@ -76,7 +76,7 @@ while number < MAX:
     while posw != (-1):
         number += 1
         posw -= 1
-        x += 30
+        x -= 30
         if number in intlist:
             print("Prime2", number, posw)
             somelist[number] = Sprite(A, (x, y))
@@ -98,7 +98,7 @@ while number < MAX:
         print(number)
     
     
-
+bg = Sprite(one, (630, 200))
 myapp.run()
     
         
