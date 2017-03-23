@@ -46,7 +46,7 @@ height = -1
 posw = 0
 posh = 0
 x = 600
-y=200
+y=400
 
 while number < MAX:
     width +=2
