@@ -8,10 +8,10 @@ white = Color(0xffffff, 1)
 noline = LineStyle(0, red)
 thinline = LineStyle(1, white)
 
-NA = RectangleAsset(30, 30, noline, gray)
-A = RectangleAsset(30, 30, thinline, black)
+NA = RectangleAsset(10, 10, noline, gray)
+A = RectangleAsset(10, 10, thinline, black)
 
-one = RectangleAsset(30, 30, thinline, red)
+one = RectangleAsset(10, 10, thinline, red)
 one1 = Sprite(one, (600, 300))
 
 MAX= int(input("To what number should I count primes? "))
@@ -56,7 +56,7 @@ while number < MAX:
     while posw != width and number < MAX:
         number += 1
         posw += 1
-        x -= 30
+        x -= 10
         
         if number in intlist:
             somelist[number] = Sprite(A, (x, y))
@@ -68,7 +68,7 @@ while number < MAX:
         number += 1
         
         posh += 1
-        y -= 30
+        y -= 10
         if number in intlist:
             
             somelist[number] = Sprite(A, (x, y))
@@ -79,7 +79,7 @@ while number < MAX:
     while posw != (-1) and number < MAX:
         number += 1
         posw -= 1
-        x += 30
+        x += 10
         if number in intlist:
             
             somelist[number] = Sprite(A, (x, y))
@@ -89,7 +89,7 @@ while number < MAX:
         
         number += 1
         posh -= 1
-        y += 30
+        y += 10
         if number in intlist:
             
             somelist[number] = Sprite(A, (x, y))
