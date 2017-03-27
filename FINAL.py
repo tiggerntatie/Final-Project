@@ -16,7 +16,8 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-roof = PolygonAsset([(0,0), (200,0), (100, -120)], thinline, black)
+roof = PolygonAsset([(0,0), (200,0), (100, -120)], thinline, blue)
+
 cf = RectangleAsset(20, 30, thinline, gray)
 laser = RectangleAsset(5, 10, noline, white)
 class MC(Sprite):
@@ -67,5 +68,6 @@ class SpaceGame(App):
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+Sprite(roof, (400,400))
 MC((320,240))
 myapp.run()
