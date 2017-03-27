@@ -32,22 +32,20 @@ class MC(Sprite):
     def dKey(self, event):
         self.x += cos(self.rotation)
         self.y -= sin(self.rotation)
-        print(cos(self.rotation))
-        print(self.yvector)
     def aKey(self, event):
         self.x -= cos(self.rotation)
         self.y += sin(self.rotation)
     def wKey(self, event):
-        self.x -= cos((pi/2)*radians-self.rotation)
-        self.y -= sin((pi/2)*radians-self.rotation)
+        self.x -= cos((pi/2)-self.rotation)
+        self.y -= sin((pi/2)-self.rotation)
     def sKey(self, event):
-        self.x += cos((pi/2)*radians-self.rotation)
-        self.y += sin((pi/2)*radians-self.rotation)
+        self.x += cos((pi/2)-self.rotation)
+        self.y += sin((pi/2)-self.rotation)
     def eKey(self, event):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-
+print(cos(pi/2))
 
 
 class SpaceGame(App):
