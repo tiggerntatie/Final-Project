@@ -5,18 +5,20 @@ from math import sin, cos, radians, pi
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
+black = Color(0, 1)
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 black = Color(0x000000, 1.0)
-white = Color(0xf8f8ff, 1.0)
-pwhite = Color(0xfffafa,1.0) 
+
 thinline = LineStyle(1, black)
-thinline1 = LineStyle(1, pwhite)
+white = Color(0xffffff, 1)
+gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
+thinline1 = LineStyle(1, white)
 roof = PolygonAsset([(0,0), (200,0), (100, -120)], thinline, black)
 cf = RectangleAsset(20, 30, thinline, gray)
-laser = RectangleAsset(5, 10, noline, pwhite)
+laser = RectangleAsset(5, 10, noline, white)
 class MC(Sprite):
     """
     Animated space ship
