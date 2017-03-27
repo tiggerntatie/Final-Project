@@ -45,7 +45,6 @@ class MC(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-print(cos(pi/2))
 
 
 class SpaceGame(App):
