@@ -9,14 +9,14 @@ black = Color(0, 1)
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
-black = Color(0x000000, 1.0)
+
 
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-roof = PolygonAsset([(0,0), (200,0), (100, -120)], thinline, blue)
+
 
 cf = RectangleAsset(20, 30, thinline, gray)
 laser = RectangleAsset(5, 10, noline, white)
@@ -54,7 +54,12 @@ class MC(Sprite):
     def qKey(self, event):
         self.rotation -= .09
 
-
+class MeleeEnemy(Sprite):
+    """
+    Enemy melee sprite
+    """
+    def __init__(self, position):
+        super().__init__(cf, position)
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -68,6 +73,6 @@ class SpaceGame(App):
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
-Sprite(roof, (400,400))
+
 MC((320,240))
 myapp.run()
