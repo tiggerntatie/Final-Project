@@ -18,7 +18,7 @@ gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 flashlight= PolygonAsset([(0, 480), (640, 480), (640, -480), (0, -480), (10, 0), (30, 30), (10, 30)], noline, thinblack)
-Leftside = Sprite((320, 240))
+Leftside = Sprite(flashlight, (320, 240))
 
 cf = RectangleAsset(20, 30, thinline, gray)
 laser = RectangleAsset(5, 10, noline, white)
@@ -65,7 +65,7 @@ class SpaceGame(App):
         super().__init__(width, height)
         black = Color(0, 1)
         noline = LineStyle(0, black)
-        bg_asset = RectangleAsset(width, height, noline, black)
+        bg_asset = RectangleAsset(width, height, noline, white)
         bg = Sprite(bg_asset, (0,0))
 
 
