@@ -17,7 +17,7 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-flashlight= PolygonAsset([(0, 480), (640, 480), (640, -480), (0, -480), (10, 0), (30, 30), (10, 30)], noline, thinblack)
+flashlight= PolygonAsset([(10, 480), (640, 480), (640, -480), (10, -480), (10, 0), (30, -60), (10, -60)], noline, thinblack)
 Leftside = Sprite(flashlight, (320, 240))
 
 cf = RectangleAsset(20, 30, thinline, gray)
@@ -70,6 +70,6 @@ class SpaceGame(App):
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
-
+Leftside = Sprite(flashlight, (320, 240))
 MC((320,240))
 myapp.run()
