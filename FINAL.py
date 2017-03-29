@@ -6,6 +6,7 @@ SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
 black = Color(0, 1)
+thinblack = Color(0, .5)
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -16,7 +17,8 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-
+flashlight= PloygonAsset((0, 480), (640, 480), (640, -480), (0, -480), (10, 0), (30, 30), (10, 30), noline, thinblack)
+Leftside = Sprite((320, 240))
 
 cf = RectangleAsset(20, 30, thinline, gray)
 laser = RectangleAsset(5, 10, noline, white)
@@ -54,12 +56,7 @@ class MC(Sprite):
     def qKey(self, event):
         self.rotation -= .09
 
-class MeleeEnemy(Sprite):
-    """
-    Enemy melee sprite
-    """
-    def __init__(self, position):
-        super().__init__(cf, position)
+
 class SpaceGame(App):
     """
     Tutorial4 space game example.
