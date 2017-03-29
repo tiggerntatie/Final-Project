@@ -6,7 +6,7 @@ SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
 black = Color(0, 1)
-thinblack = Color(0, .5)
+
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -17,7 +17,7 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-flashlight= PolygonAsset([(10, 480), (640, 480), (640, -480), (10, -480), (10, 0), (30, -60), (10, -60)], noline, thinblack)
+flashlight= PolygonAsset([(-640, 480), (640, 480), (640, -480), (10, -480), (10, 0), (30, -60), (-10, -60), (10,0), (10,-480), (640, 480)], noline, black)
 Leftside = Sprite(flashlight, (320, 240))
 
 cf = RectangleAsset(20, 30, thinline, gray)
