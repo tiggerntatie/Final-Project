@@ -55,6 +55,13 @@ class MC(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
+    def step(self):
+        if self.x < 0:
+            self.x = 0
+            print(1)
+        elif self.x > SCREEN_WIDTH1:
+            self.x = SCREEN_WIDTH1
+            print(2)
 
 class background(Sprite):
     def __init__(self, position):
@@ -85,13 +92,7 @@ class background(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-    def step(self):
-        if self.x < 0:
-            self.x = 0
-            print(1)
-        elif self.x > SCREEN_WIDTH1:
-            self.x = SCREEN_WIDTH1
-            print(2)
+    
         
 class SpaceGame(App):
     """
@@ -104,11 +105,12 @@ class SpaceGame(App):
         bg_asset = RectangleAsset(width, height, noline, white)
         bg = Sprite(bg_asset, (0,0))
     def step(self):
-        MC.step()
+        print(3)
+        MC1.step()
             
 
 
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 Leftside = background((320, 240))
-MC((320,240))
+MC1=MC((320,240))
 myapp.run()
