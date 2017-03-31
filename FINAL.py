@@ -63,10 +63,10 @@ class MC(Sprite):
             self.x = SCREEN_WIDTH1-20
             
         if self.y < 0:
-            self.y = 0+30
+            self.y = 0
             
         elif self.y > SCREEN_HEIGHT:
-            self.y = SCREEN_HEIGHT
+            self.y = SCREEN_HEIGHT-30
             
 
 class background(Sprite):
@@ -102,14 +102,14 @@ class background(Sprite):
         if self.x < 0:
             self.x = 0
             
-        elif self.x > SCREEN_WIDTH1:
+        elif self.x > SCREEN_WIDTH1-20:
             self.x = SCREEN_WIDTH1-20
             
         if self.y < 0:
-            self.y = 0+30
+            self.y = 0
             
-        elif self.y > SCREEN_HEIGHT:
-            self.y = SCREEN_HEIGHT
+        elif self.y > SCREEN_HEIGHT-30:
+            self.y = SCREEN_HEIGHT-30
     
         
 class SpaceGame(App):
@@ -125,6 +125,7 @@ class SpaceGame(App):
     def step(self):
         
         MC1.step()
+        
         
             
 
