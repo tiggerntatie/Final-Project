@@ -2,9 +2,9 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 from math import sin, cos, radians, pi
 
 
-SCREEN_WIDTH = 640
+SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
-
+SCREEN_WIDTH = 2*SCREEN_WIDTH1
 black = Color(0, 1)
 
 red = Color(0xff0000, 1.0)
@@ -17,7 +17,7 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-flashlight= PolygonAsset([(-640, 480), (-640, -480), (640, -480), (640, 480), (10, 480), (10, 0), (30, -60), (-10, -60), (10,0), (10, 480)], noline, black)
+flashlight= PolygonAsset([(-SCREEN_WIDTH, SCREEN_WIDTH), (-SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, SCREEN_WIDTH), (10, SCREEN_WIDTH), (10, 0), (30, -60), (-10, -60), (10,0), (10, SCREEN_WIDTH)], noline, black)
 Leftside = Sprite(flashlight, (320, 240))
 
 cf = RectangleAsset(20, 30, thinline, gray)
@@ -100,7 +100,7 @@ class SpaceGame(App):
             
 
 
-myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT1)
 Leftside = background((320, 240))
 MC((320,240))
 myapp.run()
