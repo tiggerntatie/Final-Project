@@ -100,7 +100,7 @@ class SpaceGame(App):
             
 
 
-myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT1)
+myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 Leftside = background((320, 240))
 MC((320,240))
 myapp.run()
