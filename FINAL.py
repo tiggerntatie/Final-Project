@@ -85,6 +85,11 @@ class background(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
+    def step(self):
+        if self.x < 0:
+            self.x = 0
+        elif self.x > SCREEN_WIDTH1:
+            self.x = SCREEN_WIDTH1
         
 class SpaceGame(App):
     """
