@@ -88,8 +88,10 @@ class background(Sprite):
     def step(self):
         if self.x < 0:
             self.x = 0
+            print(1)
         elif self.x > SCREEN_WIDTH1:
             self.x = SCREEN_WIDTH1
+            print(2)
         
 class SpaceGame(App):
     """
