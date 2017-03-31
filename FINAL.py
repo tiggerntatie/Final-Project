@@ -56,7 +56,36 @@ class MC(Sprite):
     def qKey(self, event):
         self.rotation -= .09
 
-
+class background(Sprite):
+    def __init__(self, position):
+        super().__init__(flashlight, position)
+        self.fxcenter = self.fycenter = 0.5
+        SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
+        SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
+        SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
+        SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
+        SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
+        SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
+        self.fxcenter = self.fycenter = 0.5
+        self.xvector = cos(self.rotation)
+        self.yvector = sin(self.rotation)
+    def dKey(self, event):
+        self.x += cos(self.rotation)
+        self.y -= sin(self.rotation)
+    def aKey(self, event):
+        self.x -= cos(self.rotation)
+        self.y += sin(self.rotation)
+    def wKey(self, event):
+        self.x -= cos((pi/2)-self.rotation)
+        self.y -= sin((pi/2)-self.rotation)
+    def sKey(self, event):
+        self.x += cos((pi/2)-self.rotation)
+        self.y += sin((pi/2)-self.rotation)
+    def eKey(self, event):
+        self.rotation += .09
+    def qKey(self, event):
+        self.rotation -= .09
+        
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -67,6 +96,8 @@ class SpaceGame(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(width, height, noline, white)
         bg = Sprite(bg_asset, (0,0))
+    
+            
 
 
 myapp = SpaceGame(SCREEN_WIDTH, SCREEN_HEIGHT)
