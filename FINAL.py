@@ -101,7 +101,8 @@ class SpaceGame(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(width, height, noline, white)
         bg = Sprite(bg_asset, (0,0))
-    
+    def step(self):
+        MC.step()
             
 
 
