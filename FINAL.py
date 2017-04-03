@@ -53,7 +53,8 @@ class MC(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-    
+    cornerx = [20*cos(self.rotation), 36.055*cos((-pi/4)-self.rotation), 30*cos((-pi/2)-self.roation)]
+    print(cornerx)
     def step(self):
         if self.x < 0:
             self.x = 0
