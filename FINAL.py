@@ -6,7 +6,7 @@ SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 SCREEN_WIDTH = 2*SCREEN_WIDTH1
 black = Color(0, 1)
-
+speed = 5
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -40,17 +40,17 @@ class MC(Sprite):
         self.cornery = [18.02*sin(pi/4-self.rotation), 18.02*sin((7*pi/4)-self.rotation), 18.02*sin((3*pi/4)-self.rotation), 18.02*sin(5*pi/4-self.rotation)]
         self.fxcenter = self.fycenter = 0.5
     def dKey(self, event):
-        self.x += cos(self.rotation)
-        self.y -= sin(self.rotation)
+        self.x += speed*cos(self.rotation)
+        self.y -= speed*sin(self.rotation)
     def aKey(self, event):
-        self.x -= cos(self.rotation)
-        self.y += sin(self.rotation)
+        self.x -= speed*cos(self.rotation)
+        self.y += speed*sin(self.rotation)
     def wKey(self, event):
-        self.x -= cos((pi/2)-self.rotation)
-        self.y -= sin((pi/2)-self.rotation)
+        self.x -= speed*cos((pi/2)-self.rotation)
+        self.y -= speed*sin((pi/2)-self.rotation)
     def sKey(self, event):
-        self.x += cos((pi/2)-self.rotation)
-        self.y += sin((pi/2)-self.rotation)
+        self.x += speed*cos((pi/2)-self.rotation)
+        self.y += speed*sin((pi/2)-self.rotation)
     def eKey(self, event):
         self.rotation += .09
     def qKey(self, event):
@@ -91,17 +91,17 @@ class background(Sprite):
         self.xvector = cos(self.rotation)
         self.yvector = sin(self.rotation)
     def dKey(self, event):
-        self.x += cos(self.rotation)
-        self.y -= sin(self.rotation)
+        self.x += speed*cos(self.rotation)
+        self.y -= speed*sin(self.rotation)
     def aKey(self, event):
-        self.x -= cos(self.rotation)
-        self.y += sin(self.rotation)
+        self.x -= speed*cos(self.rotation)
+        self.y += speed*sin(self.rotation)
     def wKey(self, event):
-        self.x -= cos((pi/2)-self.rotation)
-        self.y -= sin((pi/2)-self.rotation)
+        self.x -= speed*cos((pi/2)-self.rotation)
+        self.y -= speed*sin((pi/2)-self.rotation)
     def sKey(self, event):
-        self.x += cos((pi/2)-self.rotation)
-        self.y += sin((pi/2)-self.rotation)
+        self.x += speed*cos((pi/2)-self.rotation)
+        self.y += speed*sin((pi/2)-self.rotation)
     def eKey(self, event):
         self.rotation += .09
     def qKey(self, event):
