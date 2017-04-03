@@ -64,11 +64,11 @@ class MC(Sprite):
             if MC1.x+i < 0:
                 MC1.x = 0-i
                 Leftside.x = SCREEN_WIDTH1-i
-        for i self.cornery:
+        for i in self.cornery:
             if MC1.y+i < 0:
                 MC1.y = 0-i
                 Leftside.y = 0-i
-            if MC1.y+i < SCREEN_HEIGHT:
+            if MC1.y+i > SCREEN_HEIGHT:
                 MC1.y = SCREEN_HEIGHT-i
                 Leftside.y = SCREEN_HEIGHT-i
         
