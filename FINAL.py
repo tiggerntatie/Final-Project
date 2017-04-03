@@ -58,6 +58,7 @@ class MC(Sprite):
     def step(self):
         if self.x < 0:
             self.x = 0
+            Leftside.x = 0
             
         elif self.x > SCREEN_WIDTH1-20:
             self.x = SCREEN_WIDTH1-20
@@ -65,7 +66,7 @@ class MC(Sprite):
             
         if self.y < 0:
             self.y = 0
-            Leftside.x = 0
+            Leftside.y = 0
             
         elif self.y > SCREEN_HEIGHT-20:
             self.y = SCREEN_HEIGHT-30
@@ -101,18 +102,6 @@ class background(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-    def step(self):
-        if MC1.x < 0:
-            self.x = MC1.x
-            
-        elif MC1 > SCREEN_WIDTH1-20:
-            self.x = MC1.x
-            
-        if MC1.y < 0:
-            self.y = MC1.y
-            
-        elif MC1.y > SCREEN_HEIGHT-30:
-            self.y = MC1.y
     
         
 class SpaceGame(App):
