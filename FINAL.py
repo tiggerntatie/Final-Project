@@ -36,6 +36,8 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
+        self.cornerx = [18.02*cos(pi/4-self.rotation), 18.02*cos((7*pi/4)-self.rotation), 18.02*cos((3*pi/4)-self.rotation), 18.02*cos(5*pi/4-self.rotation)]
+        self.cornery = [18.02*sin(pi/4-self.rotation), 18.02*sin((7*pi/4)-self.rotation), 18.02*sin((3*pi/4)-self.rotation), 18.02*sin(5*pi/4-self.rotation)]
         self.fxcenter = self.fycenter = 0.5
     def dKey(self, event):
         self.x += cos(self.rotation)
@@ -53,25 +55,27 @@ class MC(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
-    cornerx = [20*cos(self.rotation), 36.055*cos((7*pi/4)-self.rotation), 30*cos((3*pi/2)-self.roation)]
-    print(cornerx)
+    
     def step(self):
-        if self.x < 0:
-            self.x = 0
-            Leftside.x = 0
+        for i in self.cornerx:
+            if MC1.x+i > SCREEN_WIDTH1:
+                MC1.x = SCREEN_WIDTH1-i
+                Leftside.x = SCREEN_WIDTH1-i
+            if MC1.x+i < 0:
+                MC1.x = 0-i
+                Leftside.x = SCREEN_WIDTH1-i
+        for i self.cornery:
+            if MC1.y+i < 0:
+                MC1.y = 0-i
+                Leftside.y = 0-i
+            if MC1.y+i < SCREEN_HEIGHT:
+                MC1.y = SCREEN_HEIGHT-i
+                Leftside.y = SCREEN_HEIGHT-i
+        
+        
+        
             
-        elif self.x > SCREEN_WIDTH1-20:
-            self.x = SCREEN_WIDTH1-20
-            Leftside.x = SCREEN_WIDTH1-20
-            
-        if self.y < 0:
-            self.y = 0
-            Leftside.y = 0
-            
-        elif self.y > SCREEN_HEIGHT-20:
-            self.y = SCREEN_HEIGHT-30
-            Leftside.y = SCREEN_HEIGHT-30
-            
+    
 
 class background(Sprite):
     def __init__(self, position):
@@ -125,4 +129,5 @@ class SpaceGame(App):
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 Leftside = background((320, 240))
 MC1=MC((320,240))
+
 myapp.run()
