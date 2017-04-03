@@ -17,10 +17,10 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-flashlight= PolygonAsset([(-SCREEN_WIDTH, SCREEN_WIDTH), (-SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, SCREEN_WIDTH), (10, SCREEN_WIDTH), (10, 0), (30, -60), (-10, -60), (10,0), (10, SCREEN_WIDTH)], noline, black)
+flashlight= PolygonAsset([(-SCREEN_WIDTH, SCREEN_WIDTH), (-SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, -SCREEN_WIDTH), (SCREEN_WIDTH, SCREEN_WIDTH), (0, SCREEN_WIDTH), (0, -15), (20, -75), (-20, -75), (0,-15), (0, SCREEN_WIDTH)], noline, black)
 Leftside = Sprite(flashlight, (320, 240))
 
-cf = RectangleAsset(20, 30, thinline, gray)
+cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 laser = RectangleAsset(5, 10, noline, white)
 class MC(Sprite):
     """
@@ -37,8 +37,6 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         self.fxcenter = self.fycenter = 0.5
-        self.xvector = cos(self.rotation)
-        self.yvector = sin(self.rotation)
     def dKey(self, event):
         self.x += cos(self.rotation)
         self.y -= sin(self.rotation)
@@ -55,6 +53,7 @@ class MC(Sprite):
         self.rotation += .09
     def qKey(self, event):
         self.rotation -= .09
+    
     def step(self):
         if self.x < 0:
             self.x = 0
