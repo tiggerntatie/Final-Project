@@ -61,12 +61,15 @@ class MC(Sprite):
             
         elif self.x > SCREEN_WIDTH1-20:
             self.x = SCREEN_WIDTH1-20
+            Leftside.x = SCREEN_WIDTH1-20
             
         if self.y < 0:
             self.y = 0
+            Leftside.x = 0
             
         elif self.y > SCREEN_HEIGHT-20:
             self.y = SCREEN_HEIGHT-30
+            Leftside.y = SCREEN_HEIGHT-30
             
 
 class background(Sprite):
