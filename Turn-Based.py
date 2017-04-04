@@ -33,11 +33,11 @@ class MC(Sprite):
             self.moves -=1
     def sKey(self, event):
         if self.moves > 0:
-            self.y -= 10
+            self.y += 10
             self.moves -=1
     def wKey(self, event):
         if self.moves > 0:
-            self.y += 10
+            self.y -= 10
             self.moves-=1
     def step(self):
         global turn
