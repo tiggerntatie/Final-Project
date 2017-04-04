@@ -2,7 +2,7 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
-speed = 2.5
+speed = 4
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -17,6 +17,33 @@ cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
+        self.moves = speed
+        SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
+        SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
+        SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
+        SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
+        SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
+        SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
+    def dKey(self, event):
+        if self.moves > 0:
+            self.x += 10
+            moves -=1
+    def aKey(self, event):
+        if self.moves > 0:
+            self.x -= 10
+            moves -=1
+    def sKey(self, event):
+        if self.moves > 0:
+            self.y -= 10
+            moves -=1
+    def wKey(self, event):
+        if self.moves > 0:
+            self.y += 10
+            moves -=1
+    def step(self):
+        if turn == 1:
+            turn = 0
+            self.moves = speed
         
 class SpaceGame(App):
     """
