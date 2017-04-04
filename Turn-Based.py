@@ -70,7 +70,7 @@ def spaceKey (event):
     turnProgress()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-
+MC1 = MC(320, 240)
 
 
 myapp.run()
