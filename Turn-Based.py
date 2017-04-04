@@ -17,29 +17,28 @@ cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
-        self.moves = speed
+        self.moves = 4
         SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
         SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
         SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
-        SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
-        SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
+        
     def dKey(self, event):
         if self.moves > 0:
             self.x += 10
-            moves -=1
+            self.moves -=1
     def aKey(self, event):
         if self.moves > 0:
             self.x -= 10
-            moves -=1
+            self.moves -=1
     def sKey(self, event):
         if self.moves > 0:
             self.y -= 10
-            moves -=1
+            self.moves -=1
     def wKey(self, event):
         if self.moves > 0:
             self.y += 10
-            moves -=1
+            self.moves-=1
     def step(self):
         if turn == 1:
             turn = 0
@@ -56,7 +55,9 @@ class SpaceGame(App):
         bg_asset = RectangleAsset(width, height, noline, white)
         bg = Sprite(bg_asset, (0,0))
         
-       
+    def step(self):
+        MC1.step()
+        
             
 
 
@@ -70,7 +71,7 @@ def spaceKey (event):
     turnProgress()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-MC1 = MC(320, 240)
+MC1=MC((320,240))
 
 
 myapp.run()
