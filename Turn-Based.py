@@ -66,7 +66,7 @@ class SpaceGame(App):
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 
 turn = 0
-def turnProgress (event):
+def turnProgress ():
     global turn
     turn=1
 def spaceKey (event):
