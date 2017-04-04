@@ -40,7 +40,9 @@ class MC(Sprite):
             self.y += 10
             self.moves-=1
     def step(self):
+        global turn
         if turn == 1:
+            
             turn = 0
             self.moves = speed
         
