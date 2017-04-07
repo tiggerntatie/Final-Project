@@ -22,6 +22,8 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
         SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
+        SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
+        SpaceGame.listenKeyEvent("keydown", "e", self.wKey)
         
     def dKey(self, event):
         if self.moves > 0:
@@ -39,12 +41,13 @@ class MC(Sprite):
         if self.moves > 0:
             self.y -= 10
             self.moves-=1
+    def qKey(self, event):
+        self.rotation-= .25
+    def eKey(self, event):
+        self.rotation+= .25
     def step(self):
         global turn
-        if turn == 1:
-            
-            turn = 0
-            self.moves = speed
+        self.moves = speed
         
 class SpaceGame(App):
     """
@@ -58,7 +61,8 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
-        MC1.step()
+        if turn == 1:
+            MC1.step()
         
             
 
