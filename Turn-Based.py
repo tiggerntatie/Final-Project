@@ -1,5 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
-from math import pi
+from math import pi, cos, sin
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
