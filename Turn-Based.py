@@ -46,8 +46,8 @@ class MC(Sprite):
     def wKey(self, event):
         if self.moves > 0:
            self.x -= speed*cos((pi/2)-self.rotation)
-            self.y -= speed*sin((pi/2)-self.rotation)
-            self.moves-=1
+           self.y -= speed*sin((pi/2)-self.rotation)
+           self.moves-=1
     def qKey(self, event):
         self.rotation+= pi/2
     def eKey(self, event):
