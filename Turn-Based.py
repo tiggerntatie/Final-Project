@@ -53,7 +53,7 @@ class MC(Sprite):
     def eKey(self, event):
         self.rotation-= pi/2
     def step(self):
-        global turn
+        
         self.moves = speed1
         
 class SpaceGame(App):
@@ -70,6 +70,8 @@ class SpaceGame(App):
     def step(self):
         if turn == 1:
             MC1.step()
+            global turn
+            turn =0
         
             
 
