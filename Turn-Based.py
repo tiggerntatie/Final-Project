@@ -3,7 +3,8 @@ from math import pi
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
-speed = 4
+speed = 10
+speed1=4
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -18,7 +19,7 @@ cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
-        self.moves = 4
+        self.moves = speed1
         SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
         SpaceGame.listenKeyEvent("keydown", "a", self.aKey)
         SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
@@ -28,19 +29,24 @@ class MC(Sprite):
         
     def dKey(self, event):
         if self.moves > 0:
-            self.x += 10
+            self.x += speed*cos(self.rotation)
+            self.y -= speed*sin(self.rotation)
             self.moves -=1
     def aKey(self, event):
         if self.moves > 0:
-            self.x -= 10
+            self.x -= speed*cos(self.rotation)
+            self.y += speed*sin(self.rotation)
+
             self.moves -=1
     def sKey(self, event):
         if self.moves > 0:
-            self.y += 10
+            elf.x += speed*cos((pi/2)-self.rotation)
+            self.y += speed*sin((pi/2)-self.rotation)
             self.moves -=1
     def wKey(self, event):
         if self.moves > 0:
-            self.y -= 10
+           self.x -= speed*cos((pi/2)-self.rotation)
+            self.y -= speed*sin((pi/2)-self.rotation)
             self.moves-=1
     def qKey(self, event):
         self.rotation+= pi/2
@@ -48,7 +54,7 @@ class MC(Sprite):
         self.rotation-= pi/2
     def step(self):
         global turn
-        self.moves = speed
+        self.moves = speed1
         
 class SpaceGame(App):
     """
