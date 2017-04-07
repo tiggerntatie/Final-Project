@@ -26,25 +26,25 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
-        
+        self.fxcenter = self.fycenter = 0.5
     def dKey(self, event):
-        if self.moves > 0:
+        if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
             self.y -= speed*sin(self.rotation)
             self.moves -=1
     def aKey(self, event):
-        if self.moves > 0:
+        if self.moves > 0 and self.x -speed*cos(self.rotation)>0 and self.y +speed*sin(self.rotation) <SCREEN_HEIGHT:
             self.x -= speed*cos(self.rotation)
             self.y += speed*sin(self.rotation)
 
             self.moves -=1
     def sKey(self, event):
-        if self.moves > 0:
-            elf.x += speed*cos((pi/2)-self.rotation)
+        if self.moves > 0 and self.x +speed*cos((pi/2)-self.rotation)<SCREEN_WIDTH1 and self.y +speed*sin((pi/2)-self.rotation) <SCREEN_HEIGHT:
+            self.x += speed*cos((pi/2)-self.rotation)
             self.y += speed*sin((pi/2)-self.rotation)
             self.moves -=1
     def wKey(self, event):
-        if self.moves > 0:
+        if self.moves > 0 and self.x -speed*cos((pi/2)-self.rotation)>0 and self.y -speed*sin((pi/2)-self.rotation) >0:
            self.x -= speed*cos((pi/2)-self.rotation)
            self.y -= speed*sin((pi/2)-self.rotation)
            self.moves-=1
