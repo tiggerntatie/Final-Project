@@ -1,4 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
+from math import pi
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
@@ -23,7 +24,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "s", self.sKey)
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
-        SpaceGame.listenKeyEvent("keydown", "e", self.wKey)
+        SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         
     def dKey(self, event):
         if self.moves > 0:
@@ -42,9 +43,9 @@ class MC(Sprite):
             self.y -= 10
             self.moves-=1
     def qKey(self, event):
-        self.rotation-= .25
+        self.rotation+= pi/2
     def eKey(self, event):
-        self.rotation+= .25
+        self.rotation-= pi/2
     def step(self):
         global turn
         self.moves = speed
