@@ -1,5 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
-from math import pi, cos, sin
+from math import pi, cos, sin, atan2
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
@@ -16,8 +16,8 @@ gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
-ms = RectangleAsset(15, 22, thinline, red)
-sword = RectangleAsset(5, 10, thinline, red)
+ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
+PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
@@ -61,7 +61,9 @@ class meleeSprite(Sprite):
     def __init__(self, position): 
         super().__init__(ms, position)
     def step(self):
-        self.x 
+        self.rotation = atan2(self.y-MC1.y, self.x-MC1.x)
+        self.x += 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
+        self.y += 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -75,6 +77,7 @@ class SpaceGame(App):
         
     def step(self):
         if turn == 1:
+            meleeSprite1.step
             MC1.step()
             global turn
             turn =0
@@ -93,6 +96,6 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240))
-
+meleeSprite1=meleeSprite((10,10))
 
 myapp.run()
