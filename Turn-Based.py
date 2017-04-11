@@ -16,6 +16,8 @@ gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
+ms = RectangleAsset(15, 22, thinline, red)
+sword = RectangleAsset(5, 10, thinline, red)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
@@ -55,7 +57,11 @@ class MC(Sprite):
     def step(self):
         
         self.moves = speed1
-        
+class meleeSprite(Sprite):
+    def __init__(self, position): 
+        super().__init__(ms, position)
+    def step(self):
+        self.x 
 class SpaceGame(App):
     """
     Tutorial4 space game example.
