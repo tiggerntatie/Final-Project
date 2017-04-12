@@ -8,7 +8,7 @@ speed1=4
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
-
+swordlist = []
 
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
@@ -17,7 +17,7 @@ noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
-sword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
+smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
@@ -68,17 +68,20 @@ class meleeSprite(Sprite):
         super().__init__(ms, position)
         self.fxcenter = self.fycenter = 0.5
     def step(self):
-        self.rotation = (pi/2)-atan2((self.y-MC1.y), (self.x-MC1.x))
+        self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+        
         if MC1.rotation == 0 or MC1.rotation == pi:
-            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 10:
-                sword((self.x-11.5*cos(atan2(self.y-MC1.y, self.x-MC1.x)), (self.y-11.5*sin(atan2(self.y-MC1.y, self.x-MC1.x)))))
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 20:
+                print("yay")
+                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
 class sword(Sprite):
-    def __init__(self, position): 
-        super().__init__(ms, position, rotation)
+    def __init__(self, position, rotation): 
+        super().__init__(smlSword, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
+    
     
 class SpaceGame(App):
     """
@@ -93,10 +96,13 @@ class SpaceGame(App):
         
     def step(self):
         if turn == 1:
+            if sword in swordlist:
+                sword.destroy()
+            swordlist = []
             meleeSprite1.step()
             MC1.step()
             global turn
-            turn =0
+            turn = 0
         
             
 
@@ -112,6 +118,6 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240))
-meleeSprite1=meleeSprite((10,10))
+meleeSprite1=meleeSprite((300,240))
 
 myapp.run()
