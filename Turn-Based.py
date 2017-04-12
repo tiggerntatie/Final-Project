@@ -1,5 +1,5 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
-from math import pi, cos, sin, atan2
+from math import pi, cos, sin, atan2, sqrt
 SCREEN_WIDTH1 = 640
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
@@ -68,13 +68,12 @@ class meleeSprite(Sprite):
         super().__init__(ms, position)
         self.fxcenter = self.fycenter = 0.5
     def step(self):
-
-        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 10:
-            
-            
-        self.rotation = (3*pi/2)-atan2((self.y-MC1.y), (self.x-MC1.x))
+        self.rotation = (pi/2)-atan2((self.y-MC1.y), (self.x-MC1.x))
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+        if MC1.rotation == 0 or MC1.rotation == pi:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 10:
+                sword((self.x-11.5*cos(atan2(self.y-MC1.y, self.x-MC1.x)), (self.y-11.5*sin(atan2(self.y-MC1.y, self.x-MC1.x)))))
 class sword(Sprite):
     def __init__(self, position): 
         super().__init__(ms, position, rotation)
