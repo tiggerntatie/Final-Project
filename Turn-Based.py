@@ -60,10 +60,11 @@ class MC(Sprite):
 class meleeSprite(Sprite):
     def __init__(self, position): 
         super().__init__(ms, position)
+        self.fxcenter = self.fycenter = 0.5
     def step(self):
-        self.rotation = atan2(self.y-MC1.y, self.x-MC1.x)
-        self.x += 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
-        self.y += 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+        self.rotation = (3*pi/2)-atan2((self.y-MC1.y), (self.x-MC1.x))
+        self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
+        self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -77,7 +78,7 @@ class SpaceGame(App):
         
     def step(self):
         if turn == 1:
-            meleeSprite1.step
+            meleeSprite1.step()
             MC1.step()
             global turn
             turn =0
