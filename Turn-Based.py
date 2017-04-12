@@ -17,7 +17,7 @@ noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
-PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
+sword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 class MC(Sprite):
     def __init__(self, position):
         super().__init__(cf, position)
@@ -68,9 +68,19 @@ class meleeSprite(Sprite):
         super().__init__(ms, position)
         self.fxcenter = self.fycenter = 0.5
     def step(self):
+
+        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 10:
+            
+            
         self.rotation = (3*pi/2)-atan2((self.y-MC1.y), (self.x-MC1.x))
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+class sword(Sprite):
+    def __init__(self, position): 
+        super().__init__(ms, position, rotation)
+        self.fxcenter = self.fycenter = 0.5
+        self.rotation = rotation
+    
 class SpaceGame(App):
     """
     Tutorial4 space game example.
