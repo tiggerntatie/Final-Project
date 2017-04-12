@@ -81,6 +81,7 @@ class sword(Sprite):
         super().__init__(smlSword, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
+        
     
     
 class SpaceGame(App):
@@ -96,9 +97,9 @@ class SpaceGame(App):
         
     def step(self):
         if turn == 1:
-            if sword in swordlist:
-                sword.destroy()
-            swordlist = []
+            for x in swordlist:
+                x.destroy
+            
             meleeSprite1.step()
             MC1.step()
             global turn
