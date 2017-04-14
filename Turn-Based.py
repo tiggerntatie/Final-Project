@@ -1,5 +1,6 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
+import time
 SCREEN_WIDTH1 = 640
 hit = 0
 SCREEN_HEIGHT = 480
@@ -10,7 +11,7 @@ red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 swordlist = []
-time = 0
+dead_asset = RectangleAsset(SCREENWIDTH1, SCREEN_HEIGHT, noline, red)
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
@@ -30,6 +31,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         self.fxcenter = self.fycenter = 0.5
+        self.lives = lives
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -63,6 +65,18 @@ class MC(Sprite):
             self.rotation-= pi/2
     def step(self):
         self.moves = speed1
+    def hit(self):
+        start = time.time()
+        lives -=1
+        dead = Sprite(dead_asset, (0,0))
+        t=0
+        while t ==0:
+            if end-start>2:
+                t=1
+                dead.destroy()
+            else:
+                end = time.time()
+        
 class meleeSprite(Sprite):
     def __init__(self, position): 
         super().__init__(ms, position)
@@ -73,8 +87,7 @@ class meleeSprite(Sprite):
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 20:
             swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
-            global hit
-            hit +=1
+            MC1.hit()
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
@@ -109,18 +122,7 @@ class SpaceGame(App):
             MC1.step()
             global turn
             turn = 0
-        if hit > 0:
-            time +=1
-            if time > 5:
-                hit = 0
-                time = 0
-                dead.destroy()
-            dead = Sprite(dead_asset, (0,0))
-            
-            
-            
-        
-            
+   
 
 
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
