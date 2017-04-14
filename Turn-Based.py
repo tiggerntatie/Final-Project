@@ -11,12 +11,12 @@ red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 swordlist = []
-dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
+dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
@@ -65,7 +65,7 @@ class MC(Sprite):
             self.rotation-= pi/2
     def step(self):
         self.moves = speed1
-    def hit(self):
+    def hit(self, event):
         start = time.time()
         lives -=1
         dead = Sprite(dead_asset, (0,0))
@@ -138,7 +138,7 @@ def spaceKey (event):
     
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-MC1=MC((320,240))
+MC1=MC((320,240), 4)
 meleeSprite1=meleeSprite((300,240))
 
 myapp.run()
