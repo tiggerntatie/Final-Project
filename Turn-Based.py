@@ -65,11 +65,12 @@ class MC(Sprite):
             self.rotation-= pi/2
     def step(self):
         self.moves = speed1
-    def hit(self, event):
+    def hit(self):
         start = time.time()
-        lives -=1
+        self.lives -=1
         dead = Sprite(dead_asset, (0,0))
         t=0
+        end = time.time()
         while t ==0:
             if end-start>2:
                 t=1
@@ -85,9 +86,10 @@ class meleeSprite(Sprite):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
-        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 20:
-            swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
-            MC1.hit()
+        if MC1.rotation == 0 or MC1.rotation == pi:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 20:
+                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                MC1.hit()
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
@@ -114,12 +116,15 @@ class SpaceGame(App):
         
     def step(self):
         if turn == 1:
-            for x in swordlist:
-                x.step()
+            print("here")
+            
+            print("sword")
             swordlist = []
             print(swordlist)
             meleeSprite1.step()
+            print("melee")
             MC1.step()
+            print("MC")
             global turn
             turn = 0
    
@@ -129,9 +134,11 @@ myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 
 turn = 0
 def turnProgress ():
+    print("here")
     global turn
     turn=1
 def spaceKey (event):
+    print("yes")
     turnProgress()
     
     
