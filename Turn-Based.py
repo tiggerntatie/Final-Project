@@ -16,7 +16,7 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
+dead_asset = RectangleAsset(100, 100, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
@@ -66,17 +66,19 @@ class MC(Sprite):
     def step(self):
         self.moves = speed1
     def hit(self):
-        start = time.time()
+        self.start = time.time()
         self.lives -=1
-        dead = Sprite(dead_asset, (0,0))
+        self.dead = Sprite(dead_asset, (1,1))
+        global t
         t=0
-        end = time.time()
-        while t ==0:
-            if end-start>2:
-                t=1
-                dead.destroy()
-            else:
-                end = time.time()
+        self.end = self.start + 2
+    def time(self):
+        if time.time() > self.end:
+            self.dead.destroy()
+            global t
+            t =1
+        
+        
         
 class meleeSprite(Sprite):
     def __init__(self, position): 
@@ -110,23 +112,24 @@ class SpaceGame(App):
         black = Color(0, 1)
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(width, height, noline, white)
-        dead_asset = RectangleAsset(width, height, noline, red)
         
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
         if turn == 1:
-            print("here")
             
-            print("sword")
+            
+            
             swordlist = []
-            print(swordlist)
             meleeSprite1.step()
-            print("melee")
+            
             MC1.step()
-            print("MC")
+            
             global turn
             turn = 0
+        if t == 0:
+            MC1.time()
+            
    
 
 
