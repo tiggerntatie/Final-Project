@@ -3,6 +3,7 @@ from math import pi, cos, sin, atan2, sqrt
 import time
 SCREEN_WIDTH1 = 640
 hit = 0
+t=1
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
 speed = 10
@@ -16,7 +17,7 @@ white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
-dead_asset = RectangleAsset(100, 100, noline, red)
+dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
@@ -32,6 +33,9 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = lives
+        self.start=0
+        self.end=0
+        self.dead = 0
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -71,9 +75,10 @@ class MC(Sprite):
         self.dead = Sprite(dead_asset, (1,1))
         global t
         t=0
-        self.end = self.start + 2
-    def time(self):
-        if time.time() > self.end:
+        self.end = self.start + .5
+    def hit2(self):
+        elapsed = time.time()
+        if elapsed > self.end:
             self.dead.destroy()
             global t
             t =1
@@ -116,11 +121,14 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
+        global swordlist
         if turn == 1:
+            if len(swordlist)>0:
+                for x in swordlist:
+                    x.destroy()
             
             
-            
-            swordlist = []
+            swordlist=[]
             meleeSprite1.step()
             
             MC1.step()
@@ -128,7 +136,8 @@ class SpaceGame(App):
             global turn
             turn = 0
         if t == 0:
-            MC1.time()
+            MC1.hit2()
+            
             
    
 
@@ -137,11 +146,10 @@ myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 
 turn = 0
 def turnProgress ():
-    print("here")
     global turn
     turn=1
 def spaceKey (event):
-    print("yes")
+    
     turnProgress()
     
     
