@@ -1,12 +1,12 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
-SCREEN_WIDTH1 = 1024
+SCREEN_WIDTH1 = 1040
 hit = 0
 t=1
 lives = 4
 heartlist = list(range(4))
-SCREEN_HEIGHT = 571
+SCREEN_HEIGHT = 580
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -39,6 +39,7 @@ class MC(Sprite):
         self.start=0
         self.end=0
         self.dead = 0
+        self.go = 0
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -86,11 +87,12 @@ class MC(Sprite):
     def hit2(self):
         elapsed = time.time()
         if elapsed > self.end:
+            print(self.lives)
             self.dead.destroy()
             global t
             t =1
             if self.lives == 0:
-                go=Sprite(gameover, (0,0))
+                self.go=Sprite(gameover, (0,0))
         
         
         
