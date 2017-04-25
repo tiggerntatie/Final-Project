@@ -110,7 +110,7 @@ class sword(Sprite):
 class heart(Sprite):
     asset = ImageAsset("heart-e1403272720870.png")
     def __init__(self, position, heartnumber): 
-        super().__init__(asset, position)
+        super().__init__(heart.asset, position)
         self.fxcenter = self.fycenter = 0.5
         self.scale = .1
         
