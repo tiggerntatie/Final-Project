@@ -112,7 +112,7 @@ class heart(Sprite):
     def __init__(self, position, heartnumber): 
         super().__init__(heart.asset, position)
         self.fxcenter = self.fycenter = 0.5
-        self.scale = .1
+        self.scale = .05
         
         
     
@@ -153,16 +153,16 @@ class SpaceGame(App):
 
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 
-x = 10
-y=10
+x = 15
+y=15
 lp = 0
 GG = 0
 while GG != 1:
     heartlist[lp]=heart((x,y), lp)
-    if lp == lives:
+    if lp == lives-1:
         GG = 1
     else:
-        x+=68
+        x+=48
         lp+=1
     
     
