@@ -4,6 +4,8 @@ import time
 SCREEN_WIDTH1 = 640
 hit = 0
 t=1
+lives = 4
+heartlist = list(range(4))
 SCREEN_HEIGHT = 480
 black = Color(0, 1)
 speed = 10
@@ -19,10 +21,11 @@ noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
+
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 class MC(Sprite):
-    def __init__(self, position, lives):
+    def __init__(self, position, ls):
         super().__init__(cf, position)
         self.moves = speed1
         SpaceGame.listenKeyEvent("keydown", "d", self.dKey)
@@ -32,7 +35,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         self.fxcenter = self.fycenter = 0.5
-        self.lives = lives
+        self.lives = ls
         self.start=0
         self.end=0
         self.dead = 0
@@ -104,6 +107,12 @@ class sword(Sprite):
         self.rotation = rotation
     def step(self):
         self.x = self.y = 10000
+class heart(Sprite):
+    asset = ImageAsset("heart-e1403272720870.png")
+    def __init__(self, position, heartnumber): 
+        super().__init__(asset, position)
+        self.fxcenter = self.fycenter = 0.5
+        self.scale = .1
         
         
     
@@ -144,6 +153,19 @@ class SpaceGame(App):
 
 myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
 
+x = 10
+y=10
+lp = 0
+GG = 0
+while GG != 1:
+    heartlist[lp]=heart((x,y), lp)
+    if lp == lives:
+        GG = 1
+    else:
+        x+=68
+        lp+=1
+    
+    
 turn = 0
 def turnProgress ():
     global turn
@@ -156,7 +178,7 @@ def spaceKey (event):
     
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-MC1=MC((320,240), 4)
+MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((300,240))
 
 myapp.run()
