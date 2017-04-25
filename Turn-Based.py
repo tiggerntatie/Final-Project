@@ -1,12 +1,12 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
-SCREEN_WIDTH1 = 640
+SCREEN_WIDTH1 = 1024
 hit = 0
 t=1
 lives = 4
 heartlist = list(range(4))
-SCREEN_HEIGHT = 480
+SCREEN_HEIGHT = 571
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -21,7 +21,7 @@ noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
-
+gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 class MC(Sprite):
@@ -78,10 +78,14 @@ class MC(Sprite):
         self.lives -=1
         heartlist[self.lives].destroy()
         heartlist.remove(heartlist[self.lives])
-        self.dead = Sprite(dead_asset, (1,1))
-        global t
-        t=0
-        self.end = self.start + .5
+        if self.lives == 0:
+            go = Sprite(gameover, (0,0))
+        else:
+            self.dead = Sprite(dead_asset, (1,1))
+            global t
+            t=0
+            self.end = self.start + .5
+        
     def hit2(self):
         elapsed = time.time()
         if elapsed > self.end:
