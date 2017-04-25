@@ -1,12 +1,12 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
-SCREEN_WIDTH1 = 1040
+SCREEN_WIDTH1 = 1024
 hit = 0
 t=1
 lives = 4
 heartlist = list(range(4))
-SCREEN_HEIGHT = 580
+SCREEN_HEIGHT = 571
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -92,7 +92,7 @@ class MC(Sprite):
             global t
             t =1
             if self.lives == 0:
-                self.go=Sprite(gameover, (0,0))
+                self.go=Sprite(gameover, (1,1))
         
         
         
