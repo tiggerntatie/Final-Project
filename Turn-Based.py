@@ -74,7 +74,10 @@ class MC(Sprite):
         self.moves = speed1
     def hit(self):
         self.start = time.time()
+        global heartlist
         self.lives -=1
+        heartlist[self.lives].destroy
+        heartlist[self.lives].remove
         self.dead = Sprite(dead_asset, (1,1))
         global t
         t=0
@@ -162,7 +165,7 @@ while GG != 1:
     if lp == lives-1:
         GG = 1
     else:
-        x+=48
+        x+=38
         lp+=1
     
     
