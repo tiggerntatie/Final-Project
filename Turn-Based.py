@@ -114,9 +114,9 @@ class SpaceGame(App):
     """
     def __init__(self, width, height):
         super().__init__(width, height)
-        black = Color(0, 1)
+        black = Color(0, .2)
         noline = LineStyle(0, black)
-        bg_asset = RectangleAsset(width, height, noline, white)
+        bg_asset = RectangleAsset(width, height, noline, black)
         
         bg = Sprite(bg_asset, (0,0))
         
