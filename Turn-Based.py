@@ -76,8 +76,8 @@ class MC(Sprite):
         self.start = time.time()
         global heartlist
         self.lives -=1
-        heartlist[self.lives].destroy
-        heartlist[self.lives].remove
+        heartlist[self.lives].destroy()
+        heartlist.remove(heartlist[self.lives])
         self.dead = Sprite(dead_asset, (1,1))
         global t
         t=0
