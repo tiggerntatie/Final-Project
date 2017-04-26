@@ -134,10 +134,10 @@ class shootSprite(Sprite):
                 self.reload()
                 self.ammo == self.ammoMax
     def reload(self):
-        i = self.rotation
-        while i!= self.rotation+2*pi:
+        i = 0
+        while i!= 2*pi:
             self.rotation+=pi/6
-            i+=pi/g
+            i+=pi/6
     
 class bullet(Sprite):
     def __init__(self, position, rotation): 
