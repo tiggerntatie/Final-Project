@@ -148,8 +148,8 @@ class bullet(Sprite):
     def step(self):
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
-        if time.time()-self.time > 3.5:
-            self.destroy
+        if time.time()-self.time > 5:
+            self.destroy()
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
