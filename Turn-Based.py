@@ -167,13 +167,12 @@ class SpaceGame(App):
         
     def step(self):
         global swordlist, bulletlist
+        
         if turn == 1:
             if len(swordlist)>0:
                 for x in swordlist:
                     x.destroy()
-            if len(bulletlist)>0:
-                for x in bulletlist:
-                    x.step()
+            
             
             
             swordlist=[]
@@ -185,6 +184,9 @@ class SpaceGame(App):
             turn = 0
         if t == 0:
             MC1.hit2()
+        if len(bulletlist)>0:
+                for x in bulletlist:
+                    x.step()
             
             
             
