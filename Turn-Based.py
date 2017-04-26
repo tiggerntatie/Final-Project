@@ -148,7 +148,7 @@ class bullet(Sprite):
     def step(self):
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
-        if self.collidingWithSprites(mc)>0:
+        if self.collidingWithSprites(MC)>0:
             MC1.hit()
             self.destroy
         elif time.time()-self.time > 5:
