@@ -166,16 +166,19 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
-        global swordlist
+        global swordlist, bulletlist
         if turn == 1:
             if len(swordlist)>0:
                 for x in swordlist:
                     x.destroy()
+            if len(bulletlist)>0:
+                for x in bulletlist:
+                    x.step()
             
             
             swordlist=[]
             meleeSprite1.step()
-            
+            shootSprite1.step()
             MC1.step()
             
             global turn
@@ -218,5 +221,5 @@ def spaceKey (event):
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((300,240))
-
+shootSprite1=shootSprite((100,100), 4)
 myapp.run()
