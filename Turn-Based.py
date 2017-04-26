@@ -144,7 +144,10 @@ class bullet(Sprite):
         super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
+        self.time = time.time()
     def step(self):
+        if time.time()-self.time > 3.5:
+            self.destroy()
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
 class sword(Sprite):
@@ -178,15 +181,8 @@ class SpaceGame(App):
         
     def step(self):
         for x in self.getSpritesbyClass(meleeSprite):
-            for y in self.getSpritesbyClass(bullet):
-                if len(x.collidingWithSprites(y))>0:
+            if len(x.collidingWithSprites(bullet))>0:
                     x.destroy()
-                    y.destroy
-        
-        
-            
-                
-            
         global swordlist, bulletlist, maintain
         
         if turn == 1:
