@@ -149,6 +149,7 @@ class bullet(Sprite):
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
         if len(self.collidingWithSprites(MC))>0:
+            self.x = self.y= 1000
             MC1.hit()
             self.time = time.time()-100
         if time.time()-self.time > 5:
