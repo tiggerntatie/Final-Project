@@ -135,7 +135,7 @@ class shootSprite(Sprite):
                 global maintain
                 maintain = True
                 self.ammo = self.ammoMax
-                print(self.ammo)
+                
     def reload1(self):
         self.rotation += pi/36
     
@@ -148,10 +148,10 @@ class bullet(Sprite):
     def step(self):
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
-        if self.collidingWithSprites(MC)>0:
+        if len(self.collidingWithSprites(MC))>0:
             MC1.hit()
-            self.destroy()
-        elif time.time()-self.time > 5:
+            self.time = time.time()-100
+        if time.time()-self.time > 5:
             self.destroy()
 class sword(Sprite):
     def __init__(self, position, rotation): 
