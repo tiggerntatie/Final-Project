@@ -177,9 +177,11 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
-        for x in getSpritesbyClass(meleeSprite):
-            print(len(x.collidingWithSprites(bullet)))
+        for x in self.getSpritesbyClass(meleeSprite):
             if len(x.collidingWithSprites(bullet))>0:
+                x.destroy()
+        for x in self.getSpritesbyClass(bullet):
+            if len(x.collidingWithSprites())>1:
                 x.destroy()
                 
             
