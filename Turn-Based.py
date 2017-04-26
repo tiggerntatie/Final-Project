@@ -21,7 +21,7 @@ gray = Color(0x8c8c8c, 1)
 noline = LineStyle(0, black)
 thinline1 = LineStyle(1, white)
 dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
-cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
+cf = PolygonAsset(((-10,-15),(0,-22.5),(10,-15),(10,15),(-10,15)), thinline, gray)
 gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
@@ -119,14 +119,25 @@ class shootSprite(Sprite):
     def __init__(self, position, ammo): 
         super().__init__(ss, position)
         self.fxcenter = self.fycenter = 0.5
+        self.ammo = ammo
+        self.ammoMax = ammo
     def step(self):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 150:
             self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
             self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         else:
-            bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
-            
+            if self.ammo>0:
+                self.ammo-=1
+                bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+            else:
+                self.reload()
+                self.ammo == self.ammoMax
+    def reload(self):
+        i = self.rotation
+        while i!= self.rotation+2*pi:
+            self.rotation+=pi/6
+            i+=pi/g
     
 class bullet(Sprite):
     def __init__(self, position, rotation): 
@@ -134,8 +145,8 @@ class bullet(Sprite):
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
     def step(self):
-        self.x -= 20*cos(self.rotation)
-        self.y -= 20*sin(self.rotation)
+        self.x -= 1*cos(-1*self.rotation+(pi/2))
+        self.y -= 1*sin(-1*self.rotation+(pi/2))
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
