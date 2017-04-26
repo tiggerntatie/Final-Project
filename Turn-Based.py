@@ -135,8 +135,9 @@ class shootSprite(Sprite):
                 global maintain
                 maintain = True
                 self.ammo == self.ammoMax
+                print(self.ammo)
     def reload1(self):
-        self.rotation += pi/6
+        self.rotation += pi/36
     
 class bullet(Sprite):
     def __init__(self, position, rotation): 
