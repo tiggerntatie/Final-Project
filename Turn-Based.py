@@ -14,6 +14,7 @@ red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 swordlist = []
+bulletlist =[]
 thinline = LineStyle(1, black)
 white = Color(0xffffff, 1)
 gray = Color(0x8c8c8c, 1)
@@ -23,7 +24,9 @@ dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(10,-15),(10,15),(-10,15)), thinline, gray)
 gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
+ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
+smlBullet = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, blue)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -105,12 +108,37 @@ class meleeSprite(Sprite):
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
         self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         if MC1.rotation == 0 or MC1.rotation == pi:
-            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 20:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
                 swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
                 MC1.hit()
+        if MC1.rotation == pi/2 or MC1.rotation == 3*pi/2:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
+                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                MC1.hit()
+class shootSprite(Sprite):
+    def __init__(self, position, ammo): 
+        super().__init__(ss, position)
+        self.fxcenter = self.fycenter = 0.5
+    def step(self):
+        self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
+        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 150:
+            self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
+            self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+        else:
+            bulletlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+            
+    
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
+        self.fxcenter = self.fycenter = 0.5
+        self.rotation = rotation
+    def step(self):
+        self.x -= 20*cos(self.rotation)
+        self.y -= 20*sin(self.rotation)
+class sword(Sprite):
+    def __init__(self, position, rotation): 
+        super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
     def step(self):
@@ -160,7 +188,7 @@ class SpaceGame(App):
    
 
 
-myapp = SpaceGame(SCREEN_WIDTH1, SCREEN_HEIGHT)
+myapp = SpaceGame(SCREEN_WIDTH1,SCREEN_HEIGHT)
 
 x = 15
 y=15
