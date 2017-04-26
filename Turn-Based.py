@@ -130,7 +130,7 @@ class shootSprite(Sprite):
         else:
             if self.ammo>0:
                 self.ammo-=1
-                bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                bulletlist.append(bullet(((self.x-20*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-20*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             else:
                 global maintain
                 maintain = True
@@ -178,11 +178,13 @@ class SpaceGame(App):
         
     def step(self):
         for x in self.getSpritesbyClass(meleeSprite):
-            if len(x.collidingWithSprites(bullet))>0:
-                x.destroy()
-        for x in self.getSpritesbyClass(bullet):
-            if len(x.collidingWithSprites())>1:
-                x.destroy()
+            for y in self.getSpritesbyClass(bullet):
+                if len(x.collidingWithSprites(y))>0:
+                    x.destroy()
+                    y.destroy
+        
+        
+            
                 
             
         global swordlist, bulletlist, maintain
