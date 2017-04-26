@@ -178,7 +178,7 @@ class SpaceGame(App):
         
     def step(self):
         for x in getSpritesbyClass(meleeSprite):
-            if x.collidingWithSprites(bullet)>0:
+            if len(x.collidingWithSprites(bullet))>0:
                 x.destroy
                 
             
