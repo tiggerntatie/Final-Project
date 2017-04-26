@@ -150,7 +150,7 @@ class bullet(Sprite):
         self.y -= 1*sin(-1*self.rotation+(pi/2))
         if self.collidingWithSprites(MC)>0:
             MC1.hit()
-            self.destroy
+            self.destroy()
         elif time.time()-self.time > 5:
             self.destroy()
 class sword(Sprite):
