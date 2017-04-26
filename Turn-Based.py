@@ -125,12 +125,12 @@ class shootSprite(Sprite):
             self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
             self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         else:
-            bulletlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+            bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             
     
-class sword(Sprite):
+class bullet(Sprite):
     def __init__(self, position, rotation): 
-        super().__init__(smlSword, position)
+        super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
     def step(self):
@@ -138,7 +138,7 @@ class sword(Sprite):
         self.y -= 20*sin(self.rotation)
 class sword(Sprite):
     def __init__(self, position, rotation): 
-        super().__init__(smlBullet, position)
+        super().__init__(smlSword, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
     def step(self):
