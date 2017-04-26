@@ -147,6 +147,7 @@ class bullet(Sprite):
         self.time = time.time()
     def step(self):
         if time.time()-self.time > 3.5:
+            # add list number to class, when time exceeds 3.5, add sprite at own listnumber that is destroyed after this function ends
             self.destroy()
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
