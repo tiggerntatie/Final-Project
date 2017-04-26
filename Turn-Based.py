@@ -134,7 +134,7 @@ class shootSprite(Sprite):
             else:
                 global maintain
                 maintain = True
-                self.ammo == self.ammoMax
+                self.ammo = self.ammoMax
                 print(self.ammo)
     def reload1(self):
         self.rotation += pi/36
@@ -177,6 +177,11 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
+        for x in getSpritesbyClass(meleeSprite):
+            if x.collidingWithSprites(bullet)>0:
+                x.destroy
+                
+            
         global swordlist, bulletlist, maintain
         
         if turn == 1:
