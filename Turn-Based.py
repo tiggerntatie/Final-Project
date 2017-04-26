@@ -4,6 +4,7 @@ import time
 SCREEN_WIDTH1 = 1024
 hit = 0
 t=1
+maintain = False
 lives = 4
 heartlist = list(range(4))
 SCREEN_HEIGHT = 571
@@ -131,13 +132,11 @@ class shootSprite(Sprite):
                 self.ammo-=1
                 bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             else:
-                self.reload()
+                global maintain
+                maintain = True
                 self.ammo == self.ammoMax
-    def reload(self):
-        i = 0
-        while i!= 2*pi:
-            self.rotation+=pi/6
-            i+=pi/6
+    def reload1(self):
+        self.rotation += pi/6
     
 class bullet(Sprite):
     def __init__(self, position, rotation): 
@@ -177,12 +176,12 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
-        global swordlist, bulletlist
+        global swordlist, bulletlist, maintain
         
         if turn == 1:
-            if len(swordlist)>0:
-                for x in swordlist:
-                    x.destroy()
+            maintain = False
+            for ship in self.getSpritesbyClass(sword):
+                ship.destroy()
             
             
             
@@ -198,6 +197,9 @@ class SpaceGame(App):
         if len(bulletlist)>0:
                 for x in bulletlist:
                     x.step()
+        if maintain == True:
+            for ship in self.getSpritesbyClass(shootSprite):
+                ship.reload1()
             
             
             
