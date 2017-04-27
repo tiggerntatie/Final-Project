@@ -130,7 +130,7 @@ class shootSprite(Sprite):
         else:
             if self.ammo>0:
                 self.ammo-=1
-                bulletlist.append(bullet(((self.x-20*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-20*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                bulletlist.append(bullet(((self.x+20*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y+20*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             else:
                 global maintain
                 maintain = True
