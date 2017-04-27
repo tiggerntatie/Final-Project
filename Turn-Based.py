@@ -27,7 +27,7 @@ gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
-smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-150),(-2.5,-150)), thinline, blue)
+smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -124,7 +124,7 @@ class shootSprite(Sprite):
         self.ammoMax = ammo
     def step(self):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
-        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 150:
+        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 300:
             self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
             self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         else:
@@ -144,10 +144,6 @@ class bullet(Sprite):
         super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
-        self.aliveTime = time.time()
-    def step(self):
-        self.x -= 1*cos(-1*self.rotation+(pi/2))
-        self.y -= 1*sin(-1*self.rotation+(pi/2))
         
         
 class sword(Sprite):
@@ -178,13 +174,6 @@ class SpaceGame(App):
         bg = Sprite(bg_asset, (0,0))
         
     def step(self):
-        deadlist = []
-        for x in self.getSpritesbyClass(meleeSprite):
-            if len(x.collidingWithSprites(bullet))>0:
-                    print("hit")
-        
-                    
-                    
         global swordlist, bulletlist, maintain
         
         if turn == 1:
@@ -192,6 +181,7 @@ class SpaceGame(App):
             maintain = False
             for ship in self.getSpritesbyClass(sword):
                 ship.destroy()
+            
             meleeSprite1.step()
             shootSprite1.step()
             MC1.step()
@@ -200,23 +190,10 @@ class SpaceGame(App):
             turn = 0
         if t == 0:
             MC1.hit2()
-        if len(bulletlist)>0:
-                for x in bulletlist:
-                    x.step()
+        
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
-        for x in self.getSpritesbyClass(bullet):
-            if len(x.collidingWithSprites(MC))>0:
-                print("hit")
-                x.x = 1000
-                x.y= 1000
-                deadlist.append(x)
-        if len(deadlist)>0:
-            print(deadlist)
-            for x in deadlist:
-                x.destroy()
-                print(deadlist)
         
             
    
