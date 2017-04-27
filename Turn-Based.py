@@ -27,7 +27,7 @@ gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
-smlBullet = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, blue)
+smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,150),(-2.5,150)), thinline, blue)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -208,13 +208,15 @@ class SpaceGame(App):
                 ship.reload1()
         for x in self.getSpritesbyClass(bullet):
             if len(x.collidingWithSprites(MC))>0:
+                print("hit")
                 x.x = 1000
                 x.y= 1000
                 deadlist.append(x)
         if len(deadlist)>0:
+            print(deadlist)
             for x in deadlist:
-                x.x = 10000
-                x.y = 10000
+                x.destroy()
+                print(deadlist)
         
             
    
