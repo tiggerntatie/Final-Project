@@ -48,7 +48,7 @@ class MC(Sprite):
         self.Sprites = []
     def jKey(self, event):
         if self.moves >1:
-            self.Sprites.append(axe((15*cos((pi/2)-self.rotation), 15*sin((pi/2)-self.rotation)), self.rotation))
+            self.Sprites.append(a)
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -242,4 +242,5 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
+axe((100,250))
 myapp.run()
