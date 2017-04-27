@@ -103,8 +103,10 @@ class MC(Sprite):
                 self.go=Sprite(gameover, (1,1))
 def axe(Sprite):
     asset = ImageAsset("download")
-    def __init__(self, position, rotation): 
-        super().__init__(asset, position)
+    def __init__(self,x ,y, rotation): 
+        super().__init__(asset)
+        self.x = x
+        self.y = y
         self.fx = .5
         self.fx = 1
         self.rotation = rotation
