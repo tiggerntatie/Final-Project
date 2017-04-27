@@ -183,16 +183,13 @@ class SpaceGame(App):
         for x in self.getSpritesbyClass(meleeSprite):
             if len(x.collidingWithSprites(bullet))>0:
                     x.destroy()
-        for x in self.getSpritesbyClass(bullet):
-            if len(x.collidingWithSprites(MC))>0:
-                    x.x = 1000
-                    x.y= 1000
-                    deadlist.append(x)
-                    MC1.hit()
+        
+                    
                     
         global swordlist, bulletlist, maintain
         
         if turn == 1:
+            
             maintain = False
             for ship in self.getSpritesbyClass(sword):
                 ship.destroy()
@@ -214,9 +211,15 @@ class SpaceGame(App):
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
-            
-        for x in deadlist:
-            x.destroy()
+        for x in self.getSpritesbyClass(bullet):
+            if len(x.collidingWithSprites(MC))>0:
+                    x.x = 1000
+                    x.y= 1000
+                    deadlist.append(x)
+        if len(deadlist)>0:
+            for x in deadlist:
+                x.destroy()
+        
             
    
 
