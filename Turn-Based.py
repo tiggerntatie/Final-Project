@@ -144,18 +144,17 @@ class bullet(Sprite):
         super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
-        self.time = time.time()
+        self.aliveTime = time.time()
     def step(self):
         self.x -= 1*cos(-1*self.rotation+(pi/2))
         self.y -= 1*sin(-1*self.rotation+(pi/2))
+        
         
 class sword(Sprite):
     def __init__(self, position, rotation): 
         super().__init__(smlSword, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
-    def step(self):
-        self.x = self.y = 10000
 class heart(Sprite):
     asset = ImageAsset("heart-e1403272720870.png")
     def __init__(self, position, heartnumber): 
@@ -193,10 +192,6 @@ class SpaceGame(App):
             maintain = False
             for ship in self.getSpritesbyClass(sword):
                 ship.destroy()
-            
-            
-            
-            swordlist=[]
             meleeSprite1.step()
             shootSprite1.step()
             MC1.step()
@@ -213,12 +208,13 @@ class SpaceGame(App):
                 ship.reload1()
         for x in self.getSpritesbyClass(bullet):
             if len(x.collidingWithSprites(MC))>0:
-                    x.x = 1000
-                    x.y= 1000
-                    deadlist.append(x)
+                x.x = 1000
+                x.y= 1000
+                deadlist.append(x)
         if len(deadlist)>0:
             for x in deadlist:
-                x.destroy()
+                x.x = 10000
+                x.y = 10000
         
             
    
@@ -253,6 +249,6 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-meleeSprite1=meleeSprite((300,240))
+meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
 myapp.run()
