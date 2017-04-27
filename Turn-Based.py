@@ -27,7 +27,7 @@ gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
-smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,150),(-2.5,150)), thinline, blue)
+smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-150),(-2.5,-150)), thinline, blue)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -130,7 +130,7 @@ class shootSprite(Sprite):
         else:
             if self.ammo>0:
                 self.ammo-=1
-                bulletlist.append(bullet(((self.x+20*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y+20*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             else:
                 global maintain
                 maintain = True
@@ -181,7 +181,7 @@ class SpaceGame(App):
         deadlist = []
         for x in self.getSpritesbyClass(meleeSprite):
             if len(x.collidingWithSprites(bullet))>0:
-                    x.destroy()
+                    print("hit")
         
                     
                     
