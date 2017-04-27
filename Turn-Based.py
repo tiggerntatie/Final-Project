@@ -38,12 +38,18 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "w", self.wKey)
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
+        SpaceGame.listenKeyEvent("keydown", "j", self.jKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = ls
         self.start=0
         self.end=0
         self.dead = 0
         self.go = 0
+        self.Sprites = []
+    def jKey(self, event):
+        if self.moves >1:
+            self.Sprites.append(axe((15*cos((pi/2)-self.rotation), 15*sin((pi/2)-self.rotation)), self.rotation)
+            
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -91,13 +97,18 @@ class MC(Sprite):
     def hit2(self):
         elapsed = time.time()
         if elapsed > self.end:
-            print(self.lives)
             self.dead.destroy()
             global t
             t =1
             if self.lives == 0:
                 self.go=Sprite(gameover, (1,1))
-        
+def axe(Sprite):
+    asset = ImageAsset("download")
+    def __init__(self, position, rotation): 
+        super().__init__(asset, position)
+        self.fx = .5
+        self.fx = 1
+        self.rotation = rotation
         
         
 class meleeSprite(Sprite):
@@ -124,12 +135,13 @@ class shootSprite(Sprite):
         self.ammoMax = ammo
     def step(self):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
-        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 300:
+        if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2)-300>1:
             self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
             self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
         else:
             if self.ammo>0:
                 self.ammo-=1
+                MC1.hit()
                 bulletlist.append(bullet(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
             else:
                 global maintain
@@ -181,7 +193,8 @@ class SpaceGame(App):
             maintain = False
             for ship in self.getSpritesbyClass(sword):
                 ship.destroy()
-            
+            for ship in self.getSpritesbyClass(bullet):
+                ship.destroy()
             meleeSprite1.step()
             shootSprite1.step()
             MC1.step()
