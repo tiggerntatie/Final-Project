@@ -102,14 +102,16 @@ class MC(Sprite):
             if self.lives == 0:
                 self.go=Sprite(gameover, (1,1))
 class axe(Sprite):
-    asset = ImageAsset("download.png")
-    def __init__(self, position rotation): 
+    
+    def __init__(self, position, rotation): 
+        asset = ImageAsset("download.png", Frame(56.25, 56.25, 56.25*2, 56.25*2))
         super().__init__(asset, position)
         self.x = x
         self.y = y
         self.fx = .5
         self.fx = 1
         self.rotation = rotation
+        self.scale
         
         
 class meleeSprite(Sprite):
