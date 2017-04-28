@@ -48,7 +48,7 @@ class MC(Sprite):
         self.Sprites = []
     def jKey(self, event):
         if self.moves >1:
-            self.Sprites.append(a)
+            self.Sprites.append(axe((19*cos((pi/2)-self.rotation), 19*sin((pi/2)-self.rotation)), self.rotation))
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -101,10 +101,10 @@ class MC(Sprite):
             t =1
             if self.lives == 0:
                 self.go=Sprite(gameover, (1,1))
-def axe(Sprite):
+class axe(Sprite):
     asset = ImageAsset("download.png")
-    def __init__(self,x ,y, rotation): 
-        super().__init__(asset)
+    def __init__(self, position rotation): 
+        super().__init__(asset, position)
         self.x = x
         self.y = y
         self.fx = .5
