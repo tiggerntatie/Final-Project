@@ -104,14 +104,13 @@ class MC(Sprite):
 class axe(Sprite):
     
     def __init__(self, position, rotation): 
-        asset = ImageAsset("download.png", Frame(56.25, 56.25, 56.25*2, 56.25*2))
+        asset = ImageAsset("download.png", Frame(56.25, 56.25, 56.25*2, 56.25*2.1))
         super().__init__(asset, position)
         self.x = x
         self.y = y
         self.fx = .5
         self.fx = 1
         self.rotation = rotation
-        self.scale
         
         
 class meleeSprite(Sprite):
