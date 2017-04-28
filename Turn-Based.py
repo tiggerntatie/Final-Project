@@ -111,7 +111,7 @@ class axe(Sprite):
         self.fx = .5
         self.fx = 1
         self.rotation = rotation
-        
+        self.scale = .3
         
 class meleeSprite(Sprite):
     def __init__(self, position): 
@@ -245,5 +245,4 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
-axe((100,250), 0)
 myapp.run()
