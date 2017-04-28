@@ -102,7 +102,7 @@ class MC(Sprite):
             if self.lives == 0:
                 self.go=Sprite(gameover, (1,1))
 def axe(Sprite):
-    asset = ImageAsset("download")
+    asset = ImageAsset("download.png")
     def __init__(self,x ,y, rotation): 
         super().__init__(asset)
         self.x = x
