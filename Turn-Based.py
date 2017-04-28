@@ -48,7 +48,8 @@ class MC(Sprite):
         self.Sprites = []
     def jKey(self, event):
         if self.moves >1:
-            self.Sprites.append(axe((self.x-19*cos((pi/2)-self.rotation), self.y-19*sin((pi/2)-self.rotation)), self.rotation))
+            self.Sprites.append(axe((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
+            self.moves -=2
     def dKey(self, event):
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
@@ -61,6 +62,7 @@ class MC(Sprite):
 
             self.moves -=1
     def sKey(self, event):
+        self.KILL()
         if self.moves > 0 and self.x +speed*cos((pi/2)-self.rotation)<SCREEN_WIDTH1 and self.y +speed*sin((pi/2)-self.rotation) <SCREEN_HEIGHT:
             self.x += speed*cos((pi/2)-self.rotation)
             self.y += speed*sin((pi/2)-self.rotation)
@@ -80,7 +82,14 @@ class MC(Sprite):
             self.rotation = 0
         else:
             self.rotation-= pi/2
+    def KILL(self):
+        if len(self.Sprites)>0:
+            for x in self.Sprites:
+                x.destroy()
+                
+            self.Sprites = []
     def step(self):
+        
         self.moves = speed1
     def hit(self):
         self.start = time.time()
@@ -106,12 +115,11 @@ class axe(Sprite):
     def __init__(self, position, rotation): 
         asset = ImageAsset("download.png", Frame(56.25, 56.25, 56.25*2, 56.25*2.1))
         super().__init__(asset, position)
-        self.x = x
-        self.y = y
-        self.fx = .5
-        self.fx = 1
-        self.rotation = rotation
         self.scale = .3
+        self.fxcenter = .5
+        self.fycenter = 1
+        self.rotation = rotation
+        
         
 class meleeSprite(Sprite):
     def __init__(self, position): 
