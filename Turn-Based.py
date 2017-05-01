@@ -124,16 +124,16 @@ class MC(Sprite):
            self.moves-=1
     def qKey(self, event):
         self.KILL()
-        if self.rotation == 3*(pi/2):
+        if self.rotation == 7*(pi/8):
             self.rotation = 0
         else:
-            self.rotation+= pi/2
+            self.rotation+= pi/8
     def eKey(self, event):
         self.KILL()
-        if self.rotation == -3*(pi/2):
+        if self.rotation == -7*(pi/8):
             self.rotation = 0
         else:
-            self.rotation-= pi/2
+            self.rotation-= pi/8
     def KILL(self):
         if len(self.Sprites)>0:
             for x in self.Sprites:
