@@ -188,8 +188,12 @@ class plasmaBolt(Sprite):
     def step(self):
         self.x +=1
         self.y +=1
+        if len(self.collidingWithSprites(None))>0:
+            for x in self.collidingWithSprites(None):
+                x.destroy()
         if -self.time+time.time()>5:
             self.destroy()
+        
         
 class meleeSprite(Sprite):
     def __init__(self, position): 
