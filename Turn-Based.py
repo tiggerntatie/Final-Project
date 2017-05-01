@@ -39,6 +39,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "q", self.qKey)
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "j", self.jKey)
+        SpaceGame.listenKeyEvent("keydown", "k", self.kKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = ls
         self.start=0
@@ -50,6 +51,11 @@ class MC(Sprite):
         self.KILL()
         if self.moves >1:
             self.Sprites.append(axe((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
+            self.moves -=2
+    def kKey(self, event):
+        self.KILL()
+        if self.moves >1:
+            self.Sprites.append(plasma((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
             self.moves -=2
     def dKey(self, event):
         self.KILL()
