@@ -193,7 +193,7 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>1:
             for x in self.collidingWithSprites(None):
                 print('here')
-                if x is not bg or x is not MC1:
+                if x.__class__.__name__ is not in [MC, Sprite, heart]
                     print('here')
                     x.destroy()
         if -self.time+time.time()>5:
@@ -297,5 +297,5 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
-print(MC1.__class__.__name__)
+
 myapp.run()
