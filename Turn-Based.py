@@ -1,13 +1,51 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
-SCREEN_WIDTH1 = 1024
+class SpaceGame(App):
+    """
+    Tutorial4 space game example.
+    """
+    def __init__(self, width, height):
+        super().__init__(width, height)
+        black = Color(0, .2)
+        noline = LineStyle(0, black)
+        bg_asset = RectangleAsset(self.width, self.height, noline, black)
+        
+        bg = Sprite(bg_asset, (0,0))
+        global SCREEN_WIDTH1, SCREEN_HEIGHT
+        SCREEN_WIDTH1=self.width
+        SCREEN_HEIGHT = self.height
+        
+    def step(self):
+        global swordlist, bulletlist, maintain
+        if turn == 1:
+            
+            maintain = False
+            for ship in self.getSpritesbyClass(sword):
+                ship.destroy()
+            for ship in self.getSpritesbyClass(bullet):
+                ship.destroy()
+            meleeSprite1.step()
+            shootSprite1.step()
+            MC1.step()
+            
+            global turn
+            turn = 0
+        if t == 0:
+            MC1.hit2()
+        
+        if maintain == True:
+            for ship in self.getSpritesbyClass(shootSprite):
+                ship.reload1()
+        
+            
+myapp = SpaceGame(0,0)
 hit = 0
 t=1
 maintain = False
 lives = 4
 heartlist = list(range(4))
-SCREEN_HEIGHT = 571
+
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -121,7 +159,12 @@ class MC(Sprite):
             global t
             t =1
             if self.lives == 0:
-                self.go=Sprite(gameover, (1,1))
+                if SCREEN_WIDTH1/1071>SCREEN_HEIGHT/571
+                    self.go=Sprite(gameover, (1,1))
+                    self.go.scale = SCREEN_WIDTH1/1071
+                else:
+                    self.go=Sprite(gameover, (1,1))
+                    self.go.scale = SCREEN_HEIGHT/571
 class axe(Sprite):
     
     def __init__(self, position, rotation): 
@@ -141,6 +184,12 @@ class plasmaBolt(Sprite):
         self.fxcenter = .5
         self.fycenter = 1
         self.rotation = rotation
+        self.time = time.time()
+    def step(self):
+        self.x +=1
+        self.y +=1
+        if -self.time+time.time()>5:
+            self.destroy()
         
 class meleeSprite(Sprite):
     def __init__(self, position): 
@@ -204,46 +253,11 @@ class heart(Sprite):
         
     
     
-class SpaceGame(App):
-    """
-    Tutorial4 space game example.
-    """
-    def __init__(self, width, height):
-        super().__init__(width, height)
-        black = Color(0, .2)
-        noline = LineStyle(0, black)
-        bg_asset = RectangleAsset(width, height, noline, black)
-        
-        bg = Sprite(bg_asset, (0,0))
-        
-    def step(self):
-        global swordlist, bulletlist, maintain
-        
-        if turn == 1:
-            
-            maintain = False
-            for ship in self.getSpritesbyClass(sword):
-                ship.destroy()
-            for ship in self.getSpritesbyClass(bullet):
-                ship.destroy()
-            meleeSprite1.step()
-            shootSprite1.step()
-            MC1.step()
-            
-            global turn
-            turn = 0
-        if t == 0:
-            MC1.hit2()
-        
-        if maintain == True:
-            for ship in self.getSpritesbyClass(shootSprite):
-                ship.reload1()
-        
-            
+
    
 
 
-myapp = SpaceGame(SCREEN_WIDTH1,SCREEN_HEIGHT)
+
 
 x = 15
 y=15
