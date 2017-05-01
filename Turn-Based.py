@@ -192,6 +192,8 @@ class plasmaBolt(Sprite):
         self.y -=sin((pi/2)-self.rotation)
         if len(self.collidingWithSprites(None))>1:
             for x in self.collidingWithSprites(None):
+                if x is bg or x is MC1:
+                    pass
                 x.destroy()
         if -self.time+time.time()>5:
             self.destroy()
