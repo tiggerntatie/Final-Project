@@ -47,15 +47,18 @@ class MC(Sprite):
         self.go = 0
         self.Sprites = []
     def jKey(self, event):
+        self.KILL()
         if self.moves >1:
             self.Sprites.append(axe((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
             self.moves -=2
     def dKey(self, event):
+        self.KILL()
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
             self.x += speed*cos(self.rotation)
             self.y -= speed*sin(self.rotation)
             self.moves -=1
     def aKey(self, event):
+        self.KILL()
         if self.moves > 0 and self.x -speed*cos(self.rotation)>0 and self.y +speed*sin(self.rotation) <SCREEN_HEIGHT:
             self.x -= speed*cos(self.rotation)
             self.y += speed*sin(self.rotation)
@@ -68,16 +71,19 @@ class MC(Sprite):
             self.y += speed*sin((pi/2)-self.rotation)
             self.moves -=1
     def wKey(self, event):
+        self.KILL()
         if self.moves > 0 and self.x -speed*cos((pi/2)-self.rotation)>0 and self.y -speed*sin((pi/2)-self.rotation) >0:
            self.x -= speed*cos((pi/2)-self.rotation)
            self.y -= speed*sin((pi/2)-self.rotation)
            self.moves-=1
     def qKey(self, event):
+        self.KILL()
         if self.rotation == 3*(pi/2):
             self.rotation = 0
         else:
             self.rotation+= pi/2
     def eKey(self, event):
+        self.KILL()
         if self.rotation == -3*(pi/2):
             self.rotation = 0
         else:
@@ -89,7 +95,7 @@ class MC(Sprite):
                 
             self.Sprites = []
     def step(self):
-        
+        self.KILL()
         self.moves = speed1
     def hit(self):
         self.start = time.time()
