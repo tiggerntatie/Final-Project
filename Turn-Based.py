@@ -17,6 +17,8 @@ class SpaceGame(App):
         SCREEN_HEIGHT = self.height
         
     def step(self):
+        for x in self.getSpritesbyClass(plasmaBolt):
+            x.step()
         global swordlist, bulletlist, maintain
         if turn == 1:
             
@@ -93,7 +95,7 @@ class MC(Sprite):
     def kKey(self, event):
         self.KILL()
         if self.moves >1:
-            self.Sprites.append(plasma((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
+            plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
             self.moves -=2
     def dKey(self, event):
         self.KILL()
@@ -292,4 +294,5 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
+plasmaBolt1= plasmaBolt((200,200),4)
 myapp.run()
