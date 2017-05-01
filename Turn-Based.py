@@ -11,7 +11,7 @@ class SpaceGame(App):
         noline = LineStyle(0, black)
         bg_asset = RectangleAsset(self.width, self.height, noline, black)
         
-        bg = Sprite(bg_asset, (0,0))
+        self.bg = Sprite(bg_asset, (0,0))
         global SCREEN_WIDTH1, SCREEN_HEIGHT
         SCREEN_WIDTH1=self.width
         SCREEN_HEIGHT = self.height
@@ -193,7 +193,7 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>1:
             for x in self.collidingWithSprites(None):
                 print('here')
-                if x.__class__.__name__ is not in [MC, Sprite, heart]
+                if x.__class__.__name__ is not Sprite:
                     print('here')
                     x.destroy()
         if -self.time+time.time()>5:
@@ -297,5 +297,6 @@ myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
+print(SpaceGame.bg.__class__.__name__)
 
 myapp.run()
