@@ -192,8 +192,7 @@ class plasmaBolt(Sprite):
         self.y -=sin((pi/2)-self.rotation)
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
-                print('here')
-                if x.__class__.__name__ !=Sprite or x.__class__.__name__ !=MC:
+                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     print(x.__class__.__name__)
                     x.destroy()
         if -self.time+time.time()>5:
@@ -298,5 +297,5 @@ MC1=MC((320,240), lives)
 meleeSprite1=meleeSprite((100,240))
 shootSprite1=shootSprite((100,100), 4)
 
-
+print(MC1.__class__.__name__ !='Sprite')
 myapp.run()
