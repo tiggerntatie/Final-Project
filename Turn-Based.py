@@ -18,7 +18,7 @@ class SpaceGame(App):
         SCREEN_HEIGHT = self.height
         self.allSprites = []
     def step(self):
-        if time.time()%10< .5:
+        if (time.time()//1)%10< .5:
             self.create()
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
@@ -319,7 +319,7 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-print(11%10)
+print((11//1)%10)
 
 print(MC1.__class__.__name__ !='Sprite')
 myapp.run()
