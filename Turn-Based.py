@@ -63,7 +63,9 @@ class SpaceGame(App):
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,2)
         if whatSprite== 1:
-            self.allSprites.append(meleeSprite((
+            self.allSprites.append(meleeSprite((xcolumn,ycolumn)))
+        elif whatSprite == 2:
+            self.allSprites.append(shootSprite((xcolumn, ycolumn), rand.randint(1,8))
             
             
         
