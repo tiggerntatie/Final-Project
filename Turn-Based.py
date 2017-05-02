@@ -1,6 +1,7 @@
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
+import random
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -15,8 +16,10 @@ class SpaceGame(App):
         global SCREEN_WIDTH1, SCREEN_HEIGHT
         SCREEN_WIDTH1=self.width
         SCREEN_HEIGHT = self.height
-        
+        self.allSprites = []
     def step(self):
+        if time.time()%10== 0:
+            self.create()
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
         for x in self.getSpritesbyClass(axe):
@@ -44,6 +47,25 @@ class SpaceGame(App):
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
+    def create(self):
+        quad = random.randint(1,4)
+        if quad == 1:
+            xcolumn = self.width/2+30*random.randint(1,(self.width/2)//30)
+            ycolumn = 30*random.randint(1,(self.height/2)//30)
+        elif quad == 2:
+            xcolumn = 30*random.randint(1,(self.width/2)//30)
+            ycolumn = 30*random.randint(1,(self.height/2)//30)
+        elif quad == 3:
+            xcolumn = 30*random.randint(1,(self.width/2)//30)
+            ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
+        else:
+            xcolumn = self.widht/2+random.randint(1,(self.width/2)//30)
+            ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
+        whatSprite= random.randint(1,2)
+        if whatSprite== 1:
+            self.allSprites.append(meleeSprite((
+            
+            
         
             
 myapp = SpaceGame(0,0)
