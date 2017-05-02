@@ -319,7 +319,7 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-print((11//1)%10)
+print((20.1//1)%10)
 
 print(MC1.__class__.__name__ !='Sprite')
 myapp.run()
