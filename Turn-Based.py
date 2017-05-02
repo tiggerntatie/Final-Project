@@ -124,16 +124,16 @@ class MC(Sprite):
            self.moves-=1
     def qKey(self, event):
         self.KILL()
-        if self.rotation == 7*(pi/8):
+        if self.rotation == 31*(pi/32):
             self.rotation = 0
         else:
-            self.rotation+= pi/8
+            self.rotation+= pi/32
     def eKey(self, event):
         self.KILL()
-        if self.rotation == -7*(pi/8):
+        if self.rotation == -31*(pi/32):
             self.rotation = 0
         else:
-            self.rotation-= pi/8
+            self.rotation-= pi/32
     def KILL(self):
         if len(self.Sprites)>0:
             for x in self.Sprites:
@@ -190,10 +190,9 @@ class plasmaBolt(Sprite):
     def step(self):
         self.x -=cos((pi/2)-self.rotation)
         self.y -=sin((pi/2)-self.rotation)
-        if len(self.collidingWithSprites(None))>0:
+        if len(self.collidingWithSprites(None))>1:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
-                    print(x.__class__.__name__)
                     x.destroy()
         if -self.time+time.time()>5:
             self.destroy()
