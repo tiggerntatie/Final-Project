@@ -35,8 +35,8 @@ class SpaceGame(App):
                 ship.destroy()
             for ship in self.getSpritesbyClass(bullet):
                 ship.destroy()
-            meleeSprite1.step()
-            shootSprite1.step()
+            for x in self.allSprites:
+                x.step()
             MC1.step()
             
             global turn
@@ -322,8 +322,7 @@ def spaceKey (event):
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-meleeSprite1=meleeSprite((100,240))
-shootSprite1=shootSprite((100,100), 4)
+
 
 print(MC1.__class__.__name__ !='Sprite')
 myapp.run()
