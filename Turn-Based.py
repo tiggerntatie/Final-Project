@@ -94,14 +94,14 @@ class MC(Sprite):
         self.Sprites = []
     def jKey(self, event):
         self.KILL()
-        if self.moves >1:
+        if self.moves >0:
             self.Sprites.append(axe((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation))
-            self.moves -=2
+            self.moves -=1
     def kKey(self, event):
         self.KILL()
-        if self.moves >1:
+        if self.moves >2:
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
-            self.moves -=2
+            self.moves -=3
     def dKey(self, event):
         self.KILL()
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
