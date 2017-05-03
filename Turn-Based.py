@@ -2,6 +2,7 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
+spriteCreate = 0
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -51,7 +52,8 @@ class SpaceGame(App):
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
         if spriteCreate == 1:
-            global spriteCreate = 0
+            global spriteCreate
+            spriteCreate = 0
             self.create()
     def create(self):
         quad = random.randint(1,4)
