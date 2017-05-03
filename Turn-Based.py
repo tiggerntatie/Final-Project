@@ -41,10 +41,6 @@ class SpaceGame(App):
                 for x in self.allSprites:
                     x.step()
             MC1.step()
-            if self.iterations>5:
-                self.iterations = 0
-                self.create()
-                print("create sprite")
                 
             global turn
             turn = 0
@@ -318,9 +314,9 @@ def turnProgress ():
     if MC1.lives>0:
         global turn
         turn=1
+        myapp.create()
 def spaceKey (event):
     turnProgress()
-    myapp.create()
     
     
     
