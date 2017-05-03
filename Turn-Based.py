@@ -52,10 +52,7 @@ class SpaceGame(App):
             global turn
             turn = 0
         if t == 0:
-            print("hit s")
             MC1.hit2()
-            print("hit e")
-        
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
@@ -237,8 +234,8 @@ class plasmaBolt(Sprite):
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
-                    self.numberofSprites-=1
-                    self.allSprites.remove(allSprites[x.lp])
+                    myapp.numberofSprites-=1
+                    myapp.allSprites.remove(allSprites[x.lp])
         if -self.time+time.time()>10:
             self.destroy()
         
