@@ -62,10 +62,10 @@ class SpaceGame(App):
             xcolumn = 30*random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         else:
-            xcolumn = self.widht/2+random.randint(1,(self.width/2)//30)
+            xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,2)
-        print(whatSprite, quad, xcolumn, ycolumn)
+        print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn)))
         elif whatSprite == 2:
@@ -314,7 +314,9 @@ def turnProgress ():
     if MC1.lives>0:
         global turn
         turn=1
-        myapp.create()
+        if myapp.iterations>4:
+            myapp.iterations = 0
+            myapp.create()
 def spaceKey (event):
     turnProgress()
     
