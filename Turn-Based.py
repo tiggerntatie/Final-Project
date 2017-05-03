@@ -19,6 +19,7 @@ class SpaceGame(App):
         SCREEN_HEIGHT = self.height
         self.allSprites = []
         self.iterations = 0
+        self.numberofSprites = 0
     def step(self):
         
         
@@ -29,6 +30,9 @@ class SpaceGame(App):
                 for i in x.collidingWithSprites(None):
                     if i.__class__.__name__ !='Sprite' and i.__class__.__name__ !='MC':
                         i.destroy()
+                        self.numberofSprites-=1
+                        self.allSprites.remove(allSprites[i.lp])
+                        
         global swordlist, bulletlist, maintain
         if turn == 1:
             self.iterations +=1
@@ -74,10 +78,10 @@ class SpaceGame(App):
         whatSprite= random.randint(1,2)
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
-            self.allSprites.append(meleeSprite((xcolumn,ycolumn)))
+            self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
-            self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8)))
-
+            self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8), self.numberofSprites))
+        self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 hit = 0
 t=1
@@ -231,14 +235,17 @@ class plasmaBolt(Sprite):
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
+                    self.numberofSprites-=1
+                        self.allSprites.remove(allSprites[x.lp])
         if -self.time+time.time()>10:
             self.destroy()
         
         
 class meleeSprite(Sprite):
-    def __init__(self, position): 
+    def __init__(self, position, listposition): 
         super().__init__(ms, position)
         self.fxcenter = self.fycenter = 0.5
+        self.lp=listposition
     def step(self):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
@@ -252,11 +259,12 @@ class meleeSprite(Sprite):
                 swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
                 MC1.hit()
 class shootSprite(Sprite):
-    def __init__(self, position, ammo): 
+    def __init__(self, position, ammo, listposition): 
         super().__init__(ss, position)
         self.fxcenter = self.fycenter = 0.5
         self.ammo = ammo
         self.ammoMax = ammo
+        self.lp=listposition
     def step(self):
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2)-300>1:
