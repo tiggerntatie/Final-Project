@@ -208,11 +208,12 @@ class axe(Sprite):
         super().__init__(asset, position)
         self.scale = .3
         self.fxcenter = .5
-        self.fycenter = 1
-        self.rotation = rotation
+        self.fycenter = 0
+        self.rotation = rotation-pi
     def step(self):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
+                
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
                     print("hit", x.lp)
