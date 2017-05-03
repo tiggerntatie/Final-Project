@@ -26,7 +26,8 @@ class SpaceGame(App):
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
         for x in self.getSpritesbyClass(axe):
-            x.attack()
+            x.step()
+        
                         
         global swordlist, bulletlist, maintain
         if turn == 1:
@@ -209,14 +210,12 @@ class axe(Sprite):
         self.fxcenter = .5
         self.fycenter = 1
         self.rotation = rotation
-    def attack(self):
-        if len(self.collidingWithSprites(None))>=0:
-            print("axe hit", len(self.collidingWithSprites(None))
+    def step(self):
+        if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
-                print("hit", x.lp)
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
-                    
+                    print("hit", x.lp)
                     del myapp.allSprites[x.lp]
                     for i in myapp.allSprites:
                         if i.lp>x.lp:
