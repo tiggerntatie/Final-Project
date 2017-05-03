@@ -50,6 +50,9 @@ class SpaceGame(App):
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
+        if spriteCreate == 1:
+            global spriteCreate = 0
+            self.create()
     def create(self):
         quad = random.randint(1,4)
         if quad == 1:
@@ -316,7 +319,8 @@ def turnProgress ():
         turn=1
         if myapp.iterations>4:
             myapp.iterations = 0
-            myapp.create()
+            global spriteCreate
+            spriteCreate = 1
 def spaceKey (event):
     turnProgress()
     
