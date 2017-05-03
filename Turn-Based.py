@@ -53,6 +53,9 @@ class SpaceGame(App):
         if spriteCreate == 1:
             global spriteCreate
             spriteCreate = 0
+            if self.numberofSprites>5:
+                for _ in range(3):
+                    self.create()
             self.create()
     def create(self):
         quad = random.randint(1,4)
