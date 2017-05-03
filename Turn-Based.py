@@ -211,11 +211,12 @@ class axe(Sprite):
         self.rotation = rotation
     def attack(self):
         if len(self.collidingWithSprites(None))>=0:
-            print("axe hit")
+            print("axe hit", len(self.collidingWithSprites(None))
             for x in self.collidingWithSprites(None):
+                print("hit", x.lp)
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
-                    print("hit", x.lp)
+                    
                     del myapp.allSprites[x.lp]
                     for i in myapp.allSprites:
                         if i.lp>x.lp:
@@ -344,10 +345,6 @@ def turnProgress ():
             spriteCreate = 1
 def spaceKey (event):
     turnProgress()
-myapp.create()
-myapp.create()
-myapp.create()
-myapp.create()
 myapp.create()
     
     
