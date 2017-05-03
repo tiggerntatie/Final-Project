@@ -72,7 +72,7 @@ class SpaceGame(App):
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn)))
         elif whatSprite == 2:
-            self.allSprites.append(shootSprite((xcolumn, ycolumn), rand.randint(1,8)))
+            self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8)))
 
 myapp = SpaceGame(0,0)
 hit = 0
