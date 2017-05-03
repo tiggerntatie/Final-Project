@@ -39,8 +39,9 @@ class SpaceGame(App):
                 ship.destroy()
             for ship in self.getSpritesbyClass(bullet):
                 ship.destroy()
-            for x in self.allSprites:
-                x.step()
+            if len(self.allSprites)>0:
+                for x in self.allSprites:
+                    x.step()
             MC1.step()
             
             global turn
