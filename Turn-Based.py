@@ -17,9 +17,11 @@ class SpaceGame(App):
         SCREEN_WIDTH1=self.width
         SCREEN_HEIGHT = self.height
         self.allSprites = []
+        self.iterations = 0
     def step(self):
-        if (time.time()//1)%10< .5:
+        if self.iterations>60:
             self.create()
+        self.iterations +=1
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
         for x in self.getSpritesbyClass(axe):
