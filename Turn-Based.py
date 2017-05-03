@@ -24,7 +24,7 @@ class SpaceGame(App):
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
         for x in self.getSpritesbyClass(axe):
-            if len(x.collidingWithSprites(None))>1:
+            if len(x.collidingWithSprites(None))>0:
                 for i in x.collidingWithSprites(None):
                     if i.__class__.__name__ !='Sprite' and i.__class__.__name__ !='MC':
                         i.destroy()
@@ -43,8 +43,9 @@ class SpaceGame(App):
             MC1.step()
             if self.iterations>5:
                 self.iterations = 0
-                print("create sprite")
                 self.create()
+                print("create sprite")
+                
             global turn
             turn = 0
         if t == 0:
@@ -318,15 +319,12 @@ def turnProgress ():
         global turn
         turn=1
 def spaceKey (event):
-    
     turnProgress()
+    myapp.create()
     
     
     
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-print((20.1//1)%10)
-
-print(MC1.__class__.__name__ !='Sprite')
 myapp.run()
