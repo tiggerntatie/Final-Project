@@ -19,7 +19,7 @@ class SpaceGame(App):
         self.allSprites = []
         self.iterations = 0
     def step(self):
-        if self.iterations>60:
+        if self.iterations>500:
             self.iterations = 0
             print("create sprite")
             self.create()
