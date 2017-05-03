@@ -51,12 +51,14 @@ class SpaceGame(App):
             for ship in self.getSpritesbyClass(shootSprite):
                 ship.reload1()
         if spriteCreate == 1:
+            print(self.numberofSprites)
             global spriteCreate
             spriteCreate = 0
             if self.numberofSprites>5:
                 for _ in range(3):
                     self.create()
-            self.create()
+            else:
+                self.create()
     def create(self):
         quad = random.randint(1,4)
         if quad == 1:
