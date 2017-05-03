@@ -225,7 +225,8 @@ class axe(Sprite):
 class plasmaBolt(Sprite):
     
     def __init__(self, position, rotation): 
-        asset = ImageAsset("plasma-weapon-fire-animation.gif")
+        asset = ImageAsset("plasma-weapon-fire-animation.png")
+        
         super().__init__(asset, position)
         self.scale = .1
         self.fxcenter = .5
