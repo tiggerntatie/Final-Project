@@ -33,7 +33,7 @@ class SpaceGame(App):
                     if i.__class__.__name__ !='Sprite' and i.__class__.__name__ !='MC':
                         i.destroy()
                         self.numberofSprites-=1
-                        self.allSprites.remove(allSprites[i.lp])
+                        self.allSprites.remove(self.allSprites[i.lp])
                         
         global swordlist, bulletlist, maintain
         if turn == 1:
@@ -216,6 +216,17 @@ class axe(Sprite):
         self.fxcenter = .5
         self.fycenter = 1
         self.rotation = rotation
+    def attack(self):
+        if len(self.collidingWithSprites(None))>0:
+            for x in self.collidingWithSprites(None):
+                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
+                    x.destroy()
+                    print("hit", x.lp)
+                    del myapp.allSprites[x.lp]
+                    for i in myapp.allSprites:
+                        if i.lp>x.lp:
+                            i.lp-=1
+                    myapp.numberofSprites -=1
         
 class plasmaBolt(Sprite):
     
