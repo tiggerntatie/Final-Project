@@ -236,7 +236,7 @@ class plasmaBolt(Sprite):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
                     self.numberofSprites-=1
-                        self.allSprites.remove(allSprites[x.lp])
+                    self.allSprites.remove(allSprites[x.lp])
         if -self.time+time.time()>10:
             self.destroy()
         
