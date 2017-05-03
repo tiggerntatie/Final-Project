@@ -19,11 +19,8 @@ class SpaceGame(App):
         self.allSprites = []
         self.iterations = 0
     def step(self):
-        if self.iterations>500:
-            self.iterations = 0
-            print("create sprite")
-            self.create()
-        self.iterations +=1
+        
+        
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
         for x in self.getSpritesbyClass(axe):
@@ -33,6 +30,7 @@ class SpaceGame(App):
                         i.destroy()
         global swordlist, bulletlist, maintain
         if turn == 1:
+            self.iterations +=1
             
             maintain = False
             for ship in self.getSpritesbyClass(sword):
@@ -43,7 +41,10 @@ class SpaceGame(App):
                 for x in self.allSprites:
                     x.step()
             MC1.step()
-            
+            if self.iterations>5:
+                self.iterations = 0
+                print("create sprite")
+                self.create()
             global turn
             turn = 0
         if t == 0:
@@ -67,6 +68,7 @@ class SpaceGame(App):
             xcolumn = self.widht/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,2)
+        print(whatSprite, quad, xcolumn, ycolumn)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn)))
         elif whatSprite == 2:
