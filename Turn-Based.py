@@ -218,13 +218,13 @@ class plasmaBolt(Sprite):
         self.rotation = rotation
         self.time = time.time()
     def step(self):
-        self.x -=cos((pi/2)-self.rotation)
-        self.y -=sin((pi/2)-self.rotation)
+        self.x -=1.5*cos((pi/2)-self.rotation)
+        self.y -=1.5*sin((pi/2)-self.rotation)
         if len(self.collidingWithSprites(None))>1:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
-        if -self.time+time.time()>5:
+        if -self.time+time.time()>10:
             self.destroy()
         
         
