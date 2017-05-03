@@ -124,7 +124,7 @@ class MC(Sprite):
     def jKey(self, event):
         self.KILL()
         if self.moves >0:
-            self.Sprites.append(axe((self.x-70*cos((pi/2)-self.rotation), self.y -70*sin((pi/2)-self.rotation)), self.rotation))
+            self.Sprites.append(axe((self.x-60*cos((pi/2)-self.rotation), self.y -60*sin((pi/2)-self.rotation)), self.rotation))
             self.moves -=1
     def kKey(self, event):
         self.KILL()
@@ -208,7 +208,7 @@ class axe(Sprite):
         super().__init__(asset, position)
         self.scale = .3
         self.fxcenter = .5
-        self.fycenter = 1
+        self.fycenter = 0
         self.rotation = rotation
     def step(self):
         if len(self.collidingWithSprites(None))>0:
