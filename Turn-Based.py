@@ -20,6 +20,8 @@ class SpaceGame(App):
         self.iterations = 0
     def step(self):
         if self.iterations>60:
+            self.iterations = 0
+            print("create sprite")
             self.create()
         self.iterations +=1
         for x in self.getSpritesbyClass(plasmaBolt):
