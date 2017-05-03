@@ -210,7 +210,8 @@ class axe(Sprite):
         self.fycenter = 1
         self.rotation = rotation
     def attack(self):
-        if len(self.collidingWithSprites(None))>0:
+        if len(self.collidingWithSprites(None))>=0:
+            print("axe hit")
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
                     x.destroy()
