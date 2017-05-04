@@ -20,7 +20,7 @@ class SpaceGame(App):
         self.allSprites = []
         self.iterations = 0
         self.numberofSprites = 0
-        self.Created == 0
+        self.Created = 0
     def step(self):
         
         
