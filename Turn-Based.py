@@ -188,10 +188,11 @@ class MC(Sprite):
         self.lives -=1
         heartlist[self.lives].destroy()
         heartlist.remove(heartlist[self.lives])
-        self.dead = Sprite(dead_asset, (1,1))
-        global t
-        t=0
-        self.end = self.start + .5
+        if t!=0:
+            self.dead = Sprite(dead_asset, (1,1))
+            global t
+            t=0
+            self.end = self.start + .5
         
     def hit2(self):
         elapsed = time.time()
