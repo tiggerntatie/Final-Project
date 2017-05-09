@@ -113,7 +113,7 @@ ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, r
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
-MCshield = CircleAsset(20, noline, green)
+MCshield = CircleAsset(25, noline, green)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -230,7 +230,7 @@ class MC(Sprite):
                 else:
                     self.go=Sprite(gameover, (1,1))
                     self.go.scale = SCREEN_HEIGHT/571
-class shield(sprite):
+class shield(Sprite):
     def __init__(self, position):
         super().__init__(MCshield, position)
     def step(self):
