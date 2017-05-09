@@ -374,7 +374,7 @@ lp = 0
 GG = 0
 while GG != 1:
     heartlist[lp]=heart((x,y), lp)
-    ammolist[lp]=ammo((myapp.width-x,myapp.hieght-y), lp)
+    ammolist[lp]=ammo((myapp.width-x,myapp.height-y), lp)
     if lp == lives-1:
         GG = 1
     else:
