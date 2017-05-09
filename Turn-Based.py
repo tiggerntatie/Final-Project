@@ -95,7 +95,7 @@ t=1
 maintain = False
 lives = 4
 heartlist = list(range(4))
-
+ammolist = list(range(4))
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -357,7 +357,11 @@ class heart(Sprite):
         
         
     
-    
+class ammo(Sprite):
+    asset = ImageAsset("imageedit_2_9797942232.png")
+    def __init__(self, position, heartnumber): 
+        super().__init__(ammo.asset, position)
+        self.fxcenter = self.fycenter = 0.5
 
    
 
@@ -370,6 +374,7 @@ lp = 0
 GG = 0
 while GG != 1:
     heartlist[lp]=heart((x,y), lp)
+    ammolist[lp]=ammo((myapp.width-x,myapp.hieght-y), lp)
     if lp == lives-1:
         GG = 1
     else:
