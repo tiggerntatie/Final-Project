@@ -31,6 +31,8 @@ class SpaceGame(App):
             x.step()
         for x in self.getSpritesbyClass(shield):
             x.step()
+        for ship in self.getSpritesbyClass(bullet):
+                ship.step()
         
                         
         global swordlist, bulletlist, maintain
@@ -40,8 +42,7 @@ class SpaceGame(App):
             maintain = False
             for ship in self.getSpritesbyClass(sword):
                 ship.destroy()
-            for ship in self.getSpritesbyClass(bullet):
-                ship.destroy()
+            
             for x in self.getSpritesbyClass(shield):
                 x.destroy()
             if len(self.allSprites)>0:
@@ -334,6 +335,10 @@ class bullet(Sprite):
         super().__init__(smlBullet, position)
         self.fxcenter = self.fycenter = 0.5
         self.rotation = rotation
+        self.alive = time.time()
+    def step(self):
+        if time.time()-self.alive >3:
+            self.destroy()
         
         
 class sword(Sprite):
