@@ -49,6 +49,7 @@ class SpaceGame(App):
                 for x in self.allSprites:
                     x.step()
             MC1.step()
+            MC1.shielded = -1
                 
             global turn
             turn = 0
