@@ -139,7 +139,7 @@ class MC(Sprite):
     def lKey(self, event):
         self.KILL()
         if self.moves >0 and self.cooldownS <1:
-            self.Sprites.append(Sprite(MCshield, (self.x,self.y)))
+            shield((self.x,self.y))
             self.shielded = 2
             self.moves -=2
             self.cooldownS=2
