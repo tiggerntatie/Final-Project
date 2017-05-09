@@ -1,4 +1,4 @@
-from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
@@ -109,6 +109,7 @@ ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, r
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
+MCshield = CircleAsset(20, noline, green)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -121,6 +122,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "e", self.eKey)
         SpaceGame.listenKeyEvent("keydown", "j", self.jKey)
         SpaceGame.listenKeyEvent("keydown", "k", self.kKey)
+        SpaceGame.listenKeyEvent("keydown", "l", self.lKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = ls
         self.start=0
@@ -128,6 +130,15 @@ class MC(Sprite):
         self.dead = 0
         self.go = 0
         self.Sprites = []
+        self.shielded = -1
+        self.cooldownS = 0
+    def lKey(self, event):
+        self.KILL()
+        if self.moves >0 and self.cooldownS <1:
+            self.Sprites.append(Sprite(MCshield, (self.x,self.y)))
+            self.shielded = 2
+            self.moves -=2
+            self.cooldownS=2
     def jKey(self, event):
         self.KILL()
         if self.moves >0:
@@ -184,17 +195,23 @@ class MC(Sprite):
     def step(self):
         self.KILL()
         self.moves = speed1
+        if self.cooldownS>0:
+            self.cooldownS-=1
     def hit(self):
-        self.start = time.time()
-        global heartlist
-        self.lives -=1
-        heartlist[self.lives].destroy()
-        heartlist.remove(heartlist[self.lives])
-        if t!=0:
-            self.dead = Sprite(dead_asset, (1,1))
-            global t
-            t=0
-            self.end = self.start + .5
+        if self.shielded >0:
+            self.shielded -=1
+        else:
+            self.cooldownS = 0
+            self.start = time.time()
+            global heartlist
+            self.lives -=1
+            heartlist[self.lives].destroy()
+            heartlist.remove(heartlist[self.lives])
+            if t!=0:
+                self.dead = Sprite(dead_asset, (1,1))
+                global t
+                t=0
+                self.end = self.start + .5
         
     def hit2(self):
         elapsed = time.time()
