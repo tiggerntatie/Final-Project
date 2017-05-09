@@ -29,6 +29,8 @@ class SpaceGame(App):
             x.step()
         for x in self.getSpritesbyClass(axe):
             x.step()
+        for x in self.getSpritesbyClass(shield):
+            x.step()
         
                         
         global swordlist, bulletlist, maintain
@@ -40,6 +42,8 @@ class SpaceGame(App):
                 ship.destroy()
             for ship in self.getSpritesbyClass(bullet):
                 ship.destroy()
+            for x in self.getSpritesbyClass(shield):
+                x.destroy()
             if len(self.allSprites)>0:
                 for x in self.allSprites:
                     x.step()
@@ -226,6 +230,12 @@ class MC(Sprite):
                 else:
                     self.go=Sprite(gameover, (1,1))
                     self.go.scale = SCREEN_HEIGHT/571
+class shield(sprite):
+    def __init__(self, position):
+        super().__init__(MCshield, position)
+    def step(self):
+        self.x = MC1.x
+        self.y= MC1.y
 class axe(Sprite):
     
     def __init__(self, position, rotation): 
