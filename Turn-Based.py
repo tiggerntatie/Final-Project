@@ -25,8 +25,7 @@ class SpaceGame(App):
     def step(self):
         
         
-        for x in self.getSpritesbyClass(plasmaBolt):
-            x.step()
+        
         for x in self.getSpritesbyClass(axe):
             x.step()
         for x in self.getSpritesbyClass(shield):
@@ -65,6 +64,8 @@ class SpaceGame(App):
             
             for _ in range(self.production//5+1):
                     self.create()
+        for x in self.getSpritesbyClass(plasmaBolt):
+            x.step()
     def create(self):
         self.Created +=1
         self.production +=1
