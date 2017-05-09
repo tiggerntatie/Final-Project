@@ -249,7 +249,7 @@ class axe(Sprite):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
                 
-                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
+                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     x.destroy()
                     print("hit", x.lp)
                     del myapp.allSprites[x.lp]
@@ -274,7 +274,7 @@ class plasmaBolt(Sprite):
         self.y -=1.5*sin((pi/2)-self.rotation)
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
-                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC':
+                if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     x.destroy()
                     print("hit", x.lp)
                     del myapp.allSprites[x.lp]
