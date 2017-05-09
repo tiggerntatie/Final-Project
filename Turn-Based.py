@@ -21,6 +21,7 @@ class SpaceGame(App):
         self.iterations = 0
         self.numberofSprites = 0
         self.Created = 0
+        self.production = 0
     def step(self):
         
         
@@ -55,13 +56,12 @@ class SpaceGame(App):
             print(self.numberofSprites)
             global spriteCreate
             spriteCreate = 0
-            if self.Created>5:
-                for _ in range(2):
+            
+            for _ in range(self.production//5+1):
                     self.create()
-            else:
-                self.create()
     def create(self):
         self.Created +=1
+        self.production +=1
         quad = random.randint(1,4)
         if quad == 1:
             xcolumn = self.width/2+30*random.randint(1,(self.width/2)//30)
