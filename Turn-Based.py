@@ -97,9 +97,11 @@ maintain = False
 lives = 4
 heartlist = list(range(4))
 ammolist = list(range(bulletCount))
+
 black = Color(0, 1)
 speed = 10
 speed1=4
+movelist = list(range(speed1))
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -118,6 +120,7 @@ ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, b
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
 MCshield = CircleAsset(25, noline, green)
+MCmoves = CircleAsset(10, noline, black)
 class MC(Sprite):
     def __init__(self, position, ls):
         super().__init__(cf, position)
@@ -386,6 +389,7 @@ lp = 0
 GG = 0
 while GG != 1:
     heartlist[lp]=heart((x,y), lp)
+    movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
     if lp == lives-1:
         GG = 1
         lp = 0
