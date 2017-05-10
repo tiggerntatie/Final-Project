@@ -399,23 +399,26 @@ while GG != 0:
         x+=38
         lp+=1
 def RELOAD ():
+    
     x = 15
     y=15
     lp = 0
     GG = 1
-    for x in ammolist:
-        del ammolist[x.bulletnumber]
-        x.destroy()
-        
-        
+    
+    for i in ammolist:
+        i.destroy()
     while GG != 0:
-        ammolist.append(ammo((myapp.width-15-x,myapp.height-y*3), lp))
+        ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
         if lp == bulletCount-1:
             GG = 0
             lp = 0
         else:
             x+=38
             lp+=1
+        
+   
+        
+    
     
     
 turn = 0
