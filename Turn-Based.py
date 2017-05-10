@@ -404,7 +404,7 @@ def RELOAD ():
         
     while GG != 0:
         ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-        if lp == MC1.ammo-1:
+        if lp == ammo-1:
             GG = 0
             lp = 0
         else:
