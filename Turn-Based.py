@@ -398,6 +398,9 @@ while GG != 0:
         x+=38
         lp+=1
 def RELOAD ():
+    x = 15
+    y=15
+    lp = 0
     GG = 1
     for x in ammolist:
         x.destroy()
