@@ -150,23 +150,37 @@ class MC(Sprite):
         if self.moves >0 and self.cooldownS <1:
             shield((self.x,self.y))
             self.shielded = 2
-            self.moves -=2
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
             self.cooldownS=2
     def rKey(self,event):
         if self.moves >3:
-            self.moves -=3
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
             self.ammo = 4
             RELOAD()
     def jKey(self, event):
         self.KILL()
         if self.moves >0:
             self.Sprites.append(axe((self.x-60*cos((pi/2)-self.rotation), self.y -60*sin((pi/2)-self.rotation)), self.rotation))
+            smovelist[self.moves-1].destroy()
             self.moves -=1
     def kKey(self, event):
         self.KILL()
         if self.moves >2 and self.ammo>0:
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
-            self.moves -=3
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
             ammolist[self.ammo-1].destroy()
             self.ammo -=1
     def dKey(self, event):
