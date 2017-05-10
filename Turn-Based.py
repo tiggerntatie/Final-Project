@@ -372,6 +372,7 @@ class ammo(Sprite):
         super().__init__(ammo.asset, position)
         self.fxcenter = self.fycenter = 0.5
         self.scale = .4
+        self.bulletnumber=bulletnumber
 
    
 
