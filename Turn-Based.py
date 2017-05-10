@@ -90,7 +90,7 @@ class SpaceGame(App):
             self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8), self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
-ammo = 4
+bulletCount = 4
 hit = 0
 t=1
 maintain = False
@@ -141,7 +141,7 @@ class MC(Sprite):
         self.Sprites = []
         self.shielded = -1
         self.cooldownS = 0
-        self.ammo = ammo
+        self.ammo = bulletCount
     def lKey(self, event):
         self.KILL()
         if self.moves >0 and self.cooldownS <1:
@@ -392,7 +392,7 @@ while GG != 1:
         lp+=1
 while GG != 0:
     ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-    if lp == ammo-1:
+    if lp == bulletCount-1:
         GG = 0
     else:
         x+=38
@@ -404,7 +404,7 @@ def RELOAD ():
         
     while GG != 0:
         ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-        if lp == ammo-1:
+        if lp == bulletCount-1:
             GG = 0
             lp = 0
         else:
