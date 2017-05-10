@@ -32,6 +32,8 @@ class SpaceGame(App):
             x.step()
         for ship in self.getSpritesbyClass(bullet):
                 ship.step()
+        for ship in self.getSpritesbyClass(ShieldSprite):
+                ship.step()
         
                         
         global swordlist, bulletlist, maintain
@@ -94,12 +96,14 @@ class SpaceGame(App):
         else:
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
-        whatSprite= random.randint(1,2)
+        whatSprite= random.randint(1,3)
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
             self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8), self.numberofSprites))
+        elif whatSprite == 3:
+            self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -324,7 +328,7 @@ class plasmaBolt(Sprite):
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     if x.__class__.__name__ ='ShieldSprite':
-                        x -=1
+                        x.hp -=1
                         self.destroy()
                     else:
                         x.destroy()
