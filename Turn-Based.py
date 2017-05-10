@@ -130,6 +130,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "j", self.jKey)
         SpaceGame.listenKeyEvent("keydown", "k", self.kKey)
         SpaceGame.listenKeyEvent("keydown", "l", self.lKey)
+        SpaceGame.listenKeyEvent("keydown", "r", self.rKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = ls
         self.start=0
@@ -146,6 +147,10 @@ class MC(Sprite):
             self.shielded = 2
             self.moves -=2
             self.cooldownS=2
+    def rKey(self,event):
+        if self.moves >3:
+            self.moves -=3
+            RELOAD()
     def jKey(self, event):
         self.KILL()
         if self.moves >0:
