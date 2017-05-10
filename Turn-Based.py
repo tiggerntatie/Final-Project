@@ -90,12 +90,13 @@ class SpaceGame(App):
             self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8), self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
+ammo = 4
 hit = 0
 t=1
 maintain = False
 lives = 4
 heartlist = list(range(4))
-ammolist = list(range(MC1.ammo))
+ammolist = list(range(ammo))
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -140,7 +141,7 @@ class MC(Sprite):
         self.Sprites = []
         self.shielded = -1
         self.cooldownS = 0
-        self.ammo = 4
+        self.ammo = ammo
     def lKey(self, event):
         self.KILL()
         if self.moves >0 and self.cooldownS <1:
