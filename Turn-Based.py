@@ -186,7 +186,7 @@ class MC(Sprite):
         self.KILL()
         if self.moves >0:
             self.Sprites.append(axe((self.x-60*cos((pi/2)-self.rotation), self.y -60*sin((pi/2)-self.rotation)), self.rotation))
-            smovelist[self.moves-1].destroy()
+            movelist[self.moves-1].destroy()
             self.moves -=1
     def kKey(self, event):
         self.KILL()
@@ -432,7 +432,7 @@ class ShieldSprite(Sprite):
         else:
             if self.y-2<0:
                 self.y = myapp.height
-            elif self.y-2>self.height:
+            elif self.y-2>myapp.height:
                 self.y=22.5
             else:
                 self.y +=2
