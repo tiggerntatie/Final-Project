@@ -164,6 +164,7 @@ class MC(Sprite):
         if self.moves >2 and self.ammo>0:
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
             self.moves -=3
+            ammolist[self.ammo-1].destroy()
             self.ammo -=1
     def dKey(self, event):
         self.KILL()
@@ -399,8 +400,7 @@ def RELOAD ():
     lp = 0
     GG = 1
     
-    for i in ammolist:
-        i.destroy()
+    
     while GG != 0:
         ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
         if lp == bulletCount-1:
