@@ -368,7 +368,7 @@ class heart(Sprite):
     
 class ammo(Sprite):
     asset = ImageAsset("imageedit_2_9797942232.png")
-    def __init__(self, position, heartnumber): 
+    def __init__(self, position, bulletnumber): 
         super().__init__(ammo.asset, position)
         self.fxcenter = self.fycenter = 0.5
         self.scale = .4
@@ -403,7 +403,7 @@ def RELOAD ():
     lp = 0
     GG = 1
     for x in ammolist:
-        del ammolist[x.lp]
+        del ammolist[x.bulletnumber]
         x.destroy()
         
         
