@@ -403,10 +403,12 @@ def RELOAD ():
     lp = 0
     GG = 1
     for x in ammolist:
+        del ammolist[x.lp]
         x.destroy()
         
+        
     while GG != 0:
-        ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
+        ammolist.append(ammo((myapp.width-15-x,myapp.height-y*3), lp))
         if lp == bulletCount-1:
             GG = 0
             lp = 0
