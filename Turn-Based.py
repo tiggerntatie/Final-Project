@@ -36,6 +36,18 @@ class SpaceGame(App):
                         
         global swordlist, bulletlist, maintain
         if turn == 1:
+            x = 15
+            y=15
+            lp = 0
+            GG = 0
+            while GG != 1:
+                movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
+                if lp == lives-1:
+                    GG = 1
+                    lp = 0
+                else:
+                    x+=38
+                    lp+=1
             self.iterations +=1
             
             maintain = False
