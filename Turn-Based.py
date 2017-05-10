@@ -95,7 +95,7 @@ t=1
 maintain = False
 lives = 4
 heartlist = list(range(4))
-ammolist = list(range(4))
+ammolist = list(range(MC1.ammo))
 black = Color(0, 1)
 speed = 10
 speed1=4
@@ -140,6 +140,7 @@ class MC(Sprite):
         self.Sprites = []
         self.shielded = -1
         self.cooldownS = 0
+        self.ammo = 4
     def lKey(self, event):
         self.KILL()
         if self.moves >0 and self.cooldownS <1:
@@ -150,6 +151,7 @@ class MC(Sprite):
     def rKey(self,event):
         if self.moves >3:
             self.moves -=3
+            self.ammo = 4
             RELOAD()
     def jKey(self, event):
         self.KILL()
@@ -158,9 +160,10 @@ class MC(Sprite):
             self.moves -=1
     def kKey(self, event):
         self.KILL()
-        if self.moves >2:
+        if self.moves >2 and self.ammo>0:
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
             self.moves -=3
+            self.ammo -=1
     def dKey(self, event):
         self.KILL()
         if self.moves > 0 and self.x +speed*cos(self.rotation)<SCREEN_WIDTH1 and self.y -speed*sin(self.rotation) >0:
@@ -388,16 +391,19 @@ while GG != 1:
         lp+=1
 while GG != 0:
     ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-    if lp == lives-1:
+    if lp == MC1.ammo-1:
         GG = 0
     else:
         x+=38
         lp+=1
 def RELOAD ():
     GG = 1
+    for x in ammolist:
+        x.destroy()
+        
     while GG != 0:
     ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-    if lp == lives-1:
+    if lp == MC1.ammo-1:
         GG = 0
         lp = 0
     else:
