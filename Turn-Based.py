@@ -129,6 +129,7 @@ cf = PolygonAsset(((-10,-15),(0,-22.5),(10,-15),(10,15),(-10,15)), thinline, gra
 gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
+ShieldS = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, green)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
 MCshield = CircleAsset(25, noline, green)
@@ -322,13 +323,17 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
-                    x.destroy()
-                    print("hit", x.lp)
-                    del myapp.allSprites[x.lp]
-                    for i in myapp.allSprites:
-                        if i.lp>x.lp:
-                            i.lp-=1
-                    myapp.numberofSprites -=1
+                    if x.__class__.__name__ ='ShieldSprite':
+                        x -=1
+                        self.destroy()
+                    else:
+                        x.destroy()
+                        print("hit", x.lp)
+                        del myapp.allSprites[x.lp]
+                        for i in myapp.allSprites:
+                            if i.lp>x.lp:
+                                i.lp-=1
+                        myapp.numberofSprites -=1
                     
         if -self.time+time.time()>10:
             self.destroy()
@@ -408,7 +413,21 @@ class ammo(Sprite):
         self.fxcenter = self.fycenter = 0.5
         self.scale = .4
         self.bulletnumber=bulletnumber
-
+class ShieldSprite(Sprite):
+    def __init__(self, position, hp, listposition): 
+        super().__init__(ShieldS, position)
+        self.hp = hp
+        self.fxcenter = self.fycenter = self.hp*2
+    def step(self):
+        if self.hp <1:
+            self.destroy
+        else:
+            if self.y-2<0:
+                self.y = myapp.height
+            elif self.y-2>self.height:
+                self.y=0
+            else:
+                self.y +=2
    
 
 
