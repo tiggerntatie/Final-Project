@@ -424,7 +424,8 @@ class ShieldSprite(Sprite):
     def __init__(self, position, hp, listposition): 
         super().__init__(ShieldS, position)
         self.hp = hp
-        self.fxcenter = self.fycenter = self.hp*2
+        self.fxcenter =  self.hp*2
+        self.fycenter = 1
     def step(self):
         if self.hp <1:
             self.destroy
@@ -432,7 +433,7 @@ class ShieldSprite(Sprite):
             if self.y-2<0:
                 self.y = myapp.height
             elif self.y-2>self.height:
-                self.y=0
+                self.y=22.5
             else:
                 self.y +=2
    
