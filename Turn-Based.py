@@ -388,6 +388,16 @@ while GG != 0:
     else:
         x+=38
         lp+=1
+def RELOAD ():
+    GG = 1
+    while GG != 0:
+    ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
+    if lp == lives-1:
+        GG = 0
+        lp = 0
+    else:
+        x+=38
+        lp+=1
     
     
 turn = 0
