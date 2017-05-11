@@ -429,10 +429,10 @@ class ShieldSprite(Sprite):
         self.fycenter = 1
     def step(self):
         atan2(self.y-MC1.y, self.x-MC1.x)
-        q = -1/((self.y-MC1.y)/(self.x-MC1.x))
+        q = pi/2+atan2(self.y-MC1.y, self.x-MC1.x)
         self.x += 2*cos(q)
         self.y+= 2*sin(q)
-        self.rotation = pi/2 - q
+        self.rotation =  q
         if self.hp <1:
             self.destroy
         
