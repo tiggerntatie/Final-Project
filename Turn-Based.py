@@ -428,7 +428,8 @@ class ShieldSprite(Sprite):
         self.fxcenter =  self.hp*2
         self.fycenter = 1
     def step(self):
-        q = -1/atan2(self.y-MC1.y, self.x-MC1.x)
+        atan2(self.y-MC1.y, self.x-MC1.x)
+        q = -1/((self.y-MC1.y)/(self.x-MC1.x))
         self.x += 2*cos(q)
         self.y+= 2*sin(q)
         self.rotation = pi/2 - q
