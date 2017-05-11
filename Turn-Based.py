@@ -98,6 +98,7 @@ class SpaceGame(App):
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,3)
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
+        self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
@@ -429,10 +430,10 @@ class ShieldSprite(Sprite):
         self.fycenter = 1
     def step(self):
         atan2(self.y-MC1.y, self.x-MC1.x)
-        q = pi/2+atan2(self.y-MC1.y, self.x-MC1.x)
+        q = -1*pi/2+atan2(self.y-MC1.y, self.x-MC1.x)
         self.x += 2*cos(q)
         self.y+= 2*sin(q)
-        self.rotation =  q
+        self.rotation =  2*pi/2-atan2(self.y-MC1.y, self.x-MC1.x)
         if self.hp <1:
             self.destroy
         
