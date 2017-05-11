@@ -428,12 +428,10 @@ class ShieldSprite(Sprite):
         self.fxcenter =  self.hp*2
         self.fycenter = 1
     def step(self):
-        if self.y-2<0:
-            self.y = myapp.height
-        elif self.y-2>myapp.height:
-            self.y=22.5
-        else:
-            self.y +=2
+        q = -1/atan2(self.y-MC1.y, self.x-MC1.x)
+        self.x += 2*cos(q)
+        self.y+= 2*sin(q)
+        self.rotation = pi/2 - q
         if self.hp <1:
             self.destroy
         
