@@ -98,7 +98,6 @@ class SpaceGame(App):
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,3)
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
-        self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
@@ -397,7 +396,7 @@ class bullet(Sprite):
         self.rotation = rotation
         self.alive = time.time()
     def step(self):
-        if time.time()-self.alive >3:
+        if time.time()-self.alive >.5:
             self.destroy()
         
         
