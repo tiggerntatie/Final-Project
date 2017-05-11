@@ -425,7 +425,7 @@ class ShieldSprite(Sprite):
     def __init__(self, position, hp, listposition): 
         super().__init__(ShieldS, position)
         self.hp = hp
-        self.fxcenter =  self.hp*2
+        self.fxcenter =  self.hp*4
         self.fycenter = 1
     def step(self):
         atan2(self.y-MC1.y, self.x-MC1.x)
