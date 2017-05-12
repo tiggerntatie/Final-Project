@@ -383,8 +383,7 @@ class spdSprite(Sprite):
         self.start = time.time()
     def step(self):
         if self.running != 1:
-            self.charge+=1
-            if self.charge>self.jumpTime:
+            if time.time()-self.start>self.jumpTime:
                 self.charge = 0
                 self.start = time.time()
                 global activated
@@ -411,6 +410,7 @@ class spdSprite(Sprite):
             global activated
             del activate[myapp.allSprites[self.lp]]
             self.running = 0
+            self.start = time.time()
                 
         
 class shootSprite(Sprite):
