@@ -38,6 +38,8 @@ class SpaceGame(App):
                 ship.step()
         for ship in self.getSpritesbyClass(ShieldSprite):
                 ship.step()
+        for ship in self.getSpritesbyClass(spdSprite):
+                ship.step()
         
                         
         global swordlist, bulletlist, maintain
@@ -399,7 +401,7 @@ class spdSprite(Sprite):
             print(time.time()-self.start, self.jumpTime)
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
-            if len(myapp.collidingwithSprites(MC))>0:
+            if len(myapp.collidingWithSprites(MC))>0:
                 MC1.hit
                 del myapp.allSprites[x.lp]
                 for i in myapp.allSprites:
