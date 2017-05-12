@@ -24,7 +24,10 @@ class SpaceGame(App):
         self.Created = 0
         self.production = 0
     def step(self):
-        
+        global activated
+        if len(activated)>0:
+            for x in activated:
+                x.attack()
         
         
         for x in self.getSpritesbyClass(axe):
@@ -402,6 +405,9 @@ class spdSprite(Sprite):
                 self.destroy()
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
+            global activated
+            del activate[myapp.allSprites[self.lp]]
+            self.running = 0
                 
         
 class shootSprite(Sprite):
