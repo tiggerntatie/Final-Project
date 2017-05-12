@@ -113,7 +113,7 @@ class SpaceGame(App):
         elif whatSprite == 3:
             self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         elif whatSprite == 4:
-            self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-MC1.y), (xcolumn-MC1.x)),self.numberofSprites))
+            self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-240), (xcolumn-320)),self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
