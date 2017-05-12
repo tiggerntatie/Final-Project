@@ -3,6 +3,7 @@ from math import pi, cos, sin, atan2, sqrt
 import time
 import random
 spriteCreate = 0
+activated = []
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -373,22 +374,36 @@ class spdSprite(Sprite):
         self.lp=listposition
         self.charge = 0
         self.jumpTime = jumpTime
+        self.running = 0
+        self.start = time.time()
     def step(self):
-        self.charge+=1
-        if self.charge>self.jumpTime:
-            self.charge = 0
-            global 
-        self.rotation +=pi/60
-        self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
-        self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
-        if MC1.rotation == 0 or MC1.rotation == pi:
-            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
-                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
-                MC1.hit()
-        if MC1.rotation == pi/2 or MC1.rotation == 3*pi/2:
-            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
-                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
-                MC1.hit()
+        if self.running != 1:
+            self.charge+=1
+            if self.charge>self.jumpTime:
+                self.charge = 0
+                self.start = time.time()
+                global activated
+                activated.append(myapp.allSprites[self.lp])
+                self.running = 1
+                
+            else:
+                self.rotation +=pi/60
+    def attack(self):
+        if time.time()-self.start<self.jumpTime
+            self.x -= 10*cos(-self.rotation+pi/2)
+            self.y -= 10*sin(-self.rotation+pi/2)
+            if len(myapp.collidingwithSprites(MC))>0:
+                MC1.hit
+                del myapp.allSprites[x.lp]
+                for i in myapp.allSprites:
+                    if i.lp>self.lp:
+                        i.lp-=1
+                myapp.numberofSprites -=1
+                self.destroy()
+        else:
+            self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
+                
+        
 class shootSprite(Sprite):
     def __init__(self, position, ammo, listposition): 
         super().__init__(ss, position)
