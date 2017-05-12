@@ -110,7 +110,7 @@ class SpaceGame(App):
         elif whatSprite == 3:
             self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         elif whatSprite == 4:
-            self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), self.numberofSprites))
+            self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-MC1.y), (xcolumn-MC1.x)),self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -373,7 +373,7 @@ class meleeSprite(Sprite):
                 swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
                 MC1.hit()
 class spdSprite(Sprite):
-    def __init__(self, position, jumpTime, listposition): 
+    def __init__(self, position, jumpTime,rotation,listposition): 
         super().__init__(speedSprite, position)
         self.fxcenter = self.fycenter = 0.5
         self.lp=listposition
