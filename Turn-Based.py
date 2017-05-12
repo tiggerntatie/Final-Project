@@ -101,7 +101,7 @@ class SpaceGame(App):
         else:
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
-        whatSprite= random.randint(1,3)
+        whatSprite= random.randint(1,4)
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
@@ -109,6 +109,8 @@ class SpaceGame(App):
             self.allSprites.append(shootSprite((xcolumn, ycolumn), random.randint(1,8), self.numberofSprites))
         elif whatSprite == 3:
             self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
+        elif whatSprite == 4:
+            self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -393,8 +395,8 @@ class spdSprite(Sprite):
                 self.rotation +=pi/60
     def attack(self):
         if time.time()-self.start<self.jumpTime
-            self.x -= 10*cos(-self.rotation+pi/2)
-            self.y -= 10*sin(-self.rotation+pi/2)
+            self.x -= self.jumpTime*cos(-self.rotation+pi/2)
+            self.y -= self.jumpTime*sin(-self.rotation+pi/2)
             if len(myapp.collidingwithSprites(MC))>0:
                 MC1.hit
                 del myapp.allSprites[x.lp]
@@ -541,4 +543,5 @@ myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
+myapp.allSprites.append(spdSprite((100,100), 4, 0))
 myapp.run()
