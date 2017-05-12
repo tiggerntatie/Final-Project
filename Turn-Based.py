@@ -102,6 +102,7 @@ class SpaceGame(App):
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,4)
+        self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-MC1.y), (xcolumn-MC1.x)),self.numberofSprites))
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
