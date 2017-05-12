@@ -74,7 +74,7 @@ class SpaceGame(App):
             MC1.hit2()
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
-                if ship.ndRd = 1:
+                if ship.ndRd == 1:
                     ship.reload1()
         if spriteCreate == 1:
             print(self.numberofSprites)
