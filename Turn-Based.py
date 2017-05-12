@@ -382,6 +382,7 @@ class spdSprite(Sprite):
         self.jumpTime = jumpTime
         self.running = 0
         self.start = time.time()
+        self.rotation = rotatation
     def step(self):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
