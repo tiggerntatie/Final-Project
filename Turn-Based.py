@@ -70,7 +70,8 @@ class SpaceGame(App):
             MC1.hit2()
         if maintain == True:
             for ship in self.getSpritesbyClass(shootSprite):
-                ship.reload1()
+                if ship.ndRd = 1:
+                    ship.reload1()
         if spriteCreate == 1:
             print(self.numberofSprites)
             global spriteCreate
@@ -132,6 +133,7 @@ dead_asset = RectangleAsset(SCREEN_WIDTH1, SCREEN_HEIGHT, noline, red)
 cf = PolygonAsset(((-10,-15),(0,-22.5),(10,-15),(10,15),(-10,15)), thinline, gray)
 gameover = ImageAsset("game_over___pixel_art_by_tfcb93-d513cay.png")
 ms = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, red)
+speedSprite = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, black)
 ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, blue)
 ShieldS = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, green)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
@@ -364,6 +366,29 @@ class meleeSprite(Sprite):
             if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
                 swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
                 MC1.hit()
+class spdSprite(Sprite):
+    def __init__(self, position, jumpTime, listposition): 
+        super().__init__(speedSprite, position)
+        self.fxcenter = self.fycenter = 0.5
+        self.lp=listposition
+        self.charge = 0
+        self.jumpTime = jumpTime
+    def step(self):
+        self.charge+=1
+        if self.charge>self.jumpTime:
+            self.charge = 0
+            global 
+        self.rotation +=pi/60
+        self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
+        self.y -= 10*sin(atan2(self.y-MC1.y, self.x-MC1.x))
+        if MC1.rotation == 0 or MC1.rotation == pi:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
+                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                MC1.hit()
+        if MC1.rotation == pi/2 or MC1.rotation == 3*pi/2:
+            if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2) <= 30:
+                swordlist.append(sword(((self.x-15*cos(atan2(self.y-MC1.y, self.x-MC1.x))), (self.y-15*sin(atan2(self.y-MC1.y, self.x-MC1.x)))), self.rotation))
+                MC1.hit()
 class shootSprite(Sprite):
     def __init__(self, position, ammo, listposition): 
         super().__init__(ss, position)
@@ -371,7 +396,10 @@ class shootSprite(Sprite):
         self.ammo = ammo
         self.ammoMax = ammo
         self.lp=listposition
+        self.ndRd = 0
     def step(self):
+        if self.ndRd == 1:
+            self.ndRd = 0
         self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
         if sqrt((self.x-MC1.x)**2+(self.y-MC1.y)**2)-300>1:
             self.x -= 10*cos(atan2(self.y-MC1.y, self.x-MC1.x))
@@ -384,6 +412,7 @@ class shootSprite(Sprite):
             else:
                 global maintain
                 maintain = True
+                self.ndRd =1
                 self.ammo = self.ammoMax
                 
     def reload1(self):
