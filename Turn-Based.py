@@ -545,5 +545,4 @@ myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((320,240), lives)
-myapp.allSprites.append(spdSprite((100,100), 4, 0))
 myapp.run()
