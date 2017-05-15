@@ -29,7 +29,8 @@ class SpaceGame(App):
             for x in activated:
                 x.attack()
         
-        
+        for x in self.getSpritesbyClass(powerUp):
+            x.step()
         for x in self.getSpritesbyClass(axe):
             x.step()
         for x in self.getSpritesbyClass(shield):
@@ -103,7 +104,7 @@ class SpaceGame(App):
         else:
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
-        whatSprite= random.randint(1,4)
+        whatSprite= random.randint(1,5)
         self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-MC1.y), (xcolumn-MC1.x)),self.numberofSprites))
         print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
@@ -114,6 +115,8 @@ class SpaceGame(App):
             self.allSprites.append(ShieldSprite((xcolumn,ycolumn),random.randint(2,3), self.numberofSprites))
         elif whatSprite == 4:
             self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-240), (xcolumn-320)),self.numberofSprites))
+            if whatSprite == 5:
+                
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -512,6 +515,12 @@ class powerUp(Sprite):
             if self.powerUp == 1:
                 heartlist.append(heart((heartlist[MC1.lives-1].x+15, 15), MC1.lives-1))
                 MC1.lives+=1
+            elif self.powerUp == 2:
+                MC1.rKey()
+            elif self.powerUp == 3:
+                for x in myapp.allSprites:
+                    x.destroy()
+                
         
 
 
