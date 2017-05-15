@@ -2,6 +2,7 @@ from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Fra
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
+#FIX spdSPRITE IDIOT
 spriteCreate = 0
 activated = []
 class SpaceGame(App):
