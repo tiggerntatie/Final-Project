@@ -132,6 +132,8 @@ red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 yellow = Color(0xffff00, 1.0)
+yellow1 = Color(0xffff99, 1.0)
+yellow2 = Color(0xe5e500, 1.0)
 swordlist = []
 bulletlist =[]
 thinline = LineStyle(1, black)
@@ -148,7 +150,9 @@ ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, b
 ShieldS = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, green)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
-MCshield = CircleAsset(25, noline, green)
+powerUp = CircleAsset(10, noline, yellow)
+powerUp1 = CircleAsset(10, noline, yellow1)
+powerUp2 = CircleAsset(10, noline, yellow2)
 MCmoves = CircleAsset(10, noline, black)
 class MC(Sprite):
     def __init__(self, position, ls):
@@ -493,9 +497,22 @@ class ShieldSprite(Sprite):
         self.rotation =  2*pi/2-atan2(self.y-MC1.y, self.x-MC1.x)
         if self.hp <1:
             self.destroy
+class powerUp(Sprite):
+    def __init__(self, position, assetNumber,listposition):
+        if assetNumber == 1:
+            self.asset = powerUp
+        elif assetNumber == 2:
+            self.asset = powerUp1
+        elif assetNumber == 3:
+            self.asset = powerUp2
+        super().__init__(self.asset, position)
+        self.powerUp = assetNumber
+    def step(self):
+        if len(self.collidingWithSprites(MC))>0:
+            if self.powerUp == 1:
+                heartlist.append(heart((heartlist[MC1.lives-1].x+15, 15), MC1.lives-1))
+                MC1.lives+=1
         
-   
-
 
 
 
