@@ -156,6 +156,7 @@ smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, bl
 powerUp = CircleAsset(10, noline, yellow)
 powerUp1 = CircleAsset(10, noline, yellow1)
 powerUp2 = CircleAsset(10, noline, yellow2)
+MCshield = CircleAsset(25, noline,green)
 MCmoves = CircleAsset(10, noline, black)
 class MC(Sprite):
     def __init__(self, position, ls):
@@ -397,17 +398,19 @@ class spdSprite(Sprite):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
+                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp])
                 self.charge = 0
                 self.start = time.time()
                 global activated
                 activated.append(myapp.allSprites[self.lp])
                 self.running = 1
+                print("after append")
                 
             else:
                 self.rotation +=pi/60
     def attack(self):
         if time.time()-self.start<self.jumpTime:
-            print(time.time()-self.start, self.jumpTime)
+            
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
             if len(myapp.collidingWithSprites(MC))>0:
