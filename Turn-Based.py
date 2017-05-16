@@ -27,7 +27,6 @@ class SpaceGame(App):
     def step(self):
         global activated
         if len(activated)>0:
-            print("ACTIVATED")
             for x in activated:
                 x.attack()
         
