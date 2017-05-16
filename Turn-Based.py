@@ -412,9 +412,7 @@ class spdSprite(Sprite):
             else:
                 self.rotation +=pi/60
     def attack(self):
-        print("HEY",time.time()-self.start)
         if time.time()-self.start<self.jumpTime:
-            print(time.time()-self.start, len(self.collidingWithSprites(MC)))
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
             if len(self.collidingWithSprites(MC))>0:
