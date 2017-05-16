@@ -396,10 +396,11 @@ class spdSprite(Sprite):
         self.start = time.time()
         self.rotation = rotation
     def step(self):
+        global activated
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
-                self.charge = 0
+                self.charge = len(activated)
                 self.start = time.time()
                 global activated
                 activated.append(myapp.allSprites[self.lp])
@@ -407,7 +408,6 @@ class spdSprite(Sprite):
                 
                 self.running = 1
                 print("after append")
-                
             else:
                 self.rotation +=pi/60
     def attack(self):
@@ -417,7 +417,7 @@ class spdSprite(Sprite):
             if len(self.collidingWithSprites(MC))>0:
                 MC1.hit
                 del myapp.allSprites[x.lp]
-                del activated[myapp.allSprites[self.lp]]
+                del activated[self.charge]
                 for i in myapp.allSprites:
                     if i.lp>self.lp:
                         i.lp-=1
@@ -426,7 +426,7 @@ class spdSprite(Sprite):
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             global activated
-            del activated[myapp.allSprites[self.lp]]
+            del activated[self.charge]
             self.running = 0
             self.start = time.time()
                 
