@@ -396,6 +396,7 @@ class spdSprite(Sprite):
     def step(self):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
+                print("start")
                 self.charge = 0
                 self.start = time.time()
                 global activated
