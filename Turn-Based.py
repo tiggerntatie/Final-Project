@@ -27,6 +27,7 @@ class SpaceGame(App):
     def step(self):
         global activated
         if len(activated)>0:
+            print("ACTIVATED")
             for x in activated:
                 x.attack()
         
@@ -398,7 +399,7 @@ class spdSprite(Sprite):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
-                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp])
+                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp], activate[myapp.allSprites[self.lp]])
                 self.charge = 0
                 self.start = time.time()
                 global activated
@@ -410,7 +411,7 @@ class spdSprite(Sprite):
                 self.rotation +=pi/60
     def attack(self):
         if time.time()-self.start<self.jumpTime:
-            
+            print(time.time()-self.start, len(myapp.collidingWithSprites(MC)))
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
             if len(myapp.collidingWithSprites(MC))>0:
