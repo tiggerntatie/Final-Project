@@ -404,7 +404,7 @@ class spdSprite(Sprite):
                 self.start = time.time()
                 global activated
                 activated.append(myapp.allSprites[self.lp])
-                print(activate)
+                print(activated)
                 
                 self.running = 1
                 print("after append")
@@ -419,6 +419,7 @@ class spdSprite(Sprite):
             if len(myapp.collidingWithSprites(MC))>0:
                 MC1.hit
                 del myapp.allSprites[x.lp]
+                del activate[myapp.allSprites[self.lp]]
                 for i in myapp.allSprites:
                     if i.lp>self.lp:
                         i.lp-=1
