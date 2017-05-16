@@ -399,7 +399,6 @@ class spdSprite(Sprite):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
-                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp])
                 self.charge = 0
                 self.start = time.time()
                 global activated
