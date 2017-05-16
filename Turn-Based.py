@@ -404,7 +404,8 @@ class spdSprite(Sprite):
                 self.start = time.time()
                 global activated
                 activated.append(myapp.allSprites[self.lp])
-                print(activate[myapp.allSprites[self.lp]])
+                print(activate)
+                
                 self.running = 1
                 print("after append")
                 
