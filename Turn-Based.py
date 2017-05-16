@@ -37,10 +37,11 @@ class SpaceGame(App):
         for x in self.getSpritesbyClass(shield):
             x.step()
         for ship in self.getSpritesbyClass(bullet):
-                ship.step()
+            ship.step()
         for ship in self.getSpritesbyClass(ShieldSprite):
-                ship.step()
+            ship.step()
         for ship in self.getSpritesbyClass(spdSprite):
+            if ship not in activated:
                 ship.step()
         
                         
