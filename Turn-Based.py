@@ -399,11 +399,12 @@ class spdSprite(Sprite):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
-                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp], activate[myapp.allSprites[self.lp]])
+                print(time.time()-self.start, self.jumpTime, self.jumpTime*cos(-self.rotation+pi/2), myapp.allSprites[self.lp])
                 self.charge = 0
                 self.start = time.time()
                 global activated
                 activated.append(myapp.allSprites[self.lp])
+                print(activate[myapp.allSprites[self.lp]])
                 self.running = 1
                 print("after append")
                 
