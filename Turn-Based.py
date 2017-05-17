@@ -402,7 +402,6 @@ class spdSprite(Sprite):
                 print("start")
                 self.charge = len(activated)
                 self.start = time.time()
-                global activated
                 activated.append(myapp.allSprites[self.lp])
                 print(activated)
                 
@@ -411,6 +410,7 @@ class spdSprite(Sprite):
             else:
                 self.rotation +=pi/60
     def attack(self):
+        global activated
         if time.time()-self.start<self.jumpTime:
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
@@ -426,7 +426,7 @@ class spdSprite(Sprite):
                 self.destroy()
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
-            global activated
+            
             del activated[self.charge]
             self.running = 0
             self.start = time.time()
