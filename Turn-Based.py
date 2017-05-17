@@ -327,12 +327,14 @@ class axe(Sprite):
                     if x.__class__.__name__ =='ShieldSprite':
                         x.hp -=1
                     else:
-                        x.destroy()
+                        
                         print("hit", x.lp)
                         del myapp.allSprites[x.lp]
+                        print(myapp.allSprites)
                         for i in myapp.allSprites:
                             if i.lp>x.lp:
                                 i.lp-=1
+                        x.destroy()
                         myapp.numberofSprites -=1
         
 class plasmaBolt(Sprite):
