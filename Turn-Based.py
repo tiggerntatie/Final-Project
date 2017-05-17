@@ -415,6 +415,7 @@ class spdSprite(Sprite):
             self.x -= self.jumpTime*cos(-self.rotation+pi/2)
             self.y -= self.jumpTime*sin(-self.rotation+pi/2)
             if len(self.collidingWithSprites(MC))>0:
+                print("I DID IT")
                 MC1.hit()
                 del myapp.allSprites[x.lp]
                 del activated[self.charge]
