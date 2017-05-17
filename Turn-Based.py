@@ -328,7 +328,7 @@ class axe(Sprite):
                         x.hp -=1
                     else:
                         
-                        print("hit", x.lp)
+                        print("hit", x.lp, len(myapp.allSprites))
                         del myapp.allSprites[x.lp]
                         print(myapp.allSprites)
                         for i in myapp.allSprites:
