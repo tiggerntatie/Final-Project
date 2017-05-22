@@ -358,7 +358,7 @@ class plasmaBolt(Sprite):
                         x.hp -=1
                         self.destroy()
                     else:
-                        if x.__class__.__name__ !='spdSprite':
+                        if x.__class__.__name__ =='spdSprite':
                            if len(activated)>0:
                             for i in activated:
                                 if i.charge>x.charge:
@@ -372,9 +372,10 @@ class plasmaBolt(Sprite):
                                 if i.lp>x.lp:
                                     i.lp-=1
                                     print('less', i.lp)
-                        print(myapp.numberofSprites)
+                        
                         
                         x.destroy()
+                        print(myapp.numberofSprites)
                         myapp.numberofSprites -=1
                     
         if -self.time+time.time()>10:
