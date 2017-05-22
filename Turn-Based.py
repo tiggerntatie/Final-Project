@@ -420,8 +420,8 @@ class spdSprite(Sprite):
     def attack(self):
         global activated
         if time.time()-self.start<self.jumpTime:
-            self.x -= self.jumpTime*cos(-self.rotation+pi/2)
-            self.y -= self.jumpTime*sin(-self.rotation+pi/2)
+            self.x -= self.jumpTime*cos(-self.q+pi/2)
+            self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
                 print("I DID IT")
                 MC1.hit()
