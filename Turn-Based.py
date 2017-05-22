@@ -362,11 +362,12 @@ class plasmaBolt(Sprite):
                         print("hit", x.lp, myapp.allSprites[x.lp])
                         del myapp.allSprites[x.lp]
                         print(myapp.allSprites)
-                        for i in myapp.allSprites:
-                            print(i, i.lp)
-                            if i.lp>x.lp:
-                                i.lp-=1
-                                print('less', i.lp)
+                        if lenmyapp.allSprites>0:
+                            for i in myapp.allSprites:
+                                print(i, i.lp)
+                                if i.lp>x.lp:
+                                    i.lp-=1
+                                    print('less', i.lp)
                         myapp.numberofSprites -=1
                     
         if -self.time+time.time()>10:
