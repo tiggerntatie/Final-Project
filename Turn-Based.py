@@ -369,7 +369,7 @@ class plasmaBolt(Sprite):
                         if len(myapp.allSprites)>0:
                             for i in myapp.allSprites:
                                 print(i, i.lp)
-                                if i.lp>x.lp:
+                                if i.lp<x.lp:
                                     i.lp-=1
                                     print('less', i.lp)
                         
