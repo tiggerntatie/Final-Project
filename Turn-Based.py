@@ -361,6 +361,7 @@ class plasmaBolt(Sprite):
                         x.destroy()
                         print("hit", x.lp, myapp.allSprites[x.lp])
                         del myapp.allSprites[x.lp]
+                        print(myapp.allSprites)
                         for i in myapp.allSprites:
                             print(i, i.lp)
                             if i.lp>x.lp:
