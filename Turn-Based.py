@@ -402,6 +402,7 @@ class spdSprite(Sprite):
         self.running = 0
         self.start = time.time()
         self.rotation = rotation
+        self.q=rotation
     def step(self):
         global activated
         if self.running != 1:
@@ -433,6 +434,7 @@ class spdSprite(Sprite):
                 self.destroy()
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
+            self.q = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             
             del activated[self.charge]
             self.running = 0
