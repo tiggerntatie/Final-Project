@@ -359,7 +359,10 @@ class plasmaBolt(Sprite):
                         self.destroy()
                     else:
                         if x.__class__.__name__ !='spdSprite':
-                            
+                           if len(activated)>0:
+                            for i in activated:
+                                if i.charge>x.charge:
+                                    i.charge-=1 
                         print("hit", x.lp, myapp.allSprites[x.lp], myapp.numberofSprites)
                         del myapp.allSprites[x.lp]
                         print(myapp.allSprites,len(myapp.allSprites))
