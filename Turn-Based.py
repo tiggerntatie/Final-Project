@@ -185,7 +185,7 @@ class MC(Sprite):
         self.ammo = bulletCount
     def lKey(self, event):
         self.KILL()
-        if self.moves >0 and self.cooldownS <1:
+        if self.moves >1 and self.cooldownS <1:
             shield((self.x,self.y))
             self.shielded = 2
             movelist[self.moves-1].destroy()
@@ -355,14 +355,14 @@ class plasmaBolt(Sprite):
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     x.hp -=1
-                    self.destroy()
+                    
                     print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                     del myapp.allSprites[myapp.allSprites.index(x)]
                     print(myapp.allSprites,len(myapp.allSprites))
                     x.destroy()
                     print(myapp.numberofSprites)
                     myapp.numberofSprites -=1
-                    
+                    self.destroy()
         if -self.time+time.time()>10:
             self.destroy()
         
