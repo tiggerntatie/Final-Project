@@ -400,7 +400,7 @@ class spdSprite(Sprite):
             if time.time()-self.start>self.jumpTime:
                 print("start")
                 self.start = time.time()
-                activated.append(myapp.allSprites[self.lp])
+                activated.append(myapp.allSprites[myapp.allSprites.index(self)])
                 print(activated)
                 
                 self.running = 1
@@ -418,26 +418,13 @@ class spdSprite(Sprite):
                 print("woo")
                 del myapp.allSprites[myapp.allSprites.index(self)]
                 del activated[myapp.allSprites.index(self)]
-                if len(activated)>0:
-                    for x in activated:
-                        if x.charge>self.charge:
-                            x.charge-=1
-                
-                
-                for i in myapp.allSprites:
-                    if i.lp>self.lp:
-                        i.lp-=1
                 myapp.numberofSprites -=1
                 self.destroy()
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             self.q = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             
-            del activated[self.charge]
-            if len(activated)>0:
-                    for x in activated:
-                        if x.charge>self.charge:
-                            x.charge-=1
+            del activated[myapp.allSprites.index(self)]
             self.running = 0
             self.start = time.time()
                 
