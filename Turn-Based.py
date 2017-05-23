@@ -274,6 +274,7 @@ class MC(Sprite):
         if self.cooldownS>0:
             self.cooldownS-=1
     def hit(self):
+        print('I got hit")
         if self.shielded >0:
             self.shielded -=1
         else:
