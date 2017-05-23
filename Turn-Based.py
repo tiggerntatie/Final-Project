@@ -354,29 +354,14 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
-                    if x.__class__.__name__ =='ShieldSprite':
-                        x.hp -=1
-                        self.destroy()
-                    else:
-                        if x.__class__.__name__ =='spdSprite':
-                           if len(activated)>0:
-                            for i in activated:
-                                if i.charge>x.charge:
-                                    i.charge-=1 
-                        print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
-                        del myapp.allSprites[x.lp]
-                        print(myapp.allSprites,len(myapp.allSprites))
-                        if len(myapp.allSprites)>0:
-                            for i in myapp.allSprites:
-                                print(i, i.lp)
-                                if i.lp<x.lp:
-                                    i.lp-=1
-                                    print('less', i.lp)
-                        
-                        
-                        x.destroy()
-                        print(myapp.numberofSprites)
-                        myapp.numberofSprites -=1
+                    x.hp -=1
+                    self.destroy()
+                    print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
+                    del myapp.allSprites[myapp.allSprites.index(x)]
+                    print(myapp.allSprites,len(myapp.allSprites))
+                    x.destroy()
+                    print(myapp.numberofSprites)
+                    myapp.numberofSprites -=1
                     
         if -self.time+time.time()>10:
             self.destroy()
@@ -415,7 +400,6 @@ class spdSprite(Sprite):
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
                 print("start")
-                self.charge = len(activated)
                 self.start = time.time()
                 activated.append(myapp.allSprites[self.lp])
                 print(activated)
