@@ -351,7 +351,9 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
-                    x.hp -=1
+                    if  x.__class__.__name__ ='shieldSprite':
+                        x.hp -=1
+                        self.destroy()
                     
                     print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                     del myapp.allSprites[myapp.allSprites.index(x)]
@@ -359,7 +361,7 @@ class plasmaBolt(Sprite):
                     x.destroy()
                     print(myapp.numberofSprites)
                     myapp.numberofSprites -=1
-                    self.destroy()
+                    
         if -self.time+time.time()>10:
             self.destroy()
         
