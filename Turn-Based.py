@@ -351,7 +351,7 @@ class plasmaBolt(Sprite):
         if len(self.collidingWithSprites(None))>0:
             for x in self.collidingWithSprites(None):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
-                    if  x.__class__.__name__ ='shieldSprite':
+                    if  x.__class__.__name__ =='shieldSprite':
                         x.hp -=1
                         self.destroy()
                     
@@ -415,8 +415,9 @@ class spdSprite(Sprite):
             if len(self.collidingWithSprites(MC))>0:
                 print("I DID IT")
                 MC1.hit()
-                del myapp.allSprites[x.lp]
-                del activated[self.charge]
+                print("woo")
+                del myapp.allSprites[myapp.allSprites.index(self)]
+                del activated[myapp.allSprites.index(self)]
                 if len(activated)>0:
                     for x in activated:
                         if x.charge>self.charge:
