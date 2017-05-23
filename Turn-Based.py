@@ -329,11 +329,8 @@ class axe(Sprite):
                     else:
                         
                         print("hit", x.lp, len(myapp.allSprites))
-                        del myapp.allSprites[x.lp]
+                        del myapp.allSprites[myapp.allSprites.index(x)]
                         print(myapp.allSprites)
-                        for i in myapp.allSprites:
-                            if i.lp>x.lp:
-                                i.lp-=1
                         x.destroy()
                         myapp.numberofSprites -=1
         
