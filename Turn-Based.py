@@ -284,10 +284,12 @@ class MC(Sprite):
             self.start = time.time()
             global heartlist
             self.lives -=1
+            print(heartlist[self.lives])
             heartlist.remove(heartlist[self.lives])
             heartlist[self.lives].destroy()
             
             if t!=0:
+                print('here 2')
                 self.dead = Sprite(dead_asset, (1,1))
                 
                 t=0
