@@ -274,23 +274,27 @@ class MC(Sprite):
         if self.cooldownS>0:
             self.cooldownS-=1
     def hit(self):
-        print('I got hit")
+        global t
+        print('I got hit', self.shielded, t)
         if self.shielded >0:
             self.shielded -=1
         else:
+            print("here")
             self.cooldownS = 0
             self.start = time.time()
             global heartlist
             self.lives -=1
-            heartlist[self.lives].destroy()
             heartlist.remove(heartlist[self.lives])
+            heartlist[self.lives].destroy()
+            
             if t!=0:
                 self.dead = Sprite(dead_asset, (1,1))
-                global t
+                
                 t=0
                 self.end = self.start + .5
         
     def hit2(self):
+        print('ha')
         elapsed = time.time()
         if elapsed > self.end:
             self.dead.destroy()
