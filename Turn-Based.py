@@ -285,9 +285,8 @@ class MC(Sprite):
             global heartlist
             self.lives -=1
             print(heartlist[self.lives])
-            heartlist.remove(heartlist[self.lives])
             heartlist[self.lives].destroy()
-            
+            heartlist.remove(heartlist[self.lives])
             if t!=0:
                 print('here 2')
                 self.dead = Sprite(dead_asset, (1,1))
@@ -299,6 +298,7 @@ class MC(Sprite):
         print('ha')
         elapsed = time.time()
         if elapsed > self.end:
+            print(self.dead)
             self.dead.destroy()
             global t
             t =1
