@@ -363,7 +363,7 @@ class plasmaBolt(Sprite):
                             for i in activated:
                                 if i.charge>x.charge:
                                     i.charge-=1 
-                        print("hit", x.lp, myapp.allSprites[x.lp], myapp.numberofSprites)
+                        print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                         del myapp.allSprites[x.lp]
                         print(myapp.allSprites,len(myapp.allSprites))
                         if len(myapp.allSprites)>0:
