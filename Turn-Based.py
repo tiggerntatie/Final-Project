@@ -45,12 +45,15 @@ class SpaceGame(App):
                 ship.step()
         
                         
-        global swordlist, bulletlist, maintain
+        global swordlist, bulletlist, maintain, movelist
         if turn == 1:
-            x = 15+38*MC1.moves-1
+            x = 15
             y=15
-            lp = MC1.moves-1
+            lp = 0
             GG = 0
+            for x in movelist:
+                x.destroy
+            movelist = movelist = list(range(speed1))
             while GG != 1:
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
                 if lp == speed1-1:
