@@ -420,9 +420,12 @@ class spdSprite(Sprite):
             self.x -= self.jumpTime*cos(-self.q+pi/2)
             self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
-                print("I DID IT", myapp.allSprites.index(self),activated[myapp.allSprites.index(self)],activated[myapp.allSprites.index(self)])
+                print("I DID IT")
+                print(myapp.allSprites.index(self))
+                print(myapp.allSprites[myapp.allSprites.index(self)])  
+                print(ctivated[myapp.allSprites.index(self)])
                 del activated[myapp.allSprites.index(self)]
-                del activated[myapp.allSprites.index(self)]]
+                del myapp.allSprites[myapp.allSprites.index(self)]
                 myapp.numberofSprites -=1
                 MC1.hit()
                 print("woo", MC1.dead)
