@@ -51,10 +51,12 @@ class SpaceGame(App):
             y=15
             lp = 0
             GG = 0
-            print(movelist)
-            for x in movelist:
-                x.destroy()
+            
+            for i in movelist:
+                i.destroy()
+            
             movelist = list(range(speed1))
+            
             while GG != 1:
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
                 if lp == speed1-1:
@@ -64,6 +66,7 @@ class SpaceGame(App):
                     x+=38
                     lp+=1
             self.iterations +=1
+            
             
             maintain = False
             for ship in self.getSpritesbyClass(sword):
