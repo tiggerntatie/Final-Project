@@ -290,7 +290,7 @@ class MC(Sprite):
             if t!=0:
                 print('here 2')
                 self.dead = Sprite(dead_asset, (1,1))
-                
+                print(self.dead)
                 t=0
                 self.end = self.start + .5
         
@@ -421,11 +421,12 @@ class spdSprite(Sprite):
             self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
                 print("I DID IT")
-                MC1.hit()
-                print("woo")
                 del myapp.allSprites[myapp.allSprites.index(self)]
                 del activated[myapp.allSprites.index(self)]
                 myapp.numberofSprites -=1
+                MC1.hit()
+                print("woo", MC1.dead)
+                
                 self.destroy()
         else:
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
