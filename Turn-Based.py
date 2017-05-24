@@ -362,7 +362,7 @@ class plasmaBolt(Sprite):
                         x.hp -=1
                         self.destroy()
                     
-                    print("hit", x.lp, myapp.allSprites[x.lp], myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
+                    print("hit", x.lp, x.__class__.__name__, myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                     del myapp.allSprites[myapp.allSprites.index(x)]
                     print(myapp.allSprites,len(myapp.allSprites))
                     x.destroy()
@@ -420,19 +420,21 @@ class spdSprite(Sprite):
             self.x -= self.jumpTime*cos(-self.q+pi/2)
             self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
-                print("I DID IT")
-                del myapp.allSprites[myapp.allSprites.index(self)]
+                print("I DID IT", myapp.allSprites.index(self))
                 del activated[myapp.allSprites.index(self)]
+                del myapp.allSprites[myapp.allSprites.index(self)]
                 myapp.numberofSprites -=1
                 MC1.hit()
                 print("woo", MC1.dead)
                 
                 self.destroy()
         else:
+            print("reset")
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             self.q = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
-            
+            print(activated)
             del activated[myapp.allSprites.index(self)]
+            print(activated)
             self.running = 0
             self.start = time.time()
                 
