@@ -53,7 +53,7 @@ class SpaceGame(App):
             GG = 0
             while GG != 1:
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
-                if lp == lives-1:
+                if lp == MC1.lives-1:
                     GG = 1
                     lp = 0
                 else:
@@ -420,14 +420,11 @@ class spdSprite(Sprite):
             self.x -= self.jumpTime*cos(-self.q+pi/2)
             self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
-                print("I DID IT")
-                print( activated.index(self))
-                print(activated[ activated.index(self)])  
-                del activated[activated.index(self)]
+                
                 del myapp.allSprites[myapp.allSprites.index(self)]
                 myapp.numberofSprites -=1
                 MC1.hit()
-                print("woo", MC1.dead)
+                
                 
                 self.destroy()
         else:
