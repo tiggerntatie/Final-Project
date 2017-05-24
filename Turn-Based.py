@@ -52,7 +52,7 @@ class SpaceGame(App):
             lp = 0
             GG = 0
             for x in movelist:
-                x.destroy
+                x.destroy()
             movelist = movelist = list(range(speed1))
             while GG != 1:
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
