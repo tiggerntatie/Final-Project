@@ -56,9 +56,10 @@ class SpaceGame(App):
                 i.destroy()
             
             movelist = list(range(speed1))
-            
+            print(movelist)
             while GG != 1:
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
+                print(movelist)
                 if lp == speed1-1:
                     GG = 1
                     lp = 0
