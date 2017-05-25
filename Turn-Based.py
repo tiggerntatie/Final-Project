@@ -121,7 +121,7 @@ class SpaceGame(App):
         elif whatSprite == 4:
             self.allSprites.append(spdSprite((xcolumn,ycolumn),random.randint(2,5), pi/2-atan2((ycolumn-240), (xcolumn-320)),self.numberofSprites))
             if whatSprite == 5:
-                self.allSprites.append(powerUp((xcolumn, ycolumn), random.choice([2,2,2,2,2,2,1,1,1,0]), self.numberofSprites))
+                self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
         self.numberofSprites+=1
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -536,9 +536,17 @@ class powerUp(Sprite):
                 MC1.lives+=1
             elif self.powerUp == 2:
                 MC1.rKey()
+            del myapp.allSprites[myapp.allSprites.index(self)]
+            self.destroy()
+            
+            """
             elif self.powerUp == 3:
                 for x in myapp.allSprites:
                     x.destroy()
+                    myapp.allSprites=[]
+                    myapp.numberofSprites = 0
+            """
+            
                 
         
 
