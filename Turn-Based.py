@@ -47,13 +47,11 @@ class SpaceGame(App):
                         
         global swordlist, bulletlist, maintain, movelist
         if turn == 1:
-            x = 15
+            x = 15+38*len(movelist)
             y=15
-            lp = 0
+            lp = len(movelist)
             GG = 0
-            
-            for i in movelist:
-                i.destroy()
+    
             
             movelist = list(range(speed1))
             print(movelist)
