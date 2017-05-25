@@ -47,20 +47,15 @@ class SpaceGame(App):
                         
         global swordlist, bulletlist, maintain, movelist
         if turn == 1:
-            x = 15+38*len(movelist)
+            x = 15+38*MC1.moves
             y=15
-            lp = len(movelist)-1
-            if len(movelist)==4:
+            lp = MC1.moves
+            if MC1.moves==4:
                 GG=1
             else:
                 GG=0
-            print(movelist)
             while GG != 1:
-                print("Hi")
-                print(lp)
-                print(movelist[lp])
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
-                print(movelist)
                 if lp == speed1-1:
                     GG = 1
                     lp = 0
@@ -343,7 +338,8 @@ class axe(Sprite):
                     if x.__class__.__name__ =='ShieldSprite':
                         x.hp -=1
                     else:
-                        
+                        if x in activated:
+                            del activated[activated.index(x)]
                         print("hit", x.lp, len(myapp.allSprites))
                         del myapp.allSprites[myapp.allSprites.index(x)]
                         print(myapp.allSprites)
@@ -370,6 +366,8 @@ class plasmaBolt(Sprite):
                     if  x.__class__.__name__ =='shieldSprite':
                         x.hp -=1
                         self.destroy()
+                    if x in activated:
+                            del activated[activated.index(x)]
                     
                     print("hit", x.lp, x.__class__.__name__, myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                     del myapp.allSprites[myapp.allSprites.index(x)]
