@@ -49,13 +49,16 @@ class SpaceGame(App):
         if turn == 1:
             x = 15+38*len(movelist)
             y=15
-            lp = len(movelist)
-            GG = 0
-    
-            
-            movelist = list(range(speed1))
+            lp = len(movelist)-1
+            if len(movelist)==4:
+                GG=1
+            else:
+                GG=0
             print(movelist)
             while GG != 1:
+                print("Hi")
+                print(lp)
+                print(movelist[lp])
                 movelist[lp]=Sprite(MCmoves,(myapp.width-15-x,y))
                 print(movelist)
                 if lp == speed1-1:
