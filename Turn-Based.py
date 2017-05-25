@@ -299,7 +299,6 @@ class MC(Sprite):
                 self.end = self.start + .5
         
     def hit2(self):
-        print('ha')
         elapsed = time.time()
         if elapsed > self.end:
             print(self.dead)
@@ -412,13 +411,13 @@ class spdSprite(Sprite):
         global activated
         if self.running != 1:
             if time.time()-self.start>self.jumpTime:
-                print("start")
+                
                 self.start = time.time()
                 activated.append(myapp.allSprites[myapp.allSprites.index(self)])
                 print(activated)
                 
                 self.running = 1
-                print("after append")
+                
             else:
                 self.rotation +=pi/60
     def attack(self):
@@ -427,7 +426,7 @@ class spdSprite(Sprite):
             self.x -= self.jumpTime*cos(-self.q+pi/2)
             self.y -= self.jumpTime*sin(-self.q+pi/2)
             if len(self.collidingWithSprites(MC))>0:
-                
+                del activated[ activated.index(self)]
                 del myapp.allSprites[myapp.allSprites.index(self)]
                 myapp.numberofSprites -=1
                 MC1.hit()
@@ -435,7 +434,7 @@ class spdSprite(Sprite):
                 
                 self.destroy()
         else:
-            print("reset")
+            
             self.rotation = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             self.q = pi/2-atan2((self.y-MC1.y), (self.x-MC1.x))
             print(activated, activated.index(self))
