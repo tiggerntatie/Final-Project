@@ -111,7 +111,7 @@ class SpaceGame(App):
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,5)
-        print(whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
+        print("newsprite",whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
