@@ -592,7 +592,7 @@ def RELOAD ():
         else:
             x+=38
             lp+=1
-x = 150o
+x = 15
 y=15
 lp = 0
 GG=1
