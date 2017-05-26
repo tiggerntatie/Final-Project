@@ -520,7 +520,9 @@ class ShieldSprite(Sprite):
         self.y+= 2*sin(q)
         self.rotation =  2*pi/2-atan2(self.y-MC1.y, self.x-MC1.x)
         if self.hp <1:
-            self.destroy
+            del myapp.allSprites[myapp.allSprites.index(self)]
+            self.numberofSprites -=1
+            self.destroy()
 class powerUp(Sprite):
     def __init__(self, position, assetNumber,listposition):
         print(assetNumber)
