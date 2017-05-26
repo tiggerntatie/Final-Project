@@ -575,10 +575,13 @@ while GG != 1:
 
 def RELOAD ():
     
-    x = 15
+    x = 15+38*MC1.ammo
     y=15
-    lp = 0
-    GG = 1
+    lp = MC1.ammo - 1
+    if MC1.ammo == bulletCount:
+        GG=0
+    else:
+        GG=1
     
     
     while GG != 0:
@@ -589,7 +592,20 @@ def RELOAD ():
         else:
             x+=38
             lp+=1
-RELOAD()    
+x = 150o
+y=15
+lp = 0
+GG=1
+    
+    
+while GG != 0:
+    ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
+    if lp == bulletCount-1:
+        GG = 0
+        lp = 0
+    else:
+        x+=38
+        lp+=1    
     
     
     
@@ -609,4 +625,5 @@ myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((myapp.width/2,myapp.height/2), lives)
+RELOAD()
 myapp.run()
