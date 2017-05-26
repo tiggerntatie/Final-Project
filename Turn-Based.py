@@ -534,34 +534,28 @@ class powerUp(Sprite):
         super().__init__(self.asset, position)
         self.assetNumber = assetNumber
     def step(self):
-        print("a")
         if len(self.collidingWithSprites(MC))>0:
             print("collected", self.assetNumber,self.assetNumber == 1,self.assetNumber == 2, myapp.allSprites[myapp.allSprites.index(self)])
             if self.assetNumber == 1:
                 print("healed")
                 heartlist.append(heart((heartlist[MC1.lives-1].x+38, 15), MC1.lives))
-                print(heartlist)
                 MC1.lives+=1
             elif self.assetNumber == 2:
                 print('reload')
                 MC1.rKey(0)
                 print('reload')
-            del myapp.allSprites[myapp.allSprites.index(self)]
-            self.destroy()
-            
-            """
             elif self.powerUp == 3:
                 for x in myapp.allSprites:
-                    x.destroy()
+                    if myapp.allSprites.index(x) ==myapp.allSprites.index(self):
+                        pass
+                    else:
+                        x.destroy()
+                    del myapp.allSprites[myapp.allSprites.index(self)]
                     myapp.allSprites=[]
+                    activated = []
                     myapp.numberofSprites = 0
-            """
             
-                
-        
-
-
-
+            self.destroy()
 x = 15
 y=15
 lp = 0
