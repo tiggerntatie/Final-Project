@@ -113,7 +113,7 @@ class SpaceGame(App):
         whatSprite= random.randint(1,5)
         print("newsprite",whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
         self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
-        
+        """
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
@@ -125,6 +125,7 @@ class SpaceGame(App):
             if whatSprite == 5:
                 self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
         self.numberofSprites+=1
+        """
 myapp = SpaceGame(0,0)
 bulletCount = 4
 hit = 0
@@ -160,7 +161,7 @@ ss = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, b
 ShieldS = PolygonAsset(((-7.5,-11.5),(7.5,-11.5),(7.5,11.5),(-7.5,11.5)), thinline, green)
 smlSword = PolygonAsset(((-2.5,-5),(2.5,-5),(2.5,5),(-2.5,5)), thinline, red)
 smlBullet = PolygonAsset(((-2.5,0),(2.5,0),(2.5,-300),(-2.5,-300)), thinline, blue)
-powerUp = CircleAsset(10, noline, yellow)
+powerUpL = CircleAsset(10, noline, yellow)
 powerUp1 = CircleAsset(10, noline, yellow1)
 powerUp2 = CircleAsset(10, noline, yellow2)
 MCshield = CircleAsset(25, noline,green)
@@ -525,7 +526,7 @@ class powerUp(Sprite):
     def __init__(self, position, assetNumber,listposition):
         print(assetNumber)
         if assetNumber == 1:
-            self.asset = powerUp
+            self.asset = powerUpL
         elif assetNumber == 2:
             self.asset = powerUp1
         elif assetNumber == 3:
@@ -533,16 +534,18 @@ class powerUp(Sprite):
         super().__init__(self.asset, position)
         self.assetNumber = assetNumber
     def step(self):
+        print("a")
         if len(self.collidingWithSprites(MC))>0:
-            print("collected", self.assetNumber)
+            print("collected", self.assetNumber,self.assetNumber == 1,self.assetNumber == 2, myapp.allSprites[myapp.allSprites.index(self)])
             if self.assetNumber == 1:
                 print("healed")
-                heartlist.append(heart((heartlist[MC1.lives-1].x+15, 15), MC1.lives))
+                heartlist.append(heart((heartlist[MC1.lives-1].x+38, 15), MC1.lives))
                 print(heartlist)
                 MC1.lives+=1
             elif self.assetNumber == 2:
-                print(reload)
-                MC1.rKey()
+                print('reload')
+                MC1.rKey(0)
+                print('reload')
             del myapp.allSprites[myapp.allSprites.index(self)]
             self.destroy()
             
