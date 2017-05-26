@@ -577,7 +577,7 @@ def RELOAD ():
     
     x = 15+38*MC1.ammo
     y=15
-    lp = MC1.ammo - 1
+    lp = MC1.ammo
     if MC1.ammo == bulletCount:
         GG=0
     else:
@@ -586,7 +586,7 @@ def RELOAD ():
     
     while GG != 0:
         ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-        if lp == bulletCount-1:
+        if lp == bulletCount:
             GG = 0
             lp = 0
         else:
