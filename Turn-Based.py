@@ -112,6 +112,8 @@ class SpaceGame(App):
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,5)
         print("newsprite",whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
+        self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
+        print(random.randint(1,3))
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
         elif whatSprite == 2:
@@ -521,6 +523,7 @@ class ShieldSprite(Sprite):
             self.destroy
 class powerUp(Sprite):
     def __init__(self, position, assetNumber,listposition):
+        print(assetNumber)
         if assetNumber == 1:
             self.asset = powerUp
         elif assetNumber == 2:
@@ -531,10 +534,12 @@ class powerUp(Sprite):
         self.powerUp = assetNumber
     def step(self):
         if len(self.collidingWithSprites(MC))>0:
-            if self.powerUp == 1:
+            print("collected")
+            if self.assetNumber == 1:
+                
                 heartlist.append(heart((heartlist[MC1.lives-1].x+15, 15), MC1.lives-1))
                 MC1.lives+=1
-            elif self.powerUp == 2:
+            elif self.assetNumber == 2:
                 MC1.rKey()
             del myapp.allSprites[myapp.allSprites.index(self)]
             self.destroy()
@@ -601,5 +606,5 @@ myapp.create()
     
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
-MC1=MC((320,240), lives)
+MC1=MC((myapp.width/2,myapp.height/2), lives)
 myapp.run()
