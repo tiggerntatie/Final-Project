@@ -545,15 +545,17 @@ class powerUp(Sprite):
                 MC1.rKey(0)
                 print('reload')
             elif self.powerUp == 3:
+                print("boom")
                 for x in myapp.allSprites:
                     if myapp.allSprites.index(x) ==myapp.allSprites.index(self):
                         pass
+                        print("me")
                     else:
                         x.destroy()
-                    del myapp.allSprites[myapp.allSprites.index(self)]
-                    myapp.allSprites=[]
-                    activated = []
-                    myapp.numberofSprites = 0
+            del myapp.allSprites[myapp.allSprites.index(self)]
+            myapp.allSprites=[]
+            activated = []
+            myapp.numberofSprites = 0
             
             self.destroy()
 x = 15
