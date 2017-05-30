@@ -597,7 +597,7 @@ def RELOAD ():
             lp+=1
 points = TextAsset(0)
 class Points(Sprite):
-    def __init__(self, position, heartnumber): 
+    def __init__(self, position): 
         super().__init__(points, position)
         self.fxcenter =  0.5
 points1=Points((myapp.width/2, 0))
@@ -616,7 +616,7 @@ while GG != 0:
     else:
         x+=38
         lp+=1    
-de
+
     
 turn = 0
 def turnProgress ():
