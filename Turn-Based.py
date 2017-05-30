@@ -593,6 +593,8 @@ Points = TextAsset(0)
 points1 = points((myapp.width/2,0))
 def Score (score):
     Points = TextAsset(score)
+    points1.destroy()
+    points1 = points((myapp.width/2,0))
     
     
     
