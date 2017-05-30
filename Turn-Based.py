@@ -1,4 +1,4 @@
-from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset, TextAsset
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
@@ -279,6 +279,7 @@ class MC(Sprite):
         if self.cooldownS>0:
             self.cooldownS-=1
     def hit(self):
+        global t
         print('I got hit', self.shielded, t)
         if self.shielded >0:
             self.shielded -=1
@@ -340,9 +341,6 @@ class axe(Sprite):
                     else:
                         if x in activated:
                             del activated[activated.index(x)]
-                        global score
-                        score +=100
-                        Score(score)
                         print("hit", x.lp, len(myapp.allSprites))
                         del myapp.allSprites[myapp.allSprites.index(x)]
                         print(myapp.allSprites)
@@ -372,9 +370,7 @@ class plasmaBolt(Sprite):
                         x.hp -=1
                         self.destroy()
                     else:
-                        global score
-                        score +=100
-                        Score(score)
+                    
                     
                         print("hit", x.lp, x.__class__.__name__, myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                         del myapp.allSprites[myapp.allSprites.index(x)]
@@ -589,21 +585,6 @@ def RELOAD ():
         GG=0
     else:
         GG=1
-score = 0
-Points = TextAsset(score)
-class points(Sprite):
-    def __init__(self, position): 
-        super().__init__(Points, position)
-        self.fxcenter = 0.5
-points1 = points((myapp.width/2,0))
-def Score (score):
-    Points = TextAsset(score)
-    points1.destroy()
-    points1 = points((myapp.width/2,0))
-    
-    
-    
-    
     
     
     while GG != 0:
