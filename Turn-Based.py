@@ -365,7 +365,7 @@ class plasmaBolt(Sprite):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     if x in activated:
                         del activated[activated.index(x)]
-                    if  x.__class__.__name__ =='shieldSprite':
+                    if  x.__class__.__name__ =='ShieldSprite':
                         x.hp -=1
                         self.destroy()
                     else:
