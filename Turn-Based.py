@@ -336,6 +336,7 @@ class axe(Sprite):
                 
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     if x.__class__.__name__ =='ShieldSprite':
+                        print(x)
                         x.hp -=1
                     else:
                         if x in activated:
