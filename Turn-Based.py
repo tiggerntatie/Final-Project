@@ -1,4 +1,4 @@
-from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset, TextAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
@@ -595,6 +595,13 @@ def RELOAD ():
         else:
             x+=38
             lp+=1
+points = TextAsset(0)
+class Points(Sprite):
+    def __init__(self, position, heartnumber): 
+        super().__init__(points, position)
+        self.fxcenter =  0.5
+points1=Points((myapp.width/2, 0))
+        
 x = 15
 y=15
 lp = 0
@@ -609,8 +616,7 @@ while GG != 0:
     else:
         x+=38
         lp+=1    
-    
-    
+de
     
 turn = 0
 def turnProgress ():
@@ -624,7 +630,6 @@ def turnProgress ():
 def spaceKey (event):
     turnProgress()
 myapp.create()
-    
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 MC1=MC((myapp.width/2,myapp.height/2), lives)
