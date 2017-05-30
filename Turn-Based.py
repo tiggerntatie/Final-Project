@@ -1,4 +1,4 @@
-from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset
+from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame, PolygonAsset, CircleAsset, TextAsset
 from math import pi, cos, sin, atan2, sqrt
 import time
 import random
@@ -585,6 +585,18 @@ def RELOAD ():
         GG=0
     else:
         GG=1
+Points = TextAsset(0)
+ class points(Sprite):
+    def __init__(self, position): 
+        super().__init__(Points, position)
+        self.fxcenter = self.fycenter = 0.5
+points1 = points((myapp.width/2,0))
+def Score (score):
+    Points = TextAsset(score)
+    
+    
+    
+    
     
     
     while GG != 0:
