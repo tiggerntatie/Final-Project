@@ -373,9 +373,23 @@ class plasmaBolt(Sprite):
                         x.hp -=1
                         self.destroy()
                     else:
-                        global score
-                        score+=100
-                        increaseScore()
+                        if x.__class__.__name__ =='shootSprite':
+                            global score
+                            score+=150
+                            increaseScore()
+                        elif x.__class__.__name__ =='spdSprite':
+                            global score
+                            score+=100
+                            increaseScore()
+                        elif x.__class__.__name__ =='ShieldSprite':
+                            global score
+                            score+=50
+                            increaseScore()
+                        elif x.__class__.__name__ =='meleeSprite':
+                            global score
+                            score+=10
+                            increaseScore()
+                        
                     
                         print("hit", x.lp, x.__class__.__name__, myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                         del myapp.allSprites[myapp.allSprites.index(x)]
