@@ -603,11 +603,12 @@ class Points(Sprite):
         self.fxcenter =  0.5
 points1=Points((myapp.width/2, 0))
 def increaseScore():
+    global points, score, points1
     points = TextAsset(score)
     points1.destroy()
     points1 = Points((myapp.width/2, 0))
-    
-        
+score +=100   
+increaseScore()      
 x = 15
 y=15
 lp = 0
@@ -634,7 +635,10 @@ def turnProgress ():
             global spriteCreate
             spriteCreate = 1
 def spaceKey (event):
+    global score
     turnProgress()
+    score+=100
+    increaseScore()
 myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
