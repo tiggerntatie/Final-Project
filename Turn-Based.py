@@ -341,6 +341,9 @@ class axe(Sprite):
                     else:
                         if x in activated:
                             del activated[activated.index(x)]
+                        global score
+                        score+=100
+                        increaseScore()
                         print("hit", x.lp, len(myapp.allSprites))
                         del myapp.allSprites[myapp.allSprites.index(x)]
                         print(myapp.allSprites)
@@ -370,7 +373,9 @@ class plasmaBolt(Sprite):
                         x.hp -=1
                         self.destroy()
                     else:
-                    
+                        global score
+                        score+=100
+                        increaseScore()
                     
                         print("hit", x.lp, x.__class__.__name__, myapp.allSprites[myapp.allSprites.index(x)],myapp.numberofSprites)
                         del myapp.allSprites[myapp.allSprites.index(x)]
@@ -635,10 +640,8 @@ def turnProgress ():
             global spriteCreate
             spriteCreate = 1
 def spaceKey (event):
-    global score
     turnProgress()
-    score+=100
-    increaseScore()
+    
 myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
