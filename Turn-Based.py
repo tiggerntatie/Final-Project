@@ -206,8 +206,9 @@ class MC(Sprite):
             self.moves -=1
             movelist[self.moves-1].destroy()
             self.moves -=1
-            self.ammo = 4
             RELOAD()
+            self.ammo = 4
+            
     def jKey(self, event):
         self.KILL()
         if self.moves >0:
