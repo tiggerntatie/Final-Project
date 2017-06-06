@@ -34,10 +34,10 @@ def tutorial():
 
 def controls():
     print("""CONTROLS:
-        WASD TO MOVE
-        J: short range attack
-        K: long range attack
+        WASD TO MOVE (1 move per)
+        J: short range attack (1 move per)
+        K: long range attack (3 move per)
         SPACE: end turn
-        L: shield
-        R: reload
+        L: shield (2 move per and 2 turn cooldown)
+        R: reload (3 move per)
         Q/E: rotate""")
