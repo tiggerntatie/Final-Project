@@ -41,3 +41,11 @@ def controls():
         L: shield (2 move per and 2 turn cooldown)
         R: reload (3 move per)
         Q/E: rotate""")
+    controlAsset= """CONTROLS:
+        WASD TO MOVE (1 move per)
+        J: short range attack (1 move per)
+        K: long range attack (3 move per)
+        SPACE: end turn
+        L: shield (2 move per and 2 turn cooldown)
+        R: reload (3 move per)
+        Q/E: rotate"""
