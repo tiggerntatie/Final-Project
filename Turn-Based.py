@@ -4,6 +4,10 @@ import time
 import random
 spriteCreate = 0
 activated = []
+
+input("what up?")
+
+
 class SpaceGame(App):
     """
     Tutorial4 space game example.
@@ -123,7 +127,10 @@ class SpaceGame(App):
             if whatSprite == 5:
                 self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
         self.numberofSprites+=1
-        
+tutorial = input("Welcome to Survival. You are the grey sprite, everyone else is trying to kill you. {0} hits and you die. WASD move you, with W always moving you in the direction of the arrow. Press W when you understand.".format(4))  
+tutorial2 = input("Q and E rotate you. J is a short ranged melee attack that kills stuff. K is a bullet. You have {0} shots before you have to use R to reload. Press R if you understand".format(4))
+tutorial3 = input("L is a shield with a turn two cooldown. Speaking of turns, you have a limited number of moves {0}. Rotating is free. Moving is one move, as is melee attacking. Shooting and reloading is 3 moves, while shielding is 2. Press Space to get your moves back and have the enemies attack. Press Space if you understand.".format(4))
+tutorial3= input("There are some othering things, but I'm sure you'll figure them out. Good Luck.")
 myapp = SpaceGame(0,0)
 bulletCount = 4
 hit = 0
@@ -674,9 +681,9 @@ def spaceKey (event):
     turnProgress()
 
 
-    
+
+   
 myapp.create()
-    
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 
 MC1=MC((myapp.width/2,myapp.height/2), lives)
