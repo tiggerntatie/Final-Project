@@ -7,18 +7,8 @@ spriteCreate = 0
 activated = []
 error= " "
 
-
+tutorial.tutorial()
 tutorial.controls()
-controlAsset= """CONTROLS:
-        WASD TO MOVE (1 move per)
-        J: short range attack (1 move per)
-        K: long range attack (3 move per)
-        SPACE: end turn
-        L: shield (2 move per and 2 turn cooldown)
-        R: reload (3 move per)
-        Q/E: rotate"""
-cA= TextAsset(controlAsset, style="10px Arial", width=200)
-Sprite(cA, (60, 60))
 
 
 class SpaceGame(App):
@@ -108,6 +98,8 @@ class SpaceGame(App):
             
             for _ in range(self.production//5+1):
                     self.create()
+            if self.production == 5:
+                cA.destroy()
         for x in self.getSpritesbyClass(plasmaBolt):
             x.step()
     def create(self):
