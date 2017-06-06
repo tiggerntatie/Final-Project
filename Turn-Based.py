@@ -308,6 +308,8 @@ class MC(Sprite):
             global t
             t =1
             if self.lives == 0:
+                gameoverT= TextAsset("Final Score: {0}".format(score))
+                Sprite(gameoverT, (myapp.width-150, 40))
                 if SCREEN_WIDTH1/1071<SCREEN_HEIGHT/571:
                     self.go=Sprite(gameover, (1,1))
                     self.go.scale = SCREEN_WIDTH1/1071
@@ -658,7 +660,7 @@ while GG != 0:
         x+=38
         lp+=1    
 
-    
+ 
 turn = 0
 def turnProgress ():
     if MC1.lives>0:
@@ -670,10 +672,13 @@ def turnProgress ():
             spriteCreate = 1
 def spaceKey (event):
     turnProgress()
+
+
     
 myapp.create()
     
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
+
 MC1=MC((myapp.width/2,myapp.height/2), lives)
 RELOAD()
 myapp.run()
