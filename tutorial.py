@@ -50,5 +50,5 @@ def controls():
         L: shield (2 move per and 2 turn cooldown)
         R: reload (3 move per)
         Q/E: rotate"""
-    cA= TextAssset(controlAsset)
+    cA= TextAsset(controlAsset, style="10px Arial", width=200)
     Sprite(cA, (60, 60))
