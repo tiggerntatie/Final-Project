@@ -31,7 +31,7 @@ def tutorial():
     error = " "
     tutorial3()
     input("There are some othering things, but I'm sure you'll figure them out. Good Luck.")
-
+controlAsset= 0
 def controls():
     print("""CONTROLS:
         WASD TO MOVE (1 move per)
@@ -41,6 +41,7 @@ def controls():
         L: shield (2 move per and 2 turn cooldown)
         R: reload (3 move per)
         Q/E: rotate""")
+    global controlAsset
     controlAsset= """CONTROLS:
         WASD TO MOVE (1 move per)
         J: short range attack (1 move per)
