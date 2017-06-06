@@ -1,5 +1,5 @@
 error = " "
-
+from ggame import Sprite, TextAsset
 slideNumber = 1
 def tutorial1():
     global error
@@ -50,3 +50,5 @@ def controls():
         L: shield (2 move per and 2 turn cooldown)
         R: reload (3 move per)
         Q/E: rotate"""
+    cA= TextAssset(controlAsset)
+    Sprite(cA, (60, 60))
