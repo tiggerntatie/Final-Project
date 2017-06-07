@@ -7,7 +7,7 @@ spriteCreate = 0
 activated = []
 error= " "
 
-tutorial.tutorial()
+"tutorial.tutorial()"
 tutorial.controls()
 
 
@@ -583,15 +583,17 @@ class powerUp(Sprite):
         super().__init__(self.asset, position)
         self.assetNumber = assetNumber
     def step(self):
+        
         if len(self.collidingWithSprites(MC))>0:
-            print("collected", self.assetNumber,self.assetNumber == 1,self.assetNumber == 2, myapp.allSprites[myapp.allSprites.index(self)])
+            print("collected")
             if self.assetNumber == 1:
                 print("healed")
                 heartlist.append(heart((heartlist[MC1.lives-1].x+38, 15), MC1.lives))
                 MC1.lives+=1
             elif self.assetNumber == 2:
                 print('reload')
-                MC1.rKey(0)
+                RELOAD()
+                MC1.ammo = 4
                 print('reload')
             elif self.powerUp == 3:
                 print("boom")
@@ -601,12 +603,15 @@ class powerUp(Sprite):
                         print("me")
                     else:
                         x.destroy()
+            """
             del myapp.allSprites[myapp.allSprites.index(self)]
             myapp.allSprites=[]
             activated = []
             myapp.numberofSprites = 0
+            """
             
             self.destroy()
+powerUp((500,200),2,1)
 x = 15
 y=15
 lp = 0
