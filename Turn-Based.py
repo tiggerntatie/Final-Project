@@ -7,7 +7,7 @@ spriteCreate = 0
 activated = []
 error= " "
 
-"tutorial.tutorial()"
+'tutorial.tutorial()'
 tutorial.controls()
 
 
@@ -611,7 +611,7 @@ class powerUp(Sprite):
             """
             
             self.destroy()
-powerUp((500,200),2,1)
+
 x = 15
 y=15
 lp = 0
@@ -630,7 +630,7 @@ def RELOAD ():
     
     x = 15+38*MC1.ammo
     y=15
-    lp = MC1.ammo
+    lp = MC1.ammo-1
     if MC1.ammo == bulletCount:
         GG=0
     else:
@@ -639,7 +639,7 @@ def RELOAD ():
     
     while GG != 0:
         ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
-        if lp == bulletCount:
+        if lp == bulletCount-1:
             GG = 0
             lp = 0
         else:
