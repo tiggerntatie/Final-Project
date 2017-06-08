@@ -362,10 +362,6 @@ class axe(Sprite):
                             global score
                             score+=100
                             increaseScore()
-                        elif x.__class__.__name__ =='ShieldSprite':
-                            global score
-                            score+=50
-                            increaseScore()
                         elif x.__class__.__name__ =='meleeSprite':
                             global score
                             score+=10
@@ -406,10 +402,6 @@ class plasmaBolt(Sprite):
                         elif x.__class__.__name__ =='spdSprite':
                             global score
                             score+=100
-                            increaseScore()
-                        elif x.__class__.__name__ =='ShieldSprite':
-                            global score
-                            score+=50
                             increaseScore()
                         elif x.__class__.__name__ =='meleeSprite':
                             global score
@@ -561,6 +553,7 @@ class ShieldSprite(Sprite):
         self.hp = hp
         self.fxcenter =  self.hp*4
         self.fycenter = 1
+        self.create=time.time()
     def step(self):
         atan2(self.y-MC1.y, self.x-MC1.x)
         q = -1*pi/2+atan2(self.y-MC1.y, self.x-MC1.x)
@@ -571,6 +564,12 @@ class ShieldSprite(Sprite):
             del myapp.allSprites[myapp.allSprites.index(self)]
             self.numberofSprites -=1
             self.destroy()
+        if time.time()-self.create>10:
+            myapp.create()
+            del myapp.allSprites[myapp.allSprites.index(self)]
+            self.numberofSprites -=1
+            self.destroy()
+            
 class powerUp(Sprite):
     def __init__(self, position, assetNumber,listposition):
         print(assetNumber)
@@ -630,7 +629,7 @@ def RELOAD ():
     
     x = 15+38*MC1.ammo
     y=15
-    lp = MC1.ammo-1
+    lp = MC1.ammo
     if MC1.ammo == bulletCount:
         GG=0
     else:
@@ -638,7 +637,7 @@ def RELOAD ():
     
     
     while GG != 0:
-        ammolist[lp]=ammo((myapp.width-15-x,myapp.height-y*3), lp)
+        ammolist[lp]=ammo((myapp.width-x,myapp.height-y*3), lp)
         if lp == bulletCount-1:
             GG = 0
             lp = 0
@@ -657,8 +656,6 @@ def increaseScore():
     points = TextAsset(score)
     points1.destroy()
     points1 = Points((myapp.width/2, 0))
-score +=100   
-increaseScore()      
 x = 15
 y=15
 lp = 0
