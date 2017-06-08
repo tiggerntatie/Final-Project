@@ -1,24 +1,25 @@
 from ggame import Sprite, TextAsset
 import time
-time=60
+timeCounter=60
+cT= time.time()
+timeList=[]
 def timer():
-    time=time
-    currentTime= time.time()
+    global timeCounter, cT, timeList
+    timeCounter=timeCounter
+    cT= time.time()
     timeList=[]
+    print(cT)
     def timer2():
-        if time.time()-currentTime()>1:
-            time-=1
+        global timeCounter, cT, timeList
+        if time.time()-cT>1:
+            timeCounter-=1
             timeAsset=TextAsset(time)
-            print(time, timeList)
-            if len(timeList)>0:
-                for x in timeList:
-                    x.destroy
-            timeList=[]
-            timeList.append(Sprite(timeAsset, (200, 20)))
-            print(timeList)
-            timer()
-        elif:
-            timer2()
+            print(timeCounter, timeList) 
+            
+        else:
+            
+    timer2()
+       
 timer()
             
             
