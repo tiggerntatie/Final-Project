@@ -5,10 +5,8 @@ cT= time.time()
 timeList=[]
 timeReset = False
 def timer():
-    print('hi')
     global cT, timeCounter, timeList, timeReset
     if timeReset==True:
-        print('hi')
         cT=time.time
         timeReset=False
     elif time.time()-cT>1:
@@ -19,6 +17,8 @@ def timer():
         timeList.append(Sprite(timeAsset, (100,100)))
         timeReset = True
         print(timeList)
+    else:
+        print('no change')
 timer()
         
             
