@@ -119,7 +119,7 @@ class SpaceGame(App):
             xcolumn = self.width/2+random.randint(1,(self.width/2)//30)
             ycolumn = self.height/2+random.randint(1,(self.height/2)//30)
         whatSprite= random.randint(1,4)
-        print("newsprite",whatSprite, quad, xcolumn, self.width/2, ycolumn, self.height/2)
+        print("newsprite",whatSprite)
         
         if whatSprite== 1:
             self.allSprites.append(meleeSprite((xcolumn,ycolumn), self.numberofSprites))
@@ -132,6 +132,7 @@ class SpaceGame(App):
             if whatSprite == 5:
                 self.allSprites.append(powerUp((xcolumn, ycolumn), random.randint(1,3), self.numberofSprites))
         self.numberofSprites+=1
+        print(self.numberofSprites)
 
 myapp = SpaceGame(0,0)
 bulletCount = 4
@@ -564,10 +565,14 @@ class ShieldSprite(Sprite):
             del myapp.allSprites[myapp.allSprites.index(self)]
             self.numberofSprites -=1
             self.destroy()
-        if time.time()-self.create>10:
+        if time.time()-self.create>1:
+            print('hey')
             myapp.create()
+            print('hey', myapp.allSprites[myapp.allSprites.index(self)])
             del myapp.allSprites[myapp.allSprites.index(self)]
-            self.numberofSprites -=1
+            print('hey')
+            myapp.numberofSprites -=1
+            print('hey')
             self.destroy()
             
 class powerUp(Sprite):
