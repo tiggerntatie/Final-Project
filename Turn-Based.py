@@ -188,6 +188,7 @@ class MC(Sprite):
         SpaceGame.listenKeyEvent("keydown", "k", self.kKey)
         SpaceGame.listenKeyEvent("keydown", "l", self.lKey)
         SpaceGame.listenKeyEvent("keydown", "r", self.rKey)
+        SpaceGame.listenKeyEvent("keydown", "z", self.zKey)
         self.fxcenter = self.fycenter = 0.5
         self.lives = ls
         self.start=0
@@ -198,6 +199,17 @@ class MC(Sprite):
         self.shielded = -1
         self.cooldownS = 0
         self.ammo = bulletCount
+    def zKey(self, event):
+        self.KILL()
+        if self.moves>1:
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            movelist[self.moves-1].destroy()
+            self.moves -=1
+            self.x -= 50*cos((pi/2)-self.rotation)
+            self.y -= 50*sin((pi/2)-self.rotation)
+            
+            
     def lKey(self, event):
         self.KILL()
         if self.moves >1 and self.cooldownS <1:
