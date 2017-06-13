@@ -228,6 +228,9 @@ class MC(Sprite):
     def kKey(self, event):
         self.KILL()
         if self.moves >2 and self.ammo>0:
+            if len(myapp.getSpritesbyClass(plasmaBolt))>0:
+                for x in myapp.getSpritesbyClass(plasmaBolt):
+                    x.destroy()
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
             movelist[self.moves-1].destroy()
             self.moves -=1
@@ -350,7 +353,6 @@ class axe(Sprite):
                 if x.__class__.__name__ !='Sprite' and x.__class__.__name__ !='MC' and x.__class__.__name__ !='shield' and x.__class__.__name__ !='heart':
                     if x.__class__.__name__ =='ShieldSprite':
                         print(x)
-                        x.hp -=1
                     else:
                         if x in activated:
                             del activated[activated.index(x)]
@@ -393,7 +395,6 @@ class plasmaBolt(Sprite):
                     if x in activated:
                         del activated[activated.index(x)]
                     if  x.__class__.__name__ =='ShieldSprite':
-                        x.hp -=1
                         self.destroy()
                     else:
                         if x.__class__.__name__ =='shootSprite':
@@ -565,7 +566,7 @@ class ShieldSprite(Sprite):
             del myapp.allSprites[myapp.allSprites.index(self)]
             self.numberofSprites -=1
             self.destroy()
-        if time.time()-self.create>1:
+        if time.time()-self.create>4:
             print('hey')
             myapp.create()
             print('hey', myapp.allSprites[myapp.allSprites.index(self)])
@@ -651,16 +652,12 @@ def RELOAD ():
             lp+=1
 score = 0
 points = TextAsset(score)
-class Points(Sprite):
-    def __init__(self, position): 
-        super().__init__(points, position)
-        self.fxcenter =  0.5
-points1=Points((myapp.width/2, 0))
+points1=Sprite(points,(myapp.width/2, 0))
 def increaseScore():
     global points, score, points1
     points = TextAsset(score)
     points1.destroy()
-    points1 = Points((myapp.width/2, 0))
+    points1 = Sprite(points,(myapp.width/2, 0))
 x = 15
 y=15
 lp = 0
