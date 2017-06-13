@@ -30,7 +30,7 @@ def tutorial():
     tutorial2()
     error = " "
     tutorial3()
-    input("There are some othering things, but I'm sure you'll figure them out. Good Luck.")
+    input("There are some othering things, but I'm sure you'll figure them out. (There might be a limit to how many bullets can be on screen at the same time.) Good Luck.")
 controlAsset= 0
 def controls():
     print("""CONTROLS:
