@@ -228,7 +228,7 @@ class MC(Sprite):
     def kKey(self, event):
         self.KILL()
         if self.moves >2 and self.ammo>0:
-            if len(myapp.getSpritesbyClass(plasmaBolt))>0:
+            if len(myapp.getSpritesbyClass(plasmaBolt))>1:
                 for x in myapp.getSpritesbyClass(plasmaBolt):
                     x.destroy()
             plasmaBolt((self.x-19*cos((pi/2)-self.rotation), self.y -19*sin((pi/2)-self.rotation)), self.rotation)
