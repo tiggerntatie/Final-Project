@@ -104,9 +104,10 @@ about x and y coordinates in math class!
 
 try:
     from ggame.sysdeps import *
+"""
 except:
     from sysdeps import *
-
+"""
 class Frame(object):
     """
     Frame is a utility class for expressing the idea of a rectangular region.
